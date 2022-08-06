@@ -1,5 +1,9 @@
-console.log("asdfasdf");
+const express = require("express");
+const app = express();
+const port = 3000;
 
-console.log("asdfasdf");
+app.use("/api/users", require("./routes/userRoutes.js"));
 
-console.log("asdfasdf");
+app.listen(port, () => {
+  console.log(`Server started on port ${port}`);
+});
