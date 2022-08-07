@@ -6,4 +6,4 @@ const loginUser = (req, res) => {
   res.json({ message: "loginUser" });
 };
 
-export { registerUser, loginUser };
+module.exports = { registerUser, loginUser };
