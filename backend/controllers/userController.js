@@ -1,4 +1,5 @@
 const registerUser = (req, res) => {
+  console.log(req.body);
   res.json({ message: "registerUser" });
 };
 
