@@ -1,5 +1,6 @@
-const registerUser = (req, res) => {
+const registerUser = async (req, res) => {
   console.log(req.body);
+  const { name, email, password } = req.body;
   res.json({ message: "registerUser" });
 };
 
