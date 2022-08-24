@@ -4,6 +4,7 @@ const registerUser = async (req, res) => {
     res.status(400);
     throw new Error("Please add all fields");
   }
+  console.log(name, email);
   res.json({ message: "registerUser" });
 };
 
