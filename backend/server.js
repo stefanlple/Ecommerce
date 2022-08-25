@@ -3,7 +3,7 @@ const connectDB = require("./config/db");
 const app = express();
 const port = 3000;
 
-//connectDB();
+connectDB();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
