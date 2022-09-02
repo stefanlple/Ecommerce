@@ -1,5 +1,6 @@
 const User = require("../models/userModel");
 const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 
 const registerUser = async (req, res) => {
   const { name, email, password } = req.body;
@@ -28,7 +29,7 @@ const registerUser = async (req, res) => {
       _id: user.id,
       name: user.name,
       email: user.email,
-      password: user.password,
+      token: generateJWTToken(user.id),
     });
   }
 };
@@ -43,11 +44,16 @@ const loginUser = async (req, res) => {
       _id: user.id,
       name: user.name,
       email: user.email,
+      token: generateJWTToken(user.id),
     });
   } else {
     res.status(400);
     throw new Error("Wrong Password or Email");
   }
+};
+
+const generateJWTToken = (id) => {
+  return jwt.sign({ id }, process.env.JWT_SECRETKEY, { expiresIn: "60d" });
 };
 
 module.exports = { registerUser, loginUser };
