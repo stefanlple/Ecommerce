@@ -52,8 +52,19 @@ const loginUser = async (req, res) => {
   }
 };
 
+const getUser = (req, res) => {
+  /* try {
+    res.status(201);
+    res.json(req.user);
+  } catch (error) {
+    console.log(error);
+    res.status(401);
+  } */
+  res.json({ message: "hallo" });
+};
+
 const generateJWTToken = (id) => {
   return jwt.sign({ id }, process.env.JWT_SECRETKEY, { expiresIn: "60d" });
 };
 
-module.exports = { registerUser, loginUser };
+module.exports = { registerUser, loginUser, getUser };
