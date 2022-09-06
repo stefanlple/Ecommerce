@@ -1,6 +1,6 @@
 const Product = require("../models/productModel");
 
-const registerProduct = async (req, res) => {
+const registerProduct = (req, res) => {
   res.json({
     message: "asdfaw",
   });

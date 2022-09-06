@@ -4,7 +4,9 @@ const {
   getProduct,
 } = require("../controllers/productController");
 
-const router = express.Router;
+const router = express.Router();
 
 router.get("/collection", getProduct);
-router.post("/addProduct", registerProduct);
+router.post("/registerProduct", registerProduct);
+
+module.exports = router;
