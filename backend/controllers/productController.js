@@ -48,8 +48,11 @@ const registerProduct = (req, res) => {
   }
 };
 
-const getProduct = (req, res) => {
-  res.json({ message: "hallo" });
+const deleteProduct = async (req, res) => {
+  if (!product) {
+    res.status(400);
+    throw new Error("No product with that id");
+  }
 };
 
 module.exports = { registerProduct, getProduct };
