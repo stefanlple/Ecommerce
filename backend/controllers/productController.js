@@ -53,8 +53,16 @@ const registerProduct = async (req, res) => {
   }
 };
 
+const updateProduct = async (req, res) => {
+  const product = await Product.findById(req.params.id);
+  if (!product) {
+    res.status(400);
+    throw new Error("No product with that id");
+  }
+};
+
 const deleteProduct = async (req, res) => {
-  const product = Product.findById(req.params.id);
+  const product = await Product.findById(req.params.id);
   if (!product) {
     res.status(400);
     throw new Error("No product with that id");
