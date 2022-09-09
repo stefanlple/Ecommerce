@@ -1,6 +1,11 @@
 const Product = require("../models/productModel");
 
-const registerProduct = (req, res) => {
+const getProduct = async (req, res) => {
+  const product = await Product.findById(req.params.id);
+  res.status(200);
+  res.json(product);
+};
+const registerProduct = async (req, res) => {
   const {
     name,
     category,
@@ -13,13 +18,13 @@ const registerProduct = (req, res) => {
   } = req.body;
   const images = req.body.file;
 
-  const productExist = Product.findOne({ name, color });
+  const productExist = await Product.findOne({ name, color });
   if (productExist) {
     res.status(400);
     throw new Error("Product already exist");
   }
 
-  const product = Product.create({
+  const product = await Product.create({
     name: name,
     category: category,
     color: color,
@@ -49,10 +54,16 @@ const registerProduct = (req, res) => {
 };
 
 const deleteProduct = async (req, res) => {
+  const product = Product.findById(req.params.id);
   if (!product) {
     res.status(400);
     throw new Error("No product with that id");
   }
+
+  await product.remove();
+
+  res.status(200);
+  res.status(200).json({ id: req.params.id });
 };
 
 module.exports = { registerProduct, getProduct };
