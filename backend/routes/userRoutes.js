@@ -5,10 +5,10 @@ const {
   getUser,
 } = require("../controllers/userController");
 const router = express.Router();
-const { auth } = require("../middleware/authUser");
+const { auth, authRoles } = require("../middleware/authUser");
 
 router.post("/register", registerUser);
 router.post("/login", loginUser);
-router.get("/getUser", auth, getUser);
+router.get("/getUser", auth, authRoles("ROLE_ADMIN"), getUser);
 
 module.exports = router;

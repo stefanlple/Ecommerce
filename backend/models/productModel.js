@@ -31,10 +31,6 @@ const productSchema = mongoose.Schema({
     type: Boolean,
     default: true,
   },
-  soldOut: {
-    type: Boolean,
-    default: false,
-  },
   date_added: {
     type: Date,
     default: Date.now,

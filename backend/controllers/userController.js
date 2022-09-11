@@ -3,7 +3,7 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
 const registerUser = async (req, res) => {
-  const { name, email, password } = req.body;
+  const { name, email, password, role } = req.body;
 
   if (!name || !email || !password) {
     res.status(400);
@@ -20,6 +20,7 @@ const registerUser = async (req, res) => {
   const user = await User.create({
     name: name,
     email: email,
+    role: role,
     password: hashedPassword,
   });
 
@@ -30,6 +31,7 @@ const registerUser = async (req, res) => {
       name: user.name,
       email: user.email,
       token: generateJWTToken(user.id),
+      user: user,
     });
   }
 };
@@ -45,6 +47,7 @@ const loginUser = async (req, res) => {
       name: user.name,
       email: user.email,
       token: generateJWTToken(user.id),
+      user: user,
     });
   } else {
     res.status(400);
@@ -60,7 +63,8 @@ const getUser = (req, res) => {
     console.log(error);
     res.status(401);
   } */
-  res.json({ message: "hallo" });
+  res.status(200);
+  res.json(req.user);
 };
 
 const generateJWTToken = (id) => {

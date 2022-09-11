@@ -28,4 +28,14 @@ const auth = async (req, res, next) => {
   }
 };
 
-exports.auth = auth;
+const authRoles = (role) => {
+  return (req, res, next) => {
+    if (req.user.role === role) {
+      next();
+    } else {
+      res.status(401);
+      throw new Error("Only admin");
+    }
+  };
+};
+module.exports = { auth, authRoles };
