@@ -56,13 +56,6 @@ const loginUser = async (req, res) => {
 };
 
 const getUser = (req, res) => {
-  /* try {
-    res.status(201);
-    res.json(req.user);
-  } catch (error) {
-    console.log(error);
-    res.status(401);
-  } */
   res.status(200);
   res.json(req.user);
 };

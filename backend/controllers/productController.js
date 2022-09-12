@@ -1,7 +1,8 @@
 const Product = require("../models/productModel");
 
 const getProduct = async (req, res) => {
-  const product = await Product.findById(req.params.id);
+  const product = await Product.findById(req.body.id);
+
   res.status(200);
   res.json(product);
 };
@@ -39,18 +40,7 @@ const registerProduct = async (req, res) => {
 
   if (product) {
     res.status(200);
-    res.json({
-      _id: product.id,
-      name: product.name,
-      category: product.category,
-      color: product.color,
-      description: product.description,
-      quantity: product.quantity,
-      price: product.price,
-      isActive: product.isActive,
-      soldOut: product.soldOut,
-      images: product.images,
-    });
+    res.json(product);
   }
 };
 
@@ -77,7 +67,7 @@ const deleteProduct = async (req, res) => {
   }
 
   res.status(200);
-  res.status(200).json({ id: req.params.id });
+  res.json({ id: req.params.id });
 };
 
 module.exports = { registerProduct, getProduct, deleteProduct, updateProduct };
