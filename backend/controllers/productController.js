@@ -45,13 +45,13 @@ const registerProduct = async (req, res) => {
 };
 
 const updateProduct = async (req, res) => {
-  const product = await Product.findById(req.params.id);
+  const product = await Product.findById(req.query.id);
   if (!product) {
     res.status(400);
     throw new Error("No product with that id");
   }
   const updatedProduct = await Product.findByIdAndUpdate(
-    req.params.id,
+    req.query.id,
     req.body,
     { new: true }
   );
@@ -60,14 +60,17 @@ const updateProduct = async (req, res) => {
 };
 
 const deleteProduct = async (req, res) => {
-  const product = await Product.findByIdAndRemove(req.params.id);
+  const product = await Product.findByIdAndRemove(req.query.id);
   if (!product) {
     res.status(400);
     throw new Error("No product with that id");
   }
 
   res.status(200);
-  res.json({ id: req.params.id });
+  res.json({
+    success: true,
+    id: req.query.id,
+  });
 };
 
 module.exports = { registerProduct, getProduct, deleteProduct, updateProduct };
