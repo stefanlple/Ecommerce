@@ -17,7 +17,7 @@ const cartItemSchema = new mongoose.Schema({
     type: Number,
     default: 0,
   },
-  totalPrice: {
+  price: {
     type: Number,
     default: 0,
   },
@@ -28,7 +28,7 @@ const cartItemSchema = new mongoose.Schema({
   },
 });
 
-const cartSchema = new mongoose.Schem(
+const cartSchema = new mongoose.Schema(
   {
     products: [CartItemSchema],
     user: {
@@ -40,3 +40,6 @@ const cartSchema = new mongoose.Schem(
     timestamps: true,
   }
 );
+
+module.exports = mongoose.model("CartItem", cartItemSchema);
+module.exports = mongoose.model("Cart", cartSchema);

@@ -45,13 +45,13 @@ const registerProduct = async (req, res) => {
 };
 
 const updateProduct = async (req, res) => {
-  const product = await Product.findById(req.query.id);
+  const product = await Product.findById(req.params.id);
   if (!product) {
     res.status(400);
     throw new Error("No product with that id");
   }
   const updatedProduct = await Product.findByIdAndUpdate(
-    req.query.id,
+    req.params.id,
     req.body,
     { new: true }
   );
@@ -60,7 +60,7 @@ const updateProduct = async (req, res) => {
 };
 
 const deleteProduct = async (req, res) => {
-  const product = await Product.findByIdAndRemove(req.query.id);
+  const product = await Product.findByIdAndRemove(req.params.id);
   if (!product) {
     res.status(400);
     throw new Error("No product with that id");
@@ -69,7 +69,7 @@ const deleteProduct = async (req, res) => {
   res.status(200);
   res.json({
     success: true,
-    id: req.query.id,
+    id: req.params.id,
   });
 };
 
