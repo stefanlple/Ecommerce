@@ -1,8 +1,26 @@
-const CartItem = require("../models/cartItemModel");
 const Cart = require("../models/cartModel");
 
-const addProductToCart = async (req, res) => {
-  const user = req.user.id;
-  const cartItem = CartItem.create({});
-  //put item into cart
+const getCart = async (req, res) => {
+  res.json({ all: "asdfsdf" });
+};
+const addCart = async (req, res) => {
+  const user = req.user._id;
+};
+const updateCart = async (req, res) => {
+  res.json({ all: "asdfsdf" });
+};
+const deleteCart = async (req, res) => {
+  res.json({ all: "asdfsdf" });
+};
+
+const deleteProductfromCart = async (req, res) => {
+  res.json({ all: "asdfsdf" });
+};
+
+module.exports = {
+  getCart,
+  addCart,
+  updateCart,
+  deleteCart,
+  deleteProductfromCart,
 };

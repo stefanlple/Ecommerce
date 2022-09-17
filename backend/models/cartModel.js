@@ -17,7 +17,7 @@ const cartItemSchema = new mongoose.Schema({
     type: Number,
     default: 0,
   },
-  price: {
+  priceWithoutTax: {
     type: Number,
     default: 0,
   },
@@ -30,7 +30,7 @@ const cartItemSchema = new mongoose.Schema({
 
 const cartSchema = new mongoose.Schema(
   {
-    products: [CartItemSchema],
+    products: [cartItemSchema],
     user: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
