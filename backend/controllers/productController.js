@@ -1,10 +1,16 @@
 const Product = require("../models/productModel");
 
 const getProduct = async (req, res) => {
-  const product = await Product.findById(req.body.id);
+  const product = await Product.findById(req.user.id);
 
   res.status(200);
   res.json(product);
+};
+
+const getAllProducts = async (req, res) => {
+  const allProducts = await Product.find();
+  res.status(200);
+  res.json(allProducts);
 };
 
 const registerProduct = async (req, res) => {
@@ -73,4 +79,10 @@ const deleteProduct = async (req, res) => {
   });
 };
 
-module.exports = { registerProduct, getProduct, deleteProduct, updateProduct };
+module.exports = {
+  registerProduct,
+  getProduct,
+  deleteProduct,
+  updateProduct,
+  getAllProducts,
+};

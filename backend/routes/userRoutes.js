@@ -9,6 +9,6 @@ const { auth, authRoles } = require("../middleware/authUser");
 
 router.post("/register", registerUser);
 router.post("/login", loginUser);
-router.get("/getUser", auth, authRoles("ROLE_ADMIN"), getUser);
+router.get("/getUser", auth, getUser);
 
 module.exports = router;
