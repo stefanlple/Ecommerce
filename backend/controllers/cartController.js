@@ -1,6 +1,6 @@
 const Cart = require("../models/cartModel");
 const Product = require("../models/productModel");
-const CartItem = require("../models/cartModel");
+
 const getCart = async (req, res) => {
   res.json({ all: "asdfsdf" });
 };
@@ -19,15 +19,28 @@ const registerCart = async (req, res) => {
     user: user,
     products: products,
   });
+
   decreaseQuantity(products);
+
   if (cart) {
     res.status(200);
     res.json(cart);
   }
 };
 
-const updateCart = async (req, res) => {
-  res.json({ all: "asdfsdf" });
+const addToCart = async (req, res) => {
+  const user = req.user._id;
+  const products = req.body.products;
+  const query = req.params.cartId;
+
+  const cartExist = await Cart.findOne({ user });
+  if (cartExist) {
+    await Cart.updateOne(query, { $push: { products: product } });
+    decreaseQuantity(products);
+  } else {
+    res.status(400);
+    throw new Error("The cart already exists");
+  }
 };
 const deleteCart = async (req, res) => {
   res.json({ all: "asdfsdf" });
@@ -52,7 +65,7 @@ const decreaseQuantity = (products) => {
 module.exports = {
   getCart,
   registerCart,
-  updateCart,
+  addToCart,
   deleteCart,
   deleteProductfromCart,
 };
