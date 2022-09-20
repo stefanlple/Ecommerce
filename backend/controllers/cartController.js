@@ -29,25 +29,51 @@ const registerCart = async (req, res) => {
 };
 
 const addToCart = async (req, res) => {
-  const user = req.user._id;
   const products = req.body.products;
-  const query = req.params.cartId;
+  const query = { _id: req.params.cartId };
 
-  const cartExist = await Cart.findOne({ user });
+  const cartExist = await Cart.findOne(query);
+
   if (cartExist) {
-    await Cart.updateOne(query, { $push: { products: product } });
-    decreaseQuantity(products);
+    const cart = await Cart.updateOne(query, { $push: { products: products } });
+    res.status(200).json(cart);
   } else {
     res.status(400);
-    throw new Error("The cart already exists");
+    throw new Error("The cart does not exists");
   }
 };
+
 const deleteCart = async (req, res) => {
-  res.json({ all: "asdfsdf" });
+  const query = req.params.cartId;
+
+  const product = await Cart.findByIdAndRemove(query);
+  if (!product) {
+    res.status(400);
+    throw new Error("No product with that id");
+  }
+
+  res.status(200);
+  res.json({
+    success: true,
+    id: query,
+  });
 };
 
 const deleteProductfromCart = async (req, res) => {
-  res.json({ all: "asdfsdf" });
+  const productId = { productId: req.params.productId };
+  const cartId = { _id: req.params.cartId };
+
+  const cartExist = await Cart.findOne(cartId);
+
+  if (cartExist) {
+    const cart = await Cart.updateOne(cartId, {
+      $pull: { products: productId },
+    });
+    res.status(200).json(cart);
+  } else {
+    res.status(400);
+    throw new Error("The cart does not exists");
+  }
 };
 
 const decreaseQuantity = (products) => {

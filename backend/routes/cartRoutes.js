@@ -10,7 +10,8 @@ const { auth, authRoles } = require("../middleware/authUser");
 const router = express.Router();
 
 router.post("/add", auth, registerCart);
-router.get("/delete/:cartId", deleteCart);
-router.get("/add/:cartId", addToCart);
-router.get("/delete/:cartId/:productID", deleteProductfromCart);
+router.post("/add/:cartId", addToCart);
+router.delete("/delete/:cartId", deleteCart);
+router.delete("/delete/:cartId/:productId", deleteProductfromCart);
+
 module.exports = router;
