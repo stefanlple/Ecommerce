@@ -5,12 +5,14 @@ import Register from "./pages/Register";
 import Home from "./pages/Home";
 import Cart from "./pages/Cart";
 import Collection from "./pages/Collection";
+import Header from "./components/Header";
 
 function App() {
   return (
     <>
       <Router>
         <div className="container">
+          <Header />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/Login" element={<Login />} />
