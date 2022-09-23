@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { startSession } from "mongoose";
+
 import authService from "./authService";
 
 //Get user from localStorage
