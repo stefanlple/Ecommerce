@@ -1,5 +1,10 @@
 import React from "react";
-import { FaSignOutAlt, FaSignInAlt, FaUser } from "react-icons/fa";
+import {
+  FaSignOutAlt,
+  FaSignInAlt,
+  FaUser,
+  FaShoppingCart,
+} from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logout, reset } from "../features/auth/authSlice";
@@ -19,17 +24,26 @@ function Header() {
   return (
     <header className="header">
       <div className="logo">
-        <Link to="/">GoalSetter</Link>
+        <Link to="/">Ecommerce</Link>
       </div>
       <ul>
         {user ? (
-          <li>
+          <>
             <li>
-              <button className="btn" onClick={onLogout}>
-                <FaSignOutAlt /> Logout
-              </button>
+              <li>
+                <button className="btn" onClick={onLogout}>
+                  <FaSignOutAlt /> Logout
+                </button>
+              </li>
             </li>
-          </li>
+            <li>
+              <li>
+                <button className="btn" onClick={"/"}>
+                  <FaShoppingCart /> Cart
+                </button>
+              </li>
+            </li>
+          </>
         ) : (
           <>
             <li>

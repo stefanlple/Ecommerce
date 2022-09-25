@@ -1,19 +1,20 @@
 const Product = require("../models/productModel");
+const asyncHandler = require("express-async-handler");
 
-const getProduct = async (req, res) => {
+const getProduct = asyncHandler(async (req, res) => {
   const product = await Product.findById(req.user.id);
 
   res.status(200);
   res.json(product);
-};
+});
 
-const getAllProducts = async (req, res) => {
+const getAllProducts = asyncHandler(async (req, res) => {
   const allProducts = await Product.find();
   res.status(200);
   res.json(allProducts);
-};
+});
 
-const registerProduct = async (req, res) => {
+const registerProduct = asyncHandler(async (req, res) => {
   const {
     name,
     category,
@@ -48,9 +49,9 @@ const registerProduct = async (req, res) => {
     res.status(200);
     res.json(product);
   }
-};
+});
 
-const updateProduct = async (req, res) => {
+const updateProduct = asyncHandler(async (req, res) => {
   const product = await Product.findById(req.params.id);
   if (!product) {
     res.status(400);
@@ -63,9 +64,9 @@ const updateProduct = async (req, res) => {
   );
   res.status(200);
   res.json(updatedProduct);
-};
+});
 
-const deleteProduct = async (req, res) => {
+const deleteProduct = asyncHandler(async (req, res) => {
   const product = await Product.findByIdAndRemove(req.params.id);
   if (!product) {
     res.status(400);
@@ -77,7 +78,7 @@ const deleteProduct = async (req, res) => {
     success: true,
     id: req.params.id,
   });
-};
+});
 
 module.exports = {
   registerProduct,

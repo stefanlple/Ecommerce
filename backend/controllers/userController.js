@@ -1,8 +1,9 @@
 const User = require("../models/userModel");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const asyncHandler = require("express-async-handler");
 
-const registerUser = async (req, res) => {
+const registerUser = asyncHandler(async (req, res) => {
   const { name, email, password, role } = req.body;
 
   if (!name || !email || !password) {
@@ -34,9 +35,9 @@ const registerUser = async (req, res) => {
       user: user,
     });
   }
-};
+});
 
-const loginUser = async (req, res) => {
+const loginUser = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
   const user = await User.findOne({ email });
 
@@ -53,7 +54,7 @@ const loginUser = async (req, res) => {
     res.status(400);
     throw new Error("Wrong Password or Email");
   }
-};
+});
 
 const getUser = (req, res) => {
   res.status(200);

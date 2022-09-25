@@ -1,11 +1,12 @@
 const Cart = require("../models/cartModel");
 const Product = require("../models/productModel");
+const asyncHandler = require("express-async-handler");
 
-const getCart = async (req, res) => {
+const getCart = asyncHandler(async (req, res) => {
   res.json({ all: "asdfsdf" });
-};
+});
 
-const registerCart = async (req, res) => {
+const registerCart = asyncHandler(async (req, res) => {
   const user = req.user._id;
   const products = req.body.products;
 
@@ -26,9 +27,9 @@ const registerCart = async (req, res) => {
     res.status(200);
     res.json(cart);
   }
-};
+});
 
-const addToCart = async (req, res) => {
+const addToCart = asyncHandler(async (req, res) => {
   const products = req.body.products;
   const query = { _id: req.params.cartId };
 
@@ -41,9 +42,9 @@ const addToCart = async (req, res) => {
     res.status(400);
     throw new Error("The cart does not exists");
   }
-};
+});
 
-const deleteCart = async (req, res) => {
+const deleteCart = asyncHandler(async (req, res) => {
   const query = req.params.cartId;
 
   const product = await Cart.findByIdAndRemove(query);
@@ -57,9 +58,9 @@ const deleteCart = async (req, res) => {
     success: true,
     id: query,
   });
-};
+});
 
-const deleteProductfromCart = async (req, res) => {
+const deleteProductfromCart = asyncHandler(async (req, res) => {
   const productId = { productId: req.params.productId };
   const cartId = { _id: req.params.cartId };
 
@@ -74,7 +75,7 @@ const deleteProductfromCart = async (req, res) => {
     res.status(400);
     throw new Error("The cart does not exists");
   }
-};
+});
 
 const decreaseQuantity = (products) => {
   let bulkOptions = products.map((item) => {
