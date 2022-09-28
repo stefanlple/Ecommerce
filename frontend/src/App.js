@@ -8,6 +8,7 @@ import Home from "./pages/Home";
 import Cart from "./pages/Cart";
 import Collection from "./pages/Collection";
 import Header from "./components/Header";
+import Product from "./pages/Product";
 
 function App() {
   return (
@@ -17,9 +18,11 @@ function App() {
           <Header />
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/Login" element={<Login />} />
-            <Route path="/Register" element={<Register />} />
-            <Route path="/Collection" element={<Collection />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/collection" element={<Collection />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/product/:id" element={<Product />} />
           </Routes>
         </div>
       </Router>
