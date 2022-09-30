@@ -2,7 +2,7 @@ const Product = require("../models/productModel");
 const asyncHandler = require("express-async-handler");
 
 const getProduct = asyncHandler(async (req, res) => {
-  const product = await Product.findById(req.user.id);
+  const product = await Product.findById(req.params.id);
 
   res.status(200);
   res.json(product);
