@@ -1,9 +1,4 @@
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  useParams,
-} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Dashboard from "./pages/Dashboard";
@@ -16,7 +11,6 @@ import Header from "./components/Header";
 import Product from "./pages/Product";
 
 function App() {
-  let { productId } = useParams();
   return (
     <>
       <Router>
@@ -28,7 +22,7 @@ function App() {
             <Route path="/register" element={<Register />} />
             <Route path="/collection" element={<Collection />} />
             <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/product/:productId" element={<Product />} />
+            <Route path="/:productId" element={<Product />} />
           </Routes>
         </div>
       </Router>

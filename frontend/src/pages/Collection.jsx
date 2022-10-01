@@ -26,7 +26,7 @@ function Collection() {
               <>
                 <li>
                   <a
-                    href={`/product/${products.name}.${products._id}`}
+                    href={`/${products.name}.${products._id}`}
                     className="plp-product"
                     data-product-id={`${products._id}`}
                   >
