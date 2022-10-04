@@ -3,11 +3,12 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {} from "react-redux";
 import { getAllProducts } from "../features/products/productService";
-
+import { useDispatch, useNavigate } from "react-redux";
 function Collection() {
-  const dispatch = useDispatch();
-
   const [products, setProducts] = useState([]);
+
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const fetchProducts = async () => {
     setProducts(await getAllProducts());
