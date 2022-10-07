@@ -1,12 +1,15 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import {} from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { getAllProducts } from "../features/products/productService";
-import { useDispatch, useNavigate } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+
 function Collection() {
   const [products, setProducts] = useState([]);
 
+  const { isLoading, isError, isSuccess, message } = useSelector(
+    (state) => state.auth
+  );
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
