@@ -11,3 +11,10 @@ export const getProduct = async (id) => {
   const response = await axios.get(API_URL + id);
   return response.data;
 };
+
+const productService = {
+  getAllProducts,
+  getProduct,
+};
+
+export default productService;
