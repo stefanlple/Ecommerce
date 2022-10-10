@@ -23,6 +23,7 @@ export const getAllProducts = () => {
     }
   });
 };
+
 export const getProduct = async (id) => {
   return productService.getProduct;
 };
@@ -38,7 +39,37 @@ export const productsSlice = createSlice({
       state.message = "";
     },
   },
-  extraReducers: (builder) => {},
+  extraReducers: (builder) => {
+    builder
+      .addCase(getAllProducts.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(getAllProducts.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.user = action.payload;
+      })
+      .addCase(getAllProducts.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+        state.user = null;
+      })
+      .addCase(getProduct.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(getProduct.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.user = action.payload;
+      })
+      .addCase(getProduct.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+        state.user = null;
+      });
+  },
 });
 
 export const { reset } = productsSlice.actions;
