@@ -7,6 +7,8 @@ import {
   getProduct,
 } from "../features/products/productService";
 import { useParams } from "react-router-dom";
+import { toast } from "react-toastify";
+import Spinner from "../components/Spinner";
 
 function Product() {
   const { productId } = useParams();
@@ -15,13 +17,24 @@ function Product() {
   const id = productId.split(".")[1];
   const [product, setProducts] = useState([]);
 
+  const { isLoading, isError, isSuccess, message } = useSelector(
+    (state) => state.auth
+  );
+
   const fetchProducts = async () => {
     setProducts(await getProduct(id));
   };
 
   useEffect(() => {
+    if (isError) {
+      toast.error(message);
+    }
     fetchProducts();
-  }, []);
+  }, [isError, isSuccess, message, navigate, dispatch]);
+
+  if (isLoading) {
+    return <Spinner />;
+  }
 
   return (
     <>
