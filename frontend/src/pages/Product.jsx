@@ -30,7 +30,7 @@ function Product() {
       toast.error(message);
     }
     fetchProducts();
-  }, [isError, isSuccess, message, navigate, dispatch]);
+  }, [isError, isSuccess, message, dispatch]);
 
   if (isLoading) {
     return <Spinner />;

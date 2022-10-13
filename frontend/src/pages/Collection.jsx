@@ -3,7 +3,8 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { getAllProducts } from "../features/products/productService";
 import { useSelector, useDispatch } from "react-redux";
-
+import Spinner from "../components/Spinner";
+import toast from "react-toastify";
 function Collection() {
   const [products, setProducts] = useState([]);
 
@@ -18,9 +19,15 @@ function Collection() {
   };
 
   useEffect(() => {
+    if (isError) {
+      toast.error(message);
+    }
     fetchProducts();
-  }, []);
+  }, [isError, isSuccess, message, dispatch]);
 
+  if (isLoading) {
+    return <Spinner />;
+  }
   return (
     <>
       <div>
