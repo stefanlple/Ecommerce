@@ -24,7 +24,6 @@ function Product() {
   const fetchProducts = async () => {
     setProducts(await getProduct(id));
   };
-
   useEffect(() => {
     if (isError) {
       toast.error(message);

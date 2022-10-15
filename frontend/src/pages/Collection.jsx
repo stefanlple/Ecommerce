@@ -4,7 +4,8 @@ import { useNavigate } from "react-router-dom";
 import { getAllProducts } from "../features/products/productService";
 import { useSelector, useDispatch } from "react-redux";
 import Spinner from "../components/Spinner";
-import toast from "react-toastify";
+import { toast } from "react-toastify";
+
 function Collection() {
   const [products, setProducts] = useState([]);
 
@@ -37,9 +38,10 @@ function Collection() {
               <>
                 <li>
                   <a
-                    href={`/${products.name}.${products._id}`}
+                    href={"#"}
                     className="plp-product"
                     data-product-id={`${products._id}`}
+                    onclick="navigate(`/${products.name}.${products._id}`;return false;"
                   >
                     <div className="teaser-image">
                       <img
