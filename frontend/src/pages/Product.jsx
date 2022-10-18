@@ -6,6 +6,7 @@ import {
   getAllProducts,
   getProduct,
 } from "../features/products/productService";
+import { decrement, increment } from "../features/products/counterSlice";
 import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import Spinner from "../components/Spinner";
@@ -16,6 +17,7 @@ function Product() {
 
   const id = productId.split(".")[1];
   const [product, setProducts] = useState([]);
+  //const quantity = useState((state) => state.counter.value);
 
   const { isLoading, isError, isSuccess, message } = useSelector(
     (state) => state.auth
@@ -51,6 +53,17 @@ function Product() {
           <span>{product.price}</span>
         </div>
         <div className="">{product.color}</div>
+        {/*         <div>
+          <button
+            aria-aria-label="Increment"
+            onClick={() => dispatch(increment())}
+          ></button>
+          <span>{quantity}</span>
+          <button
+            aria-aria-label="Decrement"
+            onClick={() => dispatch(decrement())}
+          ></button>
+        </div> */}
         <button className="btn">Add To Cart</button>
       </div>
     </>

@@ -38,10 +38,9 @@ function Collection() {
               <>
                 <li>
                   <a
-                    href={"#"}
+                    href={`/${products.name}.${products._id}`}
                     className="plp-product"
                     data-product-id={`${products._id}`}
-                    onclick="navigate(`/${products.name}.${products._id}`;return false;"
                   >
                     <div className="teaser-image">
                       <img
