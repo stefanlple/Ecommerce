@@ -2,10 +2,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {} from "react-redux";
-import {
-  getAllProducts,
-  getProduct,
-} from "../features/products/productService";
+import { getProduct } from "../features/products/productService";
 import { decrement, increment } from "../features/products/counterSlice";
 import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -53,17 +50,21 @@ function Product() {
           <span>{product.price}</span>
         </div>
         <div className="">{product.color}</div>
-        {/*         <div>
-          <button
-            aria-aria-label="Increment"
-            onClick={() => dispatch(increment())}
-          ></button>
-          <span>{quantity}</span>
-          <button
-            aria-aria-label="Decrement"
-            onClick={() => dispatch(decrement())}
-          ></button>
-        </div> */}
+        {
+          <div>
+            <button
+              className="btn"
+              aria-aria-label="Increment"
+              onClick={() => dispatch(increment())}
+            ></button>
+            {<span>{/* {quantity} */}asdf</span>}
+            <button
+              className="btn"
+              aria-aria-label="Decrement"
+              onClick={() => dispatch(decrement())}
+            ></button>
+          </div>
+        }
         <button className="btn">Add To Cart</button>
       </div>
     </>
