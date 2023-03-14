@@ -22,21 +22,21 @@ function Header() {
   };
 
   return (
-    <header className="w-full bg-black flex justify-between align items-center py-10 px-0 mb-60 border-b-1 border-b-slate-50 k">
+    <header className="w-full  flex justify-between align items-center py-10 px-0 mb-60 border-b-1 border-b-slate-50 k">
       <div className="">
         <Link to="/">Ecommerce</Link>
       </div>
       <ul className="flex items-center justify-between">
         {user ? (
           <>
-            <li className="ml-20 hover:bg-violet-600">
+            <li className="ml-20">
               <li>
                 <button className="btn" onClick={onLogout}>
                   <FaSignOutAlt /> Logout
                 </button>
               </li>
             </li>
-            <li className="ml-20 hover:bg-violet-600">
+            <li className="ml-20">
               <li>
                 <button className="btn" onClick={"/"}>
                   <FaShoppingCart /> Cart
@@ -46,13 +46,19 @@ function Header() {
           </>
         ) : (
           <>
-            <li className="ml-20 hover:bg-violet-600">
-              <Link className="flex items-center" to="/login">
+            <li className="ml-20 ">
+              <Link
+                className="flex items-center hover:text-gray-400"
+                to="/login"
+              >
                 <FaSignInAlt className="mr-5" /> Login
               </Link>
             </li>
-            <li className="ml-20 hover:bg-violet-600">
-              <Link className="flex items-center" to="/register">
+            <li className="ml-20 ">
+              <Link
+                className="flex items-center hover:text-gray-400"
+                to="/register"
+              >
                 <FaUser className="mr-5" /> Register
               </Link>
             </li>
