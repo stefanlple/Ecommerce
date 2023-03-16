@@ -65,7 +65,7 @@ function Register() {
 
   return (
     <>
-      <section className="text-5xl font-bold mb-50 mx-20">
+      <section className="heading">
         <h1>
           <FaUser /> Register
         </h1>

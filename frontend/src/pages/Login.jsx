@@ -57,18 +57,18 @@ function Login() {
 
   return (
     <>
-      <section className="text-5xl font-bold mb-50 mx-20">
-        <h1>
-          <FaSignInAlt /> Login
+      <section className="font-bold mb-8">
+        <h1 className="text-5xl m-4">
+          <FaSignInAlt className="inline m-auto" /> Login
         </h1>
-        <p> Please Login</p>
+        <p className="text-3xl text-slate-400"> Please Login</p>
       </section>
-      <section className="form">
+      <section className="form w-3/4 mx-auto">
         <form onSubmit={onSubmit}>
-          <div className="form-group">
+          <div className="form-group mb-3">
             <input
               type="email"
-              className="form-control"
+              className="form-control w-full p-2 border-slate-200 border-2"
               id="email"
               name="email"
               value={email}
@@ -76,10 +76,10 @@ function Login() {
               onChange={onChange}
             />
           </div>
-          <div className="form-group">
+          <div className="form-group mb-3">
             <input
               type="password"
-              className="form-control"
+              className="form-control w-full p-2 border-slate-200 border-2 "
               id="password"
               name="password"
               value={password}
@@ -87,8 +87,11 @@ function Login() {
               onChange={onChange}
             />
           </div>
-          <div className="form-group">
-            <button type="submit" className="btn btn-block">
+          <div className="form-group mb-3">
+            <button
+              type="submit"
+              className="btn btn-block w-full standard-button"
+            >
               Submit
             </button>
           </div>
