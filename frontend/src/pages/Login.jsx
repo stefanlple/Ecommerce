@@ -65,10 +65,10 @@ function Login() {
       </section>
       <section className="form w-3/4 mx-auto">
         <form onSubmit={onSubmit}>
-          <div className="form-group mb-3">
+          <div className="mb-3">
             <input
               type="email"
-              className="form-control w-full p-2 border-slate-200 border-2"
+              className="w-full p-2 border-slate-200 border-2"
               id="email"
               name="email"
               value={email}
@@ -76,10 +76,10 @@ function Login() {
               onChange={onChange}
             />
           </div>
-          <div className="form-group mb-3">
+          <div className="mb-3">
             <input
               type="password"
-              className="form-control w-full p-2 border-slate-200 border-2 "
+              className="w-full p-2 border-slate-200 border-2 "
               id="password"
               name="password"
               value={password}
@@ -87,11 +87,8 @@ function Login() {
               onChange={onChange}
             />
           </div>
-          <div className="form-group mb-3">
-            <button
-              type="submit"
-              className="btn btn-block w-full standard-button"
-            >
+          <div className="mb-3">
+            <button type="submit" className="w-full standard-button">
               Submit
             </button>
           </div>

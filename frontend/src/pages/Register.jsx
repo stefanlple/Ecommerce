@@ -65,18 +65,18 @@ function Register() {
 
   return (
     <>
-      <section className="heading">
-        <h1>
-          <FaUser /> Register
+      <section className="font-bold mb-8">
+        <h1 className="text-5xl m-4">
+          <FaUser className="inline m-auto" /> Register
         </h1>
-        <p> Please create an account</p>
+        <p className="text-3xl text-slate-400"> Please create an account</p>
       </section>
-      <section className="form">
+      <section className="form w-3/4 mx-auto">
         <form onSubmit={onSubmit}>
-          <div className="form-group">
+          <div className="mb-3">
             <input
               type="text"
-              className="form-control"
+              className="w-full p-2 border-slate-200 border-2"
               id="name"
               name="name"
               value={name}
@@ -84,10 +84,10 @@ function Register() {
               onChange={onChange}
             />
           </div>
-          <div className="form-group">
+          <div className="mb-3">
             <input
               type="email"
-              className="form-control"
+              className="w-full p-2 border-slate-200 border-2"
               id="email"
               name="email"
               value={email}
@@ -95,10 +95,10 @@ function Register() {
               onChange={onChange}
             />
           </div>
-          <div className="form-group">
+          <div className="mb-3">
             <input
               type="password"
-              className="form-control"
+              className="w-full p-2 border-slate-200 border-2"
               id="password"
               name="password"
               value={password}
@@ -106,10 +106,10 @@ function Register() {
               onChange={onChange}
             />
           </div>
-          <div className="form-group">
+          <div className="mb-3">
             <input
               type="password"
-              className="form-control"
+              className="w-full p-2 border-slate-200 border-2"
               id="password2"
               name="password2"
               value={password2}
@@ -117,8 +117,8 @@ function Register() {
               onChange={onChange}
             />
           </div>
-          <div className="form-group">
-            <button type="submit" className="btn btn-block">
+          <div className="mb-3">
+            <button type="submit" className="w-full standard-button">
               Submit
             </button>
           </div>
