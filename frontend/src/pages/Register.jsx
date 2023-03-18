@@ -71,12 +71,12 @@ function Register() {
         </h1>
         <p className="text-3xl text-slate-400"> Please create an account</p>
       </section>
-      <section className="form w-3/4 mx-auto">
+      <section className="form w-full mx-auto">
         <form onSubmit={onSubmit}>
           <div className="mb-3">
             <input
               type="text"
-              className="w-full p-2 border-slate-200 border-2"
+              className="w-96 p-2 border-slate-200 border-2"
               id="name"
               name="name"
               value={name}
@@ -87,7 +87,7 @@ function Register() {
           <div className="mb-3">
             <input
               type="email"
-              className="w-full p-2 border-slate-200 border-2"
+              className="w-96 p-2 border-slate-200 border-2"
               id="email"
               name="email"
               value={email}
@@ -98,7 +98,7 @@ function Register() {
           <div className="mb-3">
             <input
               type="password"
-              className="w-full p-2 border-slate-200 border-2"
+              className="w-96 p-2 border-slate-200 border-2"
               id="password"
               name="password"
               value={password}
@@ -109,7 +109,7 @@ function Register() {
           <div className="mb-3">
             <input
               type="password"
-              className="w-full p-2 border-slate-200 border-2"
+              className="w-96 p-2 border-slate-200 border-2"
               id="password2"
               name="password2"
               value={password2}
@@ -117,8 +117,8 @@ function Register() {
               onChange={onChange}
             />
           </div>
-          <div className="mb-3">
-            <button type="submit" className="w-full standard-button">
+          <div className="mb-3 flex justify-center">
+            <button type="submit" className="w-96 standard-button">
               Submit
             </button>
           </div>

@@ -20,16 +20,16 @@ function Product() {
     (state) => state.auth
   );
 
-  const fetchProducts = async () => {
-    setProducts(await getProduct(id));
-  };
-
   useEffect(() => {
+    const fetchProducts = async () => {
+      setProducts(await getProduct(id));
+    };
+
     if (isError) {
       toast.error(message);
     }
     fetchProducts();
-  }, [isError, isSuccess, message, dispatch]);
+  }, [isError, isSuccess, message, dispatch, id]);
 
   if (isLoading) {
     return <Spinner />;
@@ -55,18 +55,16 @@ function Product() {
           <div>
             <button
               className="btn"
-              aria-aria-label="Increment"
               onClick={() => dispatch(increment())}
             ></button>
-            {<span>{/* {quantity} */}asdf</span>}
+            <span>asdf</span>
             <button
               className="btn"
-              aria-aria-label="Decrement"
               onClick={() => dispatch(decrement())}
             ></button>
           </div>
         }
-        <button className="btn">Add To Cart</button>
+        <button className="standard-button">Add To Cart</button>
       </div>
     </>
   );

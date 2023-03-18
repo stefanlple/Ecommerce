@@ -9,12 +9,13 @@ import Cart from "./pages/Cart";
 import Collection from "./pages/Collection";
 import Header from "./components/Header";
 import Product from "./pages/Product";
+import Counter from "./pages/Counter";
 
 function App() {
   return (
     <>
       <Router>
-        <div className="w-full max-w-4xl mx-auto px-20 text-center">
+        <div className="w-screen h-screen m-0 px-10 text-center">
           <Header />
           <Routes>
             <Route path="/" element={<Home />} />
@@ -23,6 +24,8 @@ function App() {
             <Route path="/collection" element={<Collection />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/:productId" element={<Product />} />
+            <Route path="/product" element={<Product />} />
+            <Route path="/counter" element={<Counter />} />
           </Routes>
         </div>
       </Router>
