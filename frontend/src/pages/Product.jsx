@@ -1,9 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {} from "react-redux";
 import { getProduct } from "../features/products/productService";
-import { decrement, increment } from "../features/products/counterSlice";
 import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import Spinner from "../components/Spinner";
@@ -14,7 +12,6 @@ function Product() {
 
   const id = productId.split(".")[1];
   const [product, setProducts] = useState([]);
-  //const quantity = useState((state) => state.counter.value);
 
   const { isLoading, isError, isSuccess, message } = useSelector(
     (state) => state.auth
@@ -51,19 +48,7 @@ function Product() {
           <span>{product.price}</span>
         </div>
         <div className="">{product.color}</div>
-        {
-          <div>
-            <button
-              className="btn"
-              onClick={() => dispatch(increment())}
-            ></button>
-            <span>asdf</span>
-            <button
-              className="btn"
-              onClick={() => dispatch(decrement())}
-            ></button>
-          </div>
-        }
+
         <button className="standard-button">Add To Cart</button>
       </div>
     </>
