@@ -1,17 +1,26 @@
 import React from "react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 function Counter() {
   const [count, setCount] = useState(1);
 
+  const handleChange = (event) => {
+    const inputValue = event.target.value;
+    if (inputValue === "") {
+      setCount("");
+    } else if (!isNaN(inputValue)) {
+      setCount(Number(inputValue));
+    }
+  };
+
   const increment = () => {
     setCount((prevCount) => {
-      if (prevCount < 9) return ++prevCount;
+      return prevCount < 9 ? ++prevCount : prevCount;
     });
   };
   const decrement = () => {
     setCount((prevCount) => {
-      if (prevCount > 0) return --prevCount;
+      return prevCount > 1 ? --prevCount : prevCount;
     });
   };
 
@@ -25,9 +34,14 @@ function Counter() {
           value={count}
           type="text"
           className="w-10 h-10 text-center text-lg"
-          maxlength="1"
-          pattern="\d*"
-          oninput="this.value=this.value.replace(/[^0-9]/g,'');"
+          min="1"
+          max="9"
+          maxLength={1}
+          pattern="[1-9]"
+          onChange={(e) => {
+            e.target.value = e.target.value.replace(/[^1-9]/g, "");
+            handleChange(e);
+          }}
         ></input>
         <button className="text-lg hover:scale-125" onClick={increment}>
           +

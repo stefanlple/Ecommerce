@@ -9,8 +9,8 @@ import Cart from "./pages/Cart";
 import Collection from "./pages/Collection";
 import Header from "./components/Header";
 import Product from "./pages/Product";
-import Counter from "./pages/Counter";
-
+import Counter from "./components/Counter";
+import ProductBox from "./components/ProductBox";
 function App() {
   return (
     <>
@@ -25,7 +25,7 @@ function App() {
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/:productId" element={<Product />} />
             <Route path="/product" element={<Product />} />
-            <Route path="/counter" element={<Counter />} />
+            <Route path="/productBox" element={<ProductBox />} />
           </Routes>
         </div>
       </Router>
