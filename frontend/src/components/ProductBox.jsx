@@ -14,6 +14,7 @@ const test = {
 
 function ProductBox() {
   const [color, setColor] = useState(test.colors[0][0]);
+
   const changeColor = (event) => {
     setColor(event.target.dataset.color);
   };
@@ -27,13 +28,17 @@ function ProductBox() {
       <ul className="flex flex-row space-x-4 items-center justify-center">
         {test.colors.map((item, index) => {
           return (
-            <li
-              key={index}
-              data-color={item[0]}
-              className={`bg-[${item[1]}]`}
-              onClick={changeColor}
-            >
-              {item[0]}
+            <li key={index}>
+              <span
+                key={index}
+                data-color={item[0]}
+                className={`inline-block bg-[${
+                  item[1]
+                }] rounded-xl w-6 h-6 border-white border-2 ${
+                  item[0] === color ? "shadow-[0_0_0_1px_rgba(0,1,0,1)]" : ""
+                }`}
+                onClick={changeColor}
+              ></span>
             </li>
           );
         })}
