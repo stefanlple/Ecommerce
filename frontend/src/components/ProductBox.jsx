@@ -1,4 +1,5 @@
 import React from "react";
+import { useEffect } from "react";
 import { useState } from "react";
 import Counter from "./Counter";
 const test = {
@@ -74,11 +75,14 @@ function ProductBox() {
           ADD TO CARD
         </button>
         <menu>
-          <ul>
-            <li>Details</li>
-            <li>Sizing</li>
-            <li>Delivery & Returns</li>
-          </ul>
+          <div className="panel">
+            <h5>Details</h5>
+            <div>Lorem ipsum dolor sit amet.</div>
+          </div>
+          <div className="panel">
+            <h5>Sizing</h5>
+            <div>Lorem ipsum dolor sit amet.</div>
+          </div>
         </menu>
       </div>
     </>
