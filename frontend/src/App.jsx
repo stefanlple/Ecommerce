@@ -11,6 +11,7 @@ import Header from "./components/Header";
 import Product from "./pages/Product";
 import Counter from "./components/Counter";
 import ProductBox from "./components/ProductBox";
+import DropdownText from "./components/DropdownText";
 function App() {
   return (
     <>
@@ -26,6 +27,7 @@ function App() {
             <Route path="/:productId" element={<Product />} />
             <Route path="/product" element={<Product />} />
             <Route path="/productBox" element={<ProductBox />} />
+            <Route path="/dropdown" element={<DropdownText />} />
           </Routes>
         </div>
       </Router>

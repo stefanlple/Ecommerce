@@ -2,6 +2,8 @@ import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
 import Counter from "./Counter";
+import DropdownText from "./DropdownText";
+
 const test = {
   header: "Puffer Jacket",
   price: 18.3,
@@ -75,14 +77,8 @@ function ProductBox() {
           ADD TO CARD
         </button>
         <menu>
-          <div className="panel">
-            <h5>Details</h5>
-            <div>Lorem ipsum dolor sit amet.</div>
-          </div>
-          <div className="panel">
-            <h5>Sizing</h5>
-            <div>Lorem ipsum dolor sit amet.</div>
-          </div>
+          <DropdownText />
+          <DropdownText />
         </menu>
       </div>
     </>
