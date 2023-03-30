@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-
-function DropdownText() {
+import { MdKeyboardArrowDown } from "react-icons/md";
+function DropdownText(props) {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleContent = () => {
@@ -9,7 +9,15 @@ function DropdownText() {
 
   return (
     <div className="panel" onClick={toggleContent}>
-      <h5>Details</h5>
+      <h5>
+        {props.name}
+        <MdKeyboardArrowDown
+          className={`inline m-auto float-right transition duration ease-in-out ${
+            isOpen ? "rotate-180" : "rotate-0"
+          }`}
+        />
+      </h5>
+      <hr className="bg-black h-0.5"></hr>
       <div
         className={`duration-500 ease-out ${
           isOpen ? "max-h-screen" : "max-h-0 overflow-hidden"

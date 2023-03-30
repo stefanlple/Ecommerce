@@ -5,7 +5,7 @@ import Counter from "./Counter";
 import DropdownText from "./DropdownText";
 
 const test = {
-  header: "Puffer Jacket",
+  header: "Camera",
   price: 18.3,
   colors: [
     ["Red", "#FF0000"],
@@ -77,8 +77,8 @@ function ProductBox() {
           ADD TO CARD
         </button>
         <menu>
-          <DropdownText />
-          <DropdownText />
+          <DropdownText name="Details" />
+          <DropdownText name="Sizing" />
         </menu>
       </div>
     </>
