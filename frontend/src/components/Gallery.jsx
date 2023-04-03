@@ -10,25 +10,34 @@ function Gallery() {
 
   return (
     <>
-      <div className="flex items-center justify-center">
-        <ProductBox />
-      </div>
-      <Canvas
-        frameloop="demand"
-        shadows
-        camera={{ position: [20, 3, 5], fov: 25 }}
-        gl={{ preserveDrawingBuffer: true }}
-      >
-        <Suspense fallback={<CanvasLoader />}>
-          <OrbitControls />
-          <mesh>
-            <hemisphereLight intensity={0.15} groundColor="black" />
-            <pointLight intensity={1} />
-            <primitive object={camera.nodes} scale={1.5} />
-          </mesh>
-        </Suspense>
-        <Preload all />
-      </Canvas>
+      <ul>
+        <li>
+          <div className="outline">
+            <Canvas
+              frameloop="demand"
+              shadows
+              camera={{ position: [20, 3, 5], fov: 25 }}
+              gl={{ preserveDrawingBuffer: true }}
+            >
+              <Suspense fallback={<CanvasLoader />}>
+                <OrbitControls enableZoom={false} />
+                <mesh>
+                  <hemisphereLight intensity={0.15} groundColor="black" />
+                  <pointLight intensity={1} />
+                  <primitive object={camera.scene} scale={1.5} />
+                </mesh>
+              </Suspense>
+              <Preload all />
+            </Canvas>
+          </div>
+        </li>
+        <li>
+          <img src="./favicon.ico" alt="None" />
+        </li>
+        <li>
+          <img src="./favicon.ico" alt="None" />
+        </li>
+      </ul>
     </>
   );
 }
