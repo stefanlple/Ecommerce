@@ -12,13 +12,14 @@ function Gallery() {
     <>
       <ul>
         <li>
-          <div className="outline">
+          <div className="outline h-screen">
             <Canvas
               frameloop="demand"
               shadows
-              camera={{ position: [20, 3, 5], fov: 25 }}
+              camera={{ position: [0, 5, 10], fov: 25 }}
               gl={{ preserveDrawingBuffer: true }}
             >
+              <axesHelper args={[5]} />
               <Suspense fallback={<CanvasLoader />}>
                 <OrbitControls enableZoom={false} />
                 <mesh>
@@ -32,10 +33,10 @@ function Gallery() {
           </div>
         </li>
         <li>
-          <img src="./favicon.ico" alt="None" />
+          <img src="./red.jpeg" alt="None" className="w-full my-5 outline" />
         </li>
         <li>
-          <img src="./favicon.ico" alt="None" />
+          <img src="./red.jpeg" alt="None" className="w-full my-5 outline" />
         </li>
       </ul>
     </>
