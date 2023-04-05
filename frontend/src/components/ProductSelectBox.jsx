@@ -28,51 +28,49 @@ function ProductSelectBox() {
 
   return (
     <>
-      <div className="w-[400px]">
-        <h3>{color}</h3>
-        <ul className="flex flex-row space-x-4 items-center justify-center">
-          {test.colors.map((item, index) => {
-            return (
-              <li key={index}>
-                <span
-                  key={index}
-                  data-color={item[0]}
-                  className={`inline-block 
+      <h3>{color}</h3>
+      <ul className="flex flex-row space-x-4 items-center justify-center">
+        {test.colors.map((item, index) => {
+          return (
+            <li key={index}>
+              <span
+                key={index}
+                data-color={item[0]}
+                className={`inline-block 
                 bg-[${item[1]}] 
                 rounded-xl 
                 w-6 h-6 
                 border-white border-2 
                 ${item[0] === color ? "shadow-[0_0_0_1px_rgba(0,1,0,1)]" : ""}`}
-                  onClick={changeColor}
-                ></span>
-              </li>
-            );
-          })}
-        </ul>
+                onClick={changeColor}
+              ></span>
+            </li>
+          );
+        })}
+      </ul>
 
-        <ul className="flex flex-row space-x-4 items-center justify-center">
-          {test.sizes.map((sizeElement, index) => {
-            return (
-              <li
-                key={index}
-                data-size={sizeElement}
-                className={`inline-block bg-[${sizeElement}] ${
-                  sizeElement === size ? "border-black border-b-2" : ""
-                }  h-6 text-base`}
-                onClick={changeSize}
-              >
-                {sizeElement}
-              </li>
-            );
-          })}
-        </ul>
+      <ul className="flex flex-row space-x-4 items-center justify-center">
+        {test.sizes.map((sizeElement, index) => {
+          return (
+            <li
+              key={index}
+              data-size={sizeElement}
+              className={`inline-block bg-[${sizeElement}] ${
+                sizeElement === size ? "border-black border-b-2" : ""
+              }  h-6 text-base`}
+              onClick={changeSize}
+            >
+              {sizeElement}
+            </li>
+          );
+        })}
+      </ul>
 
-        <Counter />
+      <Counter />
 
-        <button className="bg-black text-white py-2 px-6 border-[1px] border-black hover:bg-white hover:text-black">
-          ADD TO CARD
-        </button>
-      </div>
+      <button className="bg-black text-white py-2 px-6 border-[1px] border-black hover:bg-white hover:text-black">
+        ADD TO CARD
+      </button>
     </>
   );
 }

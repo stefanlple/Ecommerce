@@ -15,14 +15,12 @@ const test = {
 function ProductDescriptionBox() {
   return (
     <>
-      <div className="w-[400px]">
-        <h1>{test.header}</h1>
-        <h2>{test.price.toFixed(2)} € </h2>
-        <menu>
-          <DropdownText name="Details" />
-          <DropdownText name="Sizing" />
-        </menu>
-      </div>
+      <h1>{test.header}</h1>
+      <h2>{test.price.toFixed(2)} € </h2>
+      <menu>
+        <DropdownText name="Details" />
+        <DropdownText name="Sizing" />
+      </menu>
     </>
   );
 }

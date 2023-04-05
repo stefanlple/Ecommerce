@@ -18,7 +18,7 @@ function App() {
   return (
     <>
       <Router>
-        <div className="w-screen h-screen m-0 px-10 text-center">
+        <div className="w-screen h-screen m-0  text-center">
           <Header />
           <Routes>
             <Route path="/" element={<Home />} />
