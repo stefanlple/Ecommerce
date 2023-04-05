@@ -13,6 +13,13 @@ function Counter() {
     }
   };
 
+  const handleBlur = (event) => {
+    const inputValue = event.target.value;
+    if (inputValue === "") {
+      setCount(1);
+    }
+  };
+
   const increment = () => {
     setCount((prevCount) => {
       return prevCount < 9 ? ++prevCount : prevCount;
@@ -42,6 +49,7 @@ function Counter() {
             e.target.value = e.target.value.replace(/[^1-9]/g, "");
             handleChange(e);
           }}
+          onBlur={handleBlur}
         ></input>
         <button className="text-lg hover:scale-125" onClick={increment}>
           +

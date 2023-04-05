@@ -6,8 +6,13 @@ import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import Spinner from "../components/Spinner";
 
+/*--------*/
+import ProductDescriptionBox from "../components/ProductDescriptionBox";
+import ProductSelectBox from "../components/ProductSelectBox";
+import Gallery from "../components/Gallery";
+
 function Product() {
-  const { productId } = useParams();
+  /* const { productId } = useParams();
   const dispatch = useDispatch();
 
   const id = productId.split(".")[1];
@@ -30,10 +35,18 @@ function Product() {
 
   if (isLoading) {
     return <Spinner />;
-  }
+  } */
 
   return (
     <>
+      <div className="inline-flex justify-around">
+        <ProductDescriptionBox />
+        <Gallery />
+        <ProductSelectBox />
+      </div>
+    </>
+  );
+  /* <>
       <div className="teaser-image">
         <img
           src="https://pbs.twimg.com/profile_images/1564162499888517121/2Pn8AyNV_400x400.png"
@@ -51,8 +64,7 @@ function Product() {
 
         <button className="standard-button">Add To Cart</button>
       </div>
-    </>
-  );
+    </> */
 }
 
 export default Product;

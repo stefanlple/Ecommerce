@@ -5,13 +5,15 @@ import Dashboard from "./pages/Dashboard";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Home from "./pages/Home";
-import Cart from "./pages/Cart";
 import Collection from "./pages/Collection";
 import Header from "./components/Header";
 import Product from "./pages/Product";
-import ProductBox from "./components/ProductBox";
 import DropdownText from "./components/DropdownText";
 import Gallery from "./components/Gallery";
+import ProductDescriptionBox from "./components/ProductDescriptionBox";
+import ProductSelectBox from "./components/ProductSelectBox";
+import Counter from "./components/Counter";
+
 function App() {
   return (
     <>
@@ -26,9 +28,11 @@ function App() {
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/:productId" element={<Product />} />
             <Route path="/product" element={<Product />} />
-            <Route path="/productBox" element={<ProductBox />} />
+            <Route path="/productbox" element={<ProductSelectBox />} />
+            <Route path="/descriptionbox" element={<ProductDescriptionBox />} />
             <Route path="/gallery" element={<Gallery />} />
             <Route path="/dropdown" element={<DropdownText />} />
+            <Route path="/counter" element={<Counter />} />
           </Routes>
         </div>
       </Router>
