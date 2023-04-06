@@ -22,7 +22,7 @@ function Header() {
   };
 
   return (
-    <header className="w-full sticky top-0  bg-white z-50 flex justify-between items-center py-5 px-10 mb-10 border-slate-200 border-b-2">
+    <header className="w-full fixed top-0 bg-white z-50 flex justify-between items-center py-5 px-10 border-slate-200 border-b-2">
       <div className="">
         <Link to="/">Ecommerce</Link>
       </div>

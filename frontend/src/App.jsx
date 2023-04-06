@@ -13,12 +13,13 @@ import Gallery from "./components/Gallery";
 import ProductDescriptionBox from "./components/ProductDescriptionBox";
 import ProductSelectBox from "./components/ProductSelectBox";
 import Counter from "./components/Counter";
+import Cart from "./pages/Cart";
 
 function App() {
   return (
     <>
       <Router>
-        <div className="w-screen h-screen m-0  text-center">
+        <div className="w-screen h-screen m-0  text-center pt-28">
           <Header />
           <Routes>
             <Route path="/" element={<Home />} />
@@ -33,6 +34,7 @@ function App() {
             <Route path="/gallery" element={<Gallery />} />
             <Route path="/dropdown" element={<DropdownText />} />
             <Route path="/counter" element={<Counter />} />
+            <Route path="/cart" element={<Cart />} />
           </Routes>
         </div>
       </Router>

@@ -1,7 +1,8 @@
+import { Center } from "@react-three/drei";
 import React from "react";
 import { useState } from "react";
 
-function Counter() {
+function Counter(props) {
   const [count, setCount] = useState(1);
 
   const handleChange = (event) => {
@@ -33,7 +34,11 @@ function Counter() {
 
   return (
     <>
-      <div className="flex justify-center space-x-4 ">
+      <div
+        className={`flex ${
+          props.justifyEnd ? "justify-end" : "justify-center"
+        } space-x-4`}
+      >
         <button className="text-lg hover:scale-125" onClick={decrement}>
           -
         </button>
