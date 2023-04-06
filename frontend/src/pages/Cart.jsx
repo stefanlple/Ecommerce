@@ -41,7 +41,22 @@ function Cart() {
               colspan="2"
               className="uppercase text-left pb-5 border-b-2 border-b-gray-300"
             >
-              1
+              <div className="flex">
+                <a>
+                  <img
+                    src="./red.jpeg"
+                    alt=""
+                    className="w-full max-w-full aspect-square object-cover overflow-hidden"
+                  />
+                </a>
+                <div className="relative flex flex-col">
+                  <a href="">Camera</a>
+                  <p>XXL</p>
+                  <a href="" className="mt-auto">
+                    REMOVE
+                  </a>
+                </div>
+              </div>
             </td>
             <td className="uppercase text-right pb-5 border-b-2 border-b-gray-300">
               <Counter justifyEnd="true" className="flex justify-end" />
