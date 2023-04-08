@@ -14,6 +14,7 @@ import ProductDescriptionBox from "./components/ProductDescriptionBox";
 import ProductSelectBox from "./components/ProductSelectBox";
 import Counter from "./components/Counter";
 import Cart from "./pages/Cart";
+import UploadProduct from "./components/UploadProduct";
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
             <Route path="/dropdown" element={<DropdownText />} />
             <Route path="/counter" element={<Counter />} />
             <Route path="/cart" element={<Cart />} />
+            <Route path="/upload" element={<UploadProduct />} />
           </Routes>
         </div>
       </Router>
