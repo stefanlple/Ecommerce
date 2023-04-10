@@ -14,7 +14,8 @@ import ProductDescriptionBox from "./components/ProductDescriptionBox";
 import ProductSelectBox from "./components/ProductSelectBox";
 import Counter from "./components/Counter";
 import Cart from "./pages/Cart";
-import UploadProduct from "./components/UploadProduct";
+import ProductUpload from "./components/ProductUpload";
+import ImageUpload from "./components/ImageUpload";
 
 function App() {
   return (
@@ -36,7 +37,8 @@ function App() {
             <Route path="/dropdown" element={<DropdownText />} />
             <Route path="/counter" element={<Counter />} />
             <Route path="/cart" element={<Cart />} />
-            <Route path="/upload" element={<UploadProduct />} />
+            <Route path="/upload" element={<ProductUpload />} />
+            <Route path="/imageupload" element={<ImageUpload />} />
           </Routes>
         </div>
       </Router>
