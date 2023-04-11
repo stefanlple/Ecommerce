@@ -14,8 +14,8 @@ import ProductDescriptionBox from "./components/ProductDescriptionBox";
 import ProductSelectBox from "./components/ProductSelectBox";
 import Counter from "./components/Counter";
 import Cart from "./pages/Cart";
-import ProductUpload from "./components/ProductUpload";
-import ImageUpload from "./components/ImageUpload";
+import ProductUpload from "./components/UploadProduct/ProductUpload";
+import ImageUpload from "./components/UploadProduct/ImageUpload";
 
 function App() {
   return (

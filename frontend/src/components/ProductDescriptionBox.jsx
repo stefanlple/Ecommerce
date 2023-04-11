@@ -20,7 +20,6 @@ function ProductDescriptionBox() {
         <h2>{test.price.toFixed(2)} € </h2>
         <menu>
           <DropdownText name="Details" />
-          <DropdownText name="Sizing" />
         </menu>
       </div>
     </>
