@@ -9,24 +9,52 @@ const productSchema = mongoose.Schema(
     },
     category: {
       type: String,
+      enum: [
+        "tees",
+        "knitwear",
+        "top",
+        "outerwear",
+        "pants",
+        "shorts",
+        "accessoires",
+        "footwear",
+        "special",
+      ],
       required: true,
     },
-    color: {
-      type: String,
-    },
-    description: {
-      type: String,
-      required: [true, "Please add a description"],
-      trim: true,
-    },
+    description: [
+      {
+        type: String,
+        required: [true, "Please add a description"],
+        trim: true,
+      },
+    ],
     images: {
       data: Buffer,
       contentType: String,
     },
-    quantity: {
-      type: Number,
-      required: [true, "Please add a description"],
-    },
+    quantity: [
+      {
+        color: {
+          colorname: {
+            type: String,
+          },
+          colorhex: {
+            type: String,
+          },
+        },
+        size: {
+          type: String,
+          enum: ["ONESIZE", "XXS", "XS", "S", "M", "L", "XL"],
+          required: true,
+        },
+        quantity: {
+          type: Number,
+          required: true,
+          default: 0,
+        },
+      },
+    ],
     price: {
       type: Number,
     },
