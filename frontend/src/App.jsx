@@ -16,6 +16,7 @@ import Counter from "./components/Counter";
 import Cart from "./pages/Cart";
 import ProductUpload from "./components/UploadProduct/ProductUpload";
 import ImageUpload from "./components/UploadProduct/ImageUpload";
+import HamburgerMenu from "./components/HamburgerMenu";
 
 function App() {
   return (
@@ -39,6 +40,7 @@ function App() {
             <Route path="/cart" element={<Cart />} />
             <Route path="/upload" element={<ProductUpload />} />
             <Route path="/imageupload" element={<ImageUpload />} />
+            <Route path="/hamburgermenu" element={<HamburgerMenu />} />
           </Routes>
         </div>
       </Router>

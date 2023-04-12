@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logout, reset } from "../features/auth/authSlice";
 import { useNavigate } from "react-router-dom";
+import HamburgerMenu from "./HamburgerMenu";
 
 function Header() {
   const navigate = useNavigate();
@@ -22,10 +23,14 @@ function Header() {
   };
 
   return (
-    <header className="w-full fixed top-0 bg-white z-50 flex justify-between items-center py-5 px-10 border-slate-200 border-b-2">
-      <div className="">
-        <Link to="/">Ecommerce</Link>
-      </div>
+    <header className="flex justify-between items-center w-full fixed top-0 bg-white z-50 py-5 px-5 border-slate-200 border-b-2">
+      <HamburgerMenu />
+      <Link
+        className="absolute block left-1/2 my-auto mb-auto text-center z-10 transform -translate-x-1/2"
+        to="/"
+      >
+        Ecommerce
+      </Link>
       <ul className="flex items-center justify-between">
         {user ? (
           <>
