@@ -8,24 +8,31 @@ function HamburgerMenu() {
   };
 
   return (
-    <nav>
+    <>
       <div
         className="flex items-center justify-center w-8 h-8"
         onClick={handleOpen}
       >
-        <div
-          className={`w-6 h-0.5 rounded-3xl bg-black
-          before:content-[''] before:absolute before:w-6 before:h-0.5 before:rounded-rounded-3xl before:bg-black before:-translate-y-1.5 before:-translate-x-1/2 
-          after:content-[''] after:absolute after:w-6 after:h-0.5 after:rounded-rounded-3xl after:bg-black after:translate-y-1.5 after:-translate-x-1/2
-          before:transition-transform before:duration before:ease-in-out
-          after:transition-transform after:duration after:ease-in-out
+        <span
+          className={`w-6 h-[1px] rounded-3xl bg-black
+          before:content-[''] before:absolute before:w-6 before:h-[1px] before:rounded-rounded-3xl before:bg-black before:-translate-y-1.5 before:-translate-x-1/2 
+          after:content-[''] after:absolute after:w-6 after:h-[1px] after:rounded-rounded-3xl after:bg-black after:translate-y-1.5 after:-translate-x-1/2
+          before:transition-all before:ease-in-out before:duration-200
+          after:transition-all after:ease-in-out after:duration-200
           ${
             isOpen &&
-            "bg-transparent before:rotate-45 before:translate-y-0 after:-rotate-45 after:-translate-y-0"
+            `bg-transparent 
+            before:bg-slate-50 before:rotate-45 before:translate-y-0 
+            after:bg-slate-50 after:-rotate-45 after:-translate-y-0`
           }`}
-        ></div>
+        ></span>
       </div>
-    </nav>
+      <nav
+        className={`fixed  ${
+          isOpen ? "w-full" : "w-0"
+        } h-full top-0 left-0 bg-neutral-900 bg-opacity-70 -z-10 transition-all duration-500 east-in-out`}
+      ></nav>
+    </>
   );
 }
 
