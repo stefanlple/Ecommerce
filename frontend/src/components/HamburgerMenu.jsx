@@ -114,7 +114,7 @@ function HamburgerMenu() {
             />
             <button
               type="submit"
-              className="absolute right-2 p-0 translate-y-1/2 text-white font-thin text-xs"
+              className="absolute right-0 p-0 translate-y-1/2 text-white font-thin text-xs"
             >
               SUBSCRIBE
             </button>
