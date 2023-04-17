@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   FaSignOutAlt,
   FaSignInAlt,
   FaUser,
   FaShoppingCart,
+  FaSearch,
 } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
@@ -22,6 +23,11 @@ function Header() {
     navigate("/");
   };
 
+  const [searchBarIsOpen, setSearchBarIsOpen] = useState(false);
+
+  const handleSearchBar = (event) => {
+    setSearchBarIsOpen((curr) => !curr);
+  };
   return (
     <header className="flex justify-between items-center w-full fixed top-0 bg-white z-50 py-5 px-5 border-slate-200 border-b-2">
       <HamburgerMenu />
@@ -47,12 +53,33 @@ function Header() {
           </>
         ) : (
           <>
+            <li>
+              <form action="" className="flex">
+                <input
+                  type="text"
+                  name=""
+                  id=""
+                  className={`${
+                    !searchBarIsOpen ? "scale-x-0" : "scale-x-90"
+                  } origin-right bg-transparent text-black font-thin outline-none text-sm border-b-[1px] focus:border-b-black focus:border-b-2
+                  transition-all ease-in-out duration-200`}
+                  placeholder="SEARCH"
+                />
+                <button
+                  type={`${!searchBarIsOpen ? "submit" : "button"}`}
+                  className="text-black"
+                  onClick={handleSearchBar}
+                >
+                  <FaSearch />
+                </button>
+              </form>
+            </li>
             <li className="ml-5">
               <Link
                 className="flex items-center hover:text-gray-400"
                 to="/login"
               >
-                <FaSignInAlt className="mr-2" /> Login
+                <FaSignInAlt className="mr-2" />
               </Link>
             </li>
             <li className="ml-5">
@@ -60,7 +87,7 @@ function Header() {
                 className="flex items-center hover:text-gray-400"
                 to="/register"
               >
-                <FaUser className="mr-2" /> Register
+                <FaUser className="mr-2" />
               </Link>
             </li>
           </>
