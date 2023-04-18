@@ -87,7 +87,10 @@ function Login() {
               placeholder="Enter your password"
               onChange={onChange}
             />
-            <Link className="ml-auto text-xs text-gray-400 hover:text-gray-500 text-right pt-1">
+            <Link
+              className="ml-auto text-xs text-gray-400 hover:text-gray-500 text-right pt-1"
+              to="/forgotpassword"
+            >
               Forgot Password?
             </Link>
           </div>
