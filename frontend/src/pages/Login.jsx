@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { login, reset } from "../features/auth/authSlice";
 import { toast } from "react-toastify";
 import Spinner from "../components/Spinner";
+import { Link } from "react-router-dom";
 
 function Login() {
   const [formData, setFormData] = useState({
@@ -93,6 +94,9 @@ function Login() {
             </button>
           </div>
         </form>
+        <Link to="/register" className="text-xs hover:text-gray-400 underline">
+          Register
+        </Link>
       </section>
     </>
   );

@@ -6,6 +6,7 @@ import { register, reset } from "../features/auth/authSlice";
 import { FaUser } from "react-icons/fa";
 import { toast } from "react-toastify";
 import Spinner from "../components/Spinner";
+import { Link } from "react-router-dom";
 
 function Register() {
   const navigate = useNavigate();
@@ -123,6 +124,9 @@ function Register() {
             </button>
           </div>
         </form>
+        <Link to="/login" className="text-xs hover:text-gray-400 underline">
+          Login
+        </Link>
       </section>
     </>
   );

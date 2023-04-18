@@ -1,11 +1,6 @@
 import React, { useState } from "react";
-import {
-  FaSignOutAlt,
-  FaSignInAlt,
-  FaUser,
-  FaShoppingCart,
-  FaSearch,
-} from "react-icons/fa";
+import { FaUser, FaSearch } from "react-icons/fa";
+import { CiHeart } from "react-icons/ci";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logout, reset } from "../features/auth/authSlice";
@@ -42,12 +37,12 @@ function Header() {
           <>
             <li className="ml-5">
               <button className="btn" onClick={onLogout}>
-                <FaSignOutAlt className="mr-2" /> Logout
+                <FaUser className="mr-2" /> Logout
               </button>
             </li>
             <li className="ml-5">
               <button className="btn" onClick={"/"}>
-                <FaShoppingCart className="mr-2" /> Cart
+                <CiHeart className="mr-2" /> Cart
               </button>
             </li>
           </>
@@ -79,15 +74,16 @@ function Header() {
                 className="flex items-center hover:text-gray-400"
                 to="/login"
               >
-                <FaSignInAlt className="mr-2" />
+                <FaUser className="mr-2" />
               </Link>
             </li>
             <li className="ml-5">
               <Link
-                className="flex items-center hover:text-gray-400"
-                to="/register"
+                className="flex items-center hover:text-gray-400 relative"
+                to="#"
               >
-                <FaUser className="mr-2" />
+                <CiHeart className="mr-2 absolute text-4xl left-1/2 -translate-x-1/2 font-extralight" />
+                <span className="text-xs font-medium">10</span>
               </Link>
             </li>
           </>
