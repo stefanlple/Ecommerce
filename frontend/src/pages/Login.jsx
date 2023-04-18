@@ -64,7 +64,7 @@ function Login() {
         </h1>
         <p className="text-3xl text-slate-400"> Please Login</p>
       </section>
-      <section className="form w-full mx-auto">
+      <section className="form w-[384px] mx-auto">
         <form onSubmit={onSubmit}>
           <div className="mb-3">
             <input
@@ -77,7 +77,7 @@ function Login() {
               onChange={onChange}
             />
           </div>
-          <div className="mb-3">
+          <div className="mb-3 flex flex-col items-center">
             <input
               type="password"
               className="w-96 p-2 border-slate-200 border-2 "
@@ -87,6 +87,9 @@ function Login() {
               placeholder="Enter your password"
               onChange={onChange}
             />
+            <Link className="ml-auto text-xs text-gray-400 hover:text-gray-500 text-right pt-1">
+              Forgot Password?
+            </Link>
           </div>
           <div className="mb-3 flex justify-center">
             <button type="submit" className="w-96 standard-button">
@@ -94,7 +97,7 @@ function Login() {
             </button>
           </div>
         </form>
-        <Link to="/register" className="text-xs hover:text-gray-400 underline">
+        <Link to="/register" className="text-sm hover:text-gray-400 underline">
           Register
         </Link>
       </section>

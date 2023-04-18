@@ -65,7 +65,7 @@ function Header() {
                   className="text-black"
                   onClick={handleSearchBar}
                 >
-                  <FaSearch />
+                  <FaSearch className="hover:text-gray-400" />
                 </button>
               </form>
             </li>
@@ -80,7 +80,7 @@ function Header() {
             <li className="ml-5">
               <Link
                 className="flex items-center hover:text-gray-400 relative"
-                to="#"
+                to="/cart"
               >
                 <CiHeart className="mr-2 absolute text-4xl left-1/2 -translate-x-1/2 font-extralight" />
                 <span className="text-xs font-medium">10</span>

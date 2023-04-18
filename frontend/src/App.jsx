@@ -17,6 +17,8 @@ import Cart from "./pages/Cart";
 import ProductUpload from "./components/UploadProduct/ProductUpload";
 import ImageUpload from "./components/UploadProduct/ImageUpload";
 import HamburgerMenu from "./components/HamburgerMenu";
+import ForgotPassword from "./pages/ForgotPassword";
+import ResetPassword from "./pages/ResetPassword";
 
 function App() {
   return (
@@ -41,6 +43,8 @@ function App() {
             <Route path="/upload" element={<ProductUpload />} />
             <Route path="/imageupload" element={<ImageUpload />} />
             <Route path="/hamburgermenu" element={<HamburgerMenu />} />
+            <Route path="/forgotpassword" element={<ForgotPassword />} />
+            <Route path="/resetpassword" element={<ResetPassword />} />
           </Routes>
         </div>
       </Router>
