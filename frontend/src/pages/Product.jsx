@@ -7,9 +7,9 @@ import { toast } from "react-toastify";
 import Spinner from "../components/Spinner";
 
 /*--------*/
-import ProductDescriptionBox from "../components/ProductDescriptionBox";
+import ProductDescriptionBox from "../components/Product/ProductDescriptionBox";
 import ProductSelectBox from "../components/ProductSelectBox";
-import Gallery from "../components/Gallery";
+import Gallery from "../components/Product/Gallery";
 
 function Product() {
   /* const { productId } = useParams();

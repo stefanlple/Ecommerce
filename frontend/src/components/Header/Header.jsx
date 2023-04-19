@@ -3,7 +3,7 @@ import { FaUser, FaSearch } from "react-icons/fa";
 import { CiHeart } from "react-icons/ci";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { logout, reset } from "../features/auth/authSlice";
+import { logout, reset } from "../../features/auth/authSlice";
 import { useNavigate } from "react-router-dom";
 import HamburgerMenu from "./HamburgerMenu";
 
