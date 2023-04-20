@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import Counter from "./Counter";
+import Counter from "../Counter";
 import DropdownText from "./DropdownText";
 
 const test = {

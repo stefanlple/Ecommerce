@@ -19,6 +19,7 @@ import ImageUpload from "./components/Admin/UploadProduct/ImageUpload";
 import HamburgerMenu from "./components/Header/HamburgerMenu";
 import ForgotPassword from "./pages/ForgotPassword";
 import ResetPassword from "./pages/ResetPassword";
+import Users from "./pages/Users";
 
 function App() {
   return (
@@ -45,6 +46,7 @@ function App() {
             <Route path="/hamburgermenu" element={<HamburgerMenu />} />
             <Route path="/forgotpassword" element={<ForgotPassword />} />
             <Route path="/resetpassword" element={<ResetPassword />} />
+            <Route path="/users" element={<Users />} />
           </Routes>
         </div>
       </Router>

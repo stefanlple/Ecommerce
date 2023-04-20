@@ -8,7 +8,7 @@ import Spinner from "../components/Spinner";
 
 /*--------*/
 import ProductDescriptionBox from "../components/Product/ProductDescriptionBox";
-import ProductSelectBox from "../components/ProductSelectBox";
+import ProductSelectBox from "../components/Product/ProductSelectBox";
 import Gallery from "../components/Product/Gallery";
 
 function Product() {
