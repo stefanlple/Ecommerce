@@ -2,28 +2,36 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 function Users() {
-  const [curr, setCurr] = useState("orderHistory");
-  console.log(curr);
+  const [curr, setCurr] = useState("OrderHistory");
   return (
     <>
-      <nav className="flex justify-between gap-5">
+      <nav className="flex justify-between">
         <Link
+          className={`${
+            curr === "OrderHistory" ? "bg-black text-white" : "bg-gray-100"
+          } w-full border border-gray-900 border-collapse hover:text-gray-500`}
           onClick={() => {
-            setCurr("orderHistory");
+            setCurr("OrderHistory");
           }}
         >
           Order History
         </Link>
         <Link
+          className={`${
+            curr === "Addresses" ? "bg-black text-white" : "bg-gray-100"
+          } w-full border border-gray-900 border-collapse hover:text-gray-500`}
           onClick={() => {
-            setCurr("addresses");
+            setCurr("Addresses");
           }}
         >
           Addresses
         </Link>
         <Link
+          className={`${
+            curr === "AccountDetails" ? "bg-black text-white" : "bg-gray-100"
+          } w-full border border-gray-900 border-collapse hover:text-gray-500`}
           onClick={() => {
-            setCurr("accountDetails");
+            setCurr("AccountDetails");
           }}
         >
           Account Details
@@ -32,12 +40,12 @@ function Users() {
       <div>
         {(() => {
           switch (curr) {
-            case "addresses":
+            case "Addresses":
               return <h1>Addresses</h1>;
-            case "accountDetails":
-              return <h1>accountDetails</h1>;
+            case "AccountDetails":
+              return <h1>Account Details</h1>;
             default:
-              return <h1>orderHistory</h1>;
+              return <h1>Order History</h1>;
           }
         })()}
       </div>

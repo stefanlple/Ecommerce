@@ -20,6 +20,7 @@ import HamburgerMenu from "./components/Header/HamburgerMenu";
 import ForgotPassword from "./pages/ForgotPassword";
 import ResetPassword from "./pages/ResetPassword";
 import Users from "./pages/Users";
+import Admin from "./pages/Admin";
 
 function App() {
   return (
@@ -47,6 +48,7 @@ function App() {
             <Route path="/forgotpassword" element={<ForgotPassword />} />
             <Route path="/resetpassword" element={<ResetPassword />} />
             <Route path="/users" element={<Users />} />
+            <Route path="/admin" element={<Admin />} />
           </Routes>
         </div>
       </Router>
