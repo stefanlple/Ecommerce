@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { FaTrashAlt } from "react-icons/fa";
 
 function Admin() {
   const [curr, setCurr] = useState("Dashboard");
@@ -62,13 +63,80 @@ function Admin() {
         {(() => {
           switch (curr) {
             case "Orders":
-              return <h1>Orders</h1>;
+              return (
+                <>
+                  <h1>Orders</h1>
+                  <table></table>
+                </>
+              );
             case "Stock":
-              return <h1>Stock</h1>;
+              return (
+                <>
+                  <h1>Stock</h1>
+                  <table>
+                    <tr>
+                      <th>Name</th>
+                      <th>Price</th>
+                      <th>Quantity</th>
+                      <th>Delete</th>
+                    </tr>
+                    <tr>
+                      <td>Bob</td>
+                      <td>345€</td>
+                      <td>3423</td>
+                      <td>
+                        <button type="submit">
+                          <FaTrashAlt />
+                        </button>
+                      </td>
+                    </tr>
+                  </table>
+                </>
+              );
             case "Products":
-              return <h1>Products</h1>;
+              return (
+                <>
+                  <h1>Products</h1>
+                  <table>
+                    <tr>
+                      <th>Name</th>
+                      <th>Price</th>
+                      <th>Quantity</th>
+                      <th>Status</th>
+                      <th>Delete</th>
+                    </tr>
+                    <tr>
+                      <td>Bob</td>
+                      <td>345€</td>
+                      <td>3423</td>
+                      <td>Archived</td>
+                      <td>
+                        <button type="submit">
+                          <FaTrashAlt />
+                        </button>
+                      </td>
+                    </tr>
+                  </table>
+                </>
+              );
             case "Users":
-              return <h1>Users</h1>;
+              return (
+                <>
+                  <h1>Users</h1>
+                  <table>
+                    <tr>
+                      <th>Name</th>
+                      <th>Email</th>
+                      <th>Role</th>
+                    </tr>
+                    <tr>
+                      <td>Bob</td>
+                      <td>bob@bob.de</td>
+                      <td>Admin</td>
+                    </tr>
+                  </table>
+                </>
+              );
             default:
               return <h1>Dashboard</h1>;
           }

@@ -41,11 +41,45 @@ function Users() {
         {(() => {
           switch (curr) {
             case "Addresses":
-              return <h1>Addresses</h1>;
+              return (
+                <>
+                  <h1>Addresses</h1>
+                  <div>
+                    <div>
+                      <h2>Street</h2>
+                      <span>adfa</span>
+                    </div>
+                    <div>
+                      <h2>City</h2>
+                      <span>adfa</span>
+                    </div>
+                    <div>
+                      <h2>State</h2>
+                      <span>adfa</span>
+                    </div>
+                    <div>
+                      <h2>Country</h2>
+                      <span>adfa</span>
+                    </div>
+                    <div>
+                      <h2>PostalCode</h2>
+                      <span>adfa</span>
+                    </div>
+                  </div>
+                </>
+              );
             case "AccountDetails":
-              return <h1>Account Details</h1>;
+              return (
+                <>
+                  <h1>Account Details</h1>
+                </>
+              );
             default:
-              return <h1>Order History</h1>;
+              return (
+                <>
+                  <h1>Order History</h1>
+                </>
+              );
           }
         })()}
       </div>
