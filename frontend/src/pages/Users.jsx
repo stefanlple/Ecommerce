@@ -46,6 +46,10 @@ function Users() {
                   <h1>Addresses</h1>
                   <div>
                     <div>
+                      <h2>Name</h2>
+                      <span>Bob Meier</span>
+                    </div>
+                    <div>
                       <h2>Street</h2>
                       <span>adfa</span>
                     </div>
@@ -62,9 +66,10 @@ function Users() {
                       <span>adfa</span>
                     </div>
                     <div>
-                      <h2>PostalCode</h2>
-                      <span>adfa</span>
+                      <h2>Zip Code</h2>
+                      <span>20303</span>
                     </div>
+                    <button>Edit</button>
                   </div>
                 </>
               );
@@ -72,12 +77,29 @@ function Users() {
               return (
                 <>
                   <h1>Account Details</h1>
+                  <h2>Email Address</h2>
+                  <span>bob@bob.de</span>
+                  <h2>First Name</h2>
+                  <span>bob</span>
+                  <h2>Last Name</h2>
+                  <span>meier</span>
+                  <h2>Phone Number</h2>
+                  <span>040 3242304832</span>
+                  <button>Edit</button>
                 </>
               );
             default:
               return (
                 <>
                   <h1>Order History</h1>
+                  <section>
+                    <div>
+                      <h5>YOUR ORDER: A234324234</h5>
+                      <span>24 Febuary 2023 | € 234.40 | 1 item</span>
+                      <img src="" alt="altImage" />
+                      <button>View Details</button>
+                    </div>
+                  </section>
                 </>
               );
           }

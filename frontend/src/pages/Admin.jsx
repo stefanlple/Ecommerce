@@ -66,7 +66,14 @@ function Admin() {
               return (
                 <>
                   <h1>Orders</h1>
-                  <table></table>
+                  <section>
+                    <div>
+                      <h5>YOUR ORDER: A234324234</h5>
+                      <span>24 Febuary 2023 | € 234.40 | 1 item</span>
+                      <img src="" alt="altImage" />
+                      <button>View Details</button>
+                    </div>
+                  </section>
                 </>
               );
             case "Stock":
