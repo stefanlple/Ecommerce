@@ -44,7 +44,7 @@ function Users() {
               return (
                 <>
                   <h1>Addresses</h1>
-                  <div className="flex flex-col items-center gap-1">
+                  <div className="flex flex-col items-center gap-1 border border-black">
                     <div>
                       <h4 className="font-semibold">Name:</h4>
                       <span>Bob Meier</span>
@@ -76,8 +76,8 @@ function Users() {
             case "AccountDetails":
               return (
                 <>
-                  <div className="flex flex-col items-center">
-                    <h1>Account Details</h1>
+                  <h1>Account Details</h1>
+                  <div className="flex flex-col items-center border border-black">
                     <h4 className="font-semibold">Email Address</h4>
                     <span>bob@bob.de</span>
                     <h4 className="font-semibold">First Name</h4>
