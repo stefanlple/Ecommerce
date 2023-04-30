@@ -56,7 +56,7 @@ function Header() {
                   id=""
                   className={`${
                     !searchBarIsOpen ? "scale-x-0" : "scale-x-90"
-                  } origin-right bg-transparent text-black font-thin outline-none text-sm border-b-[1px] focus:border-b-black focus:border-b-2
+                  } origin-right bg-transparent text-black font-thin outline-none text-sm tracking-wider border-b-[1px] focus:border-b-black focus:border-b-2
                   transition-all ease-in-out duration-200`}
                   placeholder="SEARCH"
                 />

@@ -8,6 +8,9 @@
   .standard-button {
     @apply py-[10px] px-5 bg-black border-black border-2 rounded-md text-base font-bold cursor-pointer text-center flex items-center justify-center text-white hover:scale-[99%];
   }
+  .small-standard-button {
+    @apply px-0.5 bg-black border-black border-2 rounded-md text-sm font-light text-white  cursor-pointer text-center flex items-center justify-center hover:scale-[99%];
+  }
 }
 
 * {

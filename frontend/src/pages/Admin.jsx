@@ -66,12 +66,23 @@ function Admin() {
               return (
                 <>
                   <h1>Orders</h1>
-                  <section>
-                    <div>
-                      <h5>YOUR ORDER: A234324234</h5>
-                      <span>24 Febuary 2023 | € 234.40 | 1 item</span>
-                      <img src="" alt="altImage" />
-                      <button>View Details</button>
+                  <section className="flex flex-col gap-1">
+                    <h5 className="font-extrabold">24. Febuary 2023</h5>
+                    <div className="flex flex-col items-center p-1 border border-black">
+                      <h5>ORDER: A234324234 - USER: Bob</h5>
+                      <h6>USER: Bob</h6>
+                      <div>24 Febuary 2023 | € 234.40 | 1 item</div>
+                      <button className="small-standard-button">
+                        View Details
+                      </button>
+                    </div>
+                    <div className="flex flex-col items-center p-1 border border-black">
+                      <h5>ORDER: A234324234</h5>
+                      <h6>USER: Bob</h6>
+                      <div>24 Febuary 2023 | € 234.40 | 1 item</div>
+                      <button className="small-standard-button">
+                        View Details
+                      </button>
                     </div>
                   </section>
                 </>
@@ -80,18 +91,36 @@ function Admin() {
               return (
                 <>
                   <h1>Stock</h1>
-                  <table>
+                  <table className="w-full border border-black border-collapse">
                     <tr>
-                      <th>Name</th>
-                      <th>Price</th>
-                      <th>Quantity</th>
-                      <th>Delete</th>
+                      <th className="border border-black border-collapse">
+                        Name
+                      </th>
+                      <th className="border border-black border-collapse">
+                        Price
+                      </th>
+                      <th className="border border-black border-collapse">
+                        Quantity
+                      </th>
+                      <th className="border border-black border-collapse">
+                        Delete
+                      </th>
                     </tr>
                     <tr>
-                      <td>Bob</td>
-                      <td>345€</td>
-                      <td>3423</td>
-                      <td>
+                      <td className="border border-black border-collapse">
+                        Bob
+                      </td>
+                      <td className="border border-black border-collapse">
+                        345€
+                      </td>
+                      <td className="border border-black border-collapse">
+                        <ul>
+                          <li>red: 230</li>
+                          <li>blue: 200</li>
+                          <li>green: 120</li>
+                        </ul>
+                      </td>
+                      <td className="border border-black border-collapse">
                         <button type="submit">
                           <FaTrashAlt />
                         </button>
@@ -104,20 +133,38 @@ function Admin() {
               return (
                 <>
                   <h1>Products</h1>
-                  <table>
+                  <table className="w-full border border-black border-collapse">
                     <tr>
-                      <th>Name</th>
-                      <th>Price</th>
-                      <th>Quantity</th>
-                      <th>Status</th>
-                      <th>Delete</th>
+                      <th className="border border-black border-collapse">
+                        Name
+                      </th>
+                      <th className="border border-black border-collapse">
+                        Price
+                      </th>
+                      <th className="border border-black border-collapse">
+                        Quantity
+                      </th>
+                      <th className="border border-black border-collapse">
+                        Status
+                      </th>
+                      <th className="border border-black border-collapse">
+                        Delete
+                      </th>
                     </tr>
                     <tr>
-                      <td>Bob</td>
-                      <td>345€</td>
-                      <td>3423</td>
-                      <td>Archived</td>
-                      <td>
+                      <td className="border border-black border-collapse">
+                        Bob
+                      </td>
+                      <td className="border border-black border-collapse">
+                        345€
+                      </td>
+                      <td className="border border-black border-collapse">
+                        3423
+                      </td>
+                      <td className="border border-black border-collapse">
+                        Archived
+                      </td>
+                      <td className="border border-black border-collapse">
                         <button type="submit">
                           <FaTrashAlt />
                         </button>
@@ -130,16 +177,36 @@ function Admin() {
               return (
                 <>
                   <h1>Users</h1>
-                  <table>
+                  <table className="w-full border border-black border-collapse">
                     <tr>
-                      <th>Name</th>
-                      <th>Email</th>
-                      <th>Role</th>
+                      <th className="border border-black border-collapse">
+                        Name
+                      </th>
+                      <th className="border border-black border-collapse">
+                        Email
+                      </th>
+                      <th className="border border-black border-collapse">
+                        Role
+                      </th>
+                      <th className="border border-black border-collapse">
+                        Info
+                      </th>
                     </tr>
                     <tr>
-                      <td>Bob</td>
-                      <td>bob@bob.de</td>
-                      <td>Admin</td>
+                      <td className="border border-black border-collapse">
+                        Bob
+                      </td>
+                      <td className="border border-black border-collapse">
+                        bob@bob.de
+                      </td>
+                      <td className="border border-black border-collapse">
+                        Admin
+                      </td>
+                      <td className="border border-black border-collapse">
+                        <button className="small-standard-button ml-auto mr-auto">
+                          View Details
+                        </button>
+                      </td>
                     </tr>
                   </table>
                 </>
