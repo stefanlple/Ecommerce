@@ -1,5 +1,5 @@
 import React from "react";
-import { ButtonProps } from "./Button.types";
+import { ButtonProps, Size } from "./Button.types";
 
 const Button = ({
   children,
@@ -9,7 +9,7 @@ const Button = ({
   onClick,
   ...props
 }: ButtonProps) => {
-  const sizeStyling = {
+  const sizeStyling: Record<Size, string> = {
     small: "px-0.5 text-sm font-light",
     medium: "",
     large: "py-[10px] px-5 text-base font-bold",

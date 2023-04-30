@@ -6,9 +6,11 @@ export type ButtonProps = {
   /* Button Type */
   type: "button" | "submit" | "reset";
   /* Button size */
-  size: string;
+  size: Size;
   /* Add custom CSS */
   className?: string;
   /* OnClick callback event*/
   onClick?: () => void;
 };
+
+export type Size = "small" | "medium" | "large";
