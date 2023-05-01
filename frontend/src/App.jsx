@@ -20,7 +20,7 @@ import HamburgerMenu from "./components/Header/HamburgerMenu";
 import ForgotPassword from "./pages/ForgotPassword";
 import ResetPassword from "./pages/ResetPassword";
 import Users from "./pages/Users/Users";
-import Admin from "./pages/Admin";
+import Admin from "./pages/Admin/Admin";
 
 function App() {
   return (
