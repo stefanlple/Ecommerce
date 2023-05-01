@@ -19,7 +19,7 @@ import ImageUpload from "./components/Admin/UploadProduct/ImageUpload";
 import HamburgerMenu from "./components/Header/HamburgerMenu";
 import ForgotPassword from "./pages/ForgotPassword";
 import ResetPassword from "./pages/ResetPassword";
-import Users from "./pages/Users";
+import Users from "./pages/Users/Users";
 import Admin from "./pages/Admin";
 
 function App() {
@@ -47,8 +47,8 @@ function App() {
             <Route path="/hamburgermenu" element={<HamburgerMenu />} />
             <Route path="/forgotpassword" element={<ForgotPassword />} />
             <Route path="/resetpassword" element={<ResetPassword />} />
-            <Route path="/users" element={<Users />} />
             <Route path="/admin" element={<Admin />} />
+            <Route path="/users" element={<Users />} />
           </Routes>
         </div>
       </Router>
