@@ -21,6 +21,7 @@ import ForgotPassword from "./pages/ForgotPassword";
 import ResetPassword from "./pages/ResetPassword";
 import Users from "./pages/Users/Users";
 import Admin from "./pages/Admin/Admin";
+import EditProduct from "./pages/Admin/EditProduct";
 
 function App() {
   return (
@@ -42,13 +43,14 @@ function App() {
             <Route path="/dropdown" element={<DropdownText />} />
             <Route path="/counter" element={<Counter />} />
             <Route path="/cart" element={<Cart />} />
-            <Route path="/upload" element={<ProductUpload />} />
+            <Route path="/productupload" element={<ProductUpload />} />
             <Route path="/imageupload" element={<ImageUpload />} />
             <Route path="/hamburgermenu" element={<HamburgerMenu />} />
             <Route path="/forgotpassword" element={<ForgotPassword />} />
             <Route path="/resetpassword" element={<ResetPassword />} />
             <Route path="/admin" element={<Admin />} />
             <Route path="/users" element={<Users />} />
+            <Route path="/editproduct" element={<EditProduct />} />
           </Routes>
         </div>
       </Router>
