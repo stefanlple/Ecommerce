@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 
 /* Components */
 import AllOrders from "./AllOrders";
-import AllStock from "./AllStock";
 import AllUsers from "./AllUsers";
 import AllProducts from "./AllProducts";
 
@@ -35,16 +34,6 @@ function Admin() {
         </Link>
         <Link
           className={`${
-            curr === "Stock" ? "bg-black text-white" : "bg-gray-100"
-          } w-full border border-gray-900 border-collapse hover:text-gray-500`}
-          onClick={() => {
-            setCurr("Stock");
-          }}
-        >
-          Stock
-        </Link>
-        <Link
-          className={`${
             curr === "Products" ? "bg-black text-white" : "bg-gray-100"
           } w-full border border-gray-900 border-collapse hover:text-gray-500`}
           onClick={() => {
@@ -69,9 +58,6 @@ function Admin() {
           switch (curr) {
             case "Orders":
               return <AllOrders />;
-
-            case "Stock":
-              return <AllStock />;
 
             case "Products":
               return <AllProducts />;
