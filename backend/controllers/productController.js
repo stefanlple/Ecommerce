@@ -15,19 +15,10 @@ const getAllProducts = asyncHandler(async (req, res) => {
 });
 
 const registerProduct = asyncHandler(async (req, res) => {
-  const {
-    name,
-    category,
-    color,
-    description,
-    quantity,
-    price,
-    isActive,
-    soldOut,
-  } = req.body;
-  const images = req.body.file;
+  const { name, category, description, images, quantity, price, isActive } =
+    req.body;
 
-  const productExist = await Product.findOne({ name, color });
+  const productExist = await Product.findOne({ name });
   if (productExist) {
     res.status(400);
     throw new Error("Product already exist");
@@ -36,13 +27,11 @@ const registerProduct = asyncHandler(async (req, res) => {
   const product = await Product.create({
     name: name,
     category: category,
-    color: color,
     description: description,
+    images: images,
     quantity: quantity,
     price: price,
     isActive: isActive,
-    soldOut: soldOut,
-    images: images,
   });
 
   if (product) {

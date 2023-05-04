@@ -29,10 +29,11 @@ const productSchema = mongoose.Schema(
         trim: true,
       },
     ],
-    images: {
-      data: Buffer,
-      contentType: String,
-    },
+    images: [
+      {
+        type: String,
+      },
+    ],
     quantity: [
       {
         color: {
