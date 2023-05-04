@@ -34,7 +34,7 @@ const productSchema = mongoose.Schema(
         type: String,
       },
     ],
-    quantity: [
+    options: [
       {
         color: {
           colorname: {
@@ -44,16 +44,20 @@ const productSchema = mongoose.Schema(
             type: String,
           },
         },
-        size: {
-          type: String,
-          enum: ["ONESIZE", "XXS", "XS", "S", "M", "L", "XL"],
-          required: true,
-        },
-        quantity: {
-          type: Number,
-          required: true,
-          default: 0,
-        },
+        sizes: [
+          {
+            size: {
+              type: String,
+              enum: ["ONESIZE", "XXS", "XS", "S", "M", "L", "XL"],
+              required: true,
+            },
+            quantity: {
+              type: Number,
+              required: true,
+              default: 0,
+            },
+          },
+        ],
       },
     ],
     price: {

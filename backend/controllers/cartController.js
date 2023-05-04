@@ -3,7 +3,14 @@ const Product = require("../models/productModel");
 const asyncHandler = require("express-async-handler");
 
 const getCart = asyncHandler(async (req, res) => {
-  res.json({ all: "asdfsdf" });
+  const user = req.user._id;
+  const cart = await Cart.findOne({ user }).populate("products.product");
+  if (cart) {
+    res.status(200).json(cart);
+  } else {
+    res.status(401);
+    throw new Error("There is no cart with this id");
+  }
 });
 
 const registerCart = asyncHandler(async (req, res) => {
@@ -11,14 +18,15 @@ const registerCart = asyncHandler(async (req, res) => {
   const products = req.body.products;
 
   const cartExist = await Cart.findOne({ user });
+
   if (cartExist) {
     res.status(400);
     throw new Error("The cart already exists");
   }
 
   const cart = await Cart.create({
-    user: user,
-    products: products,
+    user,
+    products,
   });
 
   decreaseQuantity(products);
@@ -37,6 +45,7 @@ const addToCart = asyncHandler(async (req, res) => {
 
   if (cartExist) {
     const cart = await Cart.updateOne(query, { $push: { products: products } });
+    decreaseQuantity(products);
     res.status(200).json(cart);
   } else {
     res.status(400);

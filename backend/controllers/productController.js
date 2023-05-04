@@ -15,7 +15,7 @@ const getAllProducts = asyncHandler(async (req, res) => {
 });
 
 const registerProduct = asyncHandler(async (req, res) => {
-  const { name, category, description, images, quantity, price, isActive } =
+  const { name, category, description, images, options, price, isActive } =
     req.body;
 
   const productExist = await Product.findOne({ name });
@@ -29,7 +29,7 @@ const registerProduct = asyncHandler(async (req, res) => {
     category: category,
     description: description,
     images: images,
-    quantity: quantity,
+    options: options,
     price: price,
     isActive: isActive,
   });
