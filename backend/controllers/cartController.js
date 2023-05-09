@@ -16,7 +16,7 @@ const getCart = asyncHandler(async (req, res) => {
 const registerCart = asyncHandler(async (req, res) => {
   const user = req.user._id;
   const products = req.body.products;
-
+  console.log(products);
   const cartExist = await Cart.findOne({ user });
 
   if (cartExist) {
@@ -28,12 +28,14 @@ const registerCart = asyncHandler(async (req, res) => {
     user,
     products,
   });
-
-  decreaseQuantity(products);
+  //decreaseQuantity(products);
 
   if (cart) {
     res.status(200);
     res.json(cart);
+  } else {
+    res.status(401);
+    throw new Error("Something went wrong");
   }
 });
 
@@ -86,16 +88,37 @@ const deleteProductfromCart = asyncHandler(async (req, res) => {
   }
 });
 
-const decreaseQuantity = (products) => {
-  let bulkOptions = products.map((item) => {
-    return {
-      updateOne: {
-        filter: { _id: item.product },
-        update: { $inc: { quantity: -item.quantity } },
-      },
-    };
-  });
-  Product.bulkWrite(bulkOptions);
+const decreaseQuantity = async (products) => {
+  let bulkOptions = [];
+
+  for (let i = 0; i < products.length; i++) {
+    const product = products[i];
+
+    for (let j = 0; j < product.options.length; j++) {
+      const option = product.options[j];
+
+      const filter = {
+        _id: product._id,
+        "options.color.colorname": option.color.colorname,
+        "options.sizes.size": option.sizes.size,
+      };
+
+      const update = {
+        $inc: {
+          "options.$[i].sizes.$[j].quantity": -option.sizes.quantity,
+        },
+      };
+
+      const arrayFilters = [
+        { "i.color.colorname": option.color.colorname },
+        { "j.sizes.size": option.sizes.size },
+      ];
+
+      bulkOptions.push({ updateOne: { filter, update, arrayFilters } });
+    }
+  }
+  console.log("incoming");
+  await Product.bulkWrite(bulkOptions);
 };
 
 module.exports = {
