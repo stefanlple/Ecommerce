@@ -4,7 +4,7 @@ const asyncHandler = require("express-async-handler");
 
 const getCart = asyncHandler(async (req, res) => {
   const user = req.user._id;
-  const cart = await Cart.findOne({ user }).populate("products.product");
+  const cart = await Cart.findOne({ user });
   if (cart) {
     res.status(200).json(cart);
   } else {
@@ -16,8 +16,7 @@ const getCart = asyncHandler(async (req, res) => {
 const registerCart = asyncHandler(async (req, res) => {
   const user = req.user._id;
   const products = req.body.products;
-  console.log(products);
-  const cartExist = await Cart.findOne({ user });
+  const cartExist = await Cart.findOne({ user: user });
 
   if (cartExist) {
     res.status(400);
@@ -40,18 +39,34 @@ const registerCart = asyncHandler(async (req, res) => {
 });
 
 const addToCart = asyncHandler(async (req, res) => {
-  const products = req.body.products;
-  const query = { _id: req.params.cartId };
-
-  const cartExist = await Cart.findOne(query);
+  const user = req.user._id;
+  const body = req.body;
+  const productId = body.productId;
+  const color = body.color;
+  const sizes = body.sizes;
+  const cartExist = await Cart.findOne({ user });
 
   if (cartExist) {
-    const cart = await Cart.updateOne(query, { $push: { products: products } });
-    decreaseQuantity(products);
+    const cart = await Cart.updateOne(
+      {
+        user,
+        "products.productId": productId,
+        "products.color": color,
+        "products.sizes.size": sizes.size,
+      },
+      { $inc: { "products.$.sizes.quantity": sizes.quantity } }
+    );
+    res.status(200).json(cart);
+  } else if (!cartExist) {
+    const product = [body];
+    const cart = await Cart.create({
+      user,
+      products: product,
+    });
     res.status(200).json(cart);
   } else {
-    res.status(400);
-    throw new Error("The cart does not exists");
+    res.status(401);
+    throw new Error("There is no cart with this id");
   }
 });
 
