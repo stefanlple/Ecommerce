@@ -28,10 +28,10 @@ function SizingQuantityTableUpload() {
   return (
     <>
       <span>Sizing:</span>
-      <table className="border border-black border-collapse">
-        <thead className="border border-black border-collapse">
+      <table className="border-collapse border border-black">
+        <thead className="border-collapse border border-black">
           <tr>
-            <th className="p-2 border border-black border-collapse">
+            <th className="border-collapse border border-black p-2">
               <label className="mr-3" htmlFor="size">
                 Enter size:
               </label>
@@ -48,7 +48,7 @@ function SizingQuantityTableUpload() {
                 </optgroup>
               </select>
             </th>
-            <th className=" p-2 border border-black border-collapse">
+            <th className=" border-collapse border border-black p-2">
               <label className="mr-3" htmlFor="quantity">
                 Enter quantity:
               </label>
@@ -60,7 +60,7 @@ function SizingQuantityTableUpload() {
                 ref={quantityRef}
               />
               <button
-                className="ml-auto order-2 border bg-black text-white px-2"
+                className="order-2 ml-auto border bg-black px-2 text-white"
                 onClick={handleAddRow}
               >
                 Add
@@ -71,8 +71,8 @@ function SizingQuantityTableUpload() {
         <tbody>
           {Object.entries(Object.entries(rows)).map(([index, [key, value]]) => (
             <tr key={index}>
-              <td className="border border-black border-collapse">{key}</td>
-              <td className="pl-3 border border-black border-collapse">
+              <td className="border-collapse border border-black">{key}</td>
+              <td className="border-collapse border border-black pl-3">
                 <span>{value}</span>{" "}
                 <button
                   className="float-right"

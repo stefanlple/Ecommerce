@@ -4,7 +4,7 @@ import SizingQuantityTableUpload from "./SizingQuantityTableUpload";
 
 function ProductUpload() {
   return (
-    <form action="#" className="flex flex-col w-6/12" autocomplete="off">
+    <form action="#" className="flex w-6/12 flex-col" autocomplete="off">
       <h1>UPLOAD PRODUCT</h1>
       <ImageUpload />
       <label for="name">Enter name:</label>
@@ -35,7 +35,7 @@ function ProductUpload() {
       <label for="color">Enter colors:</label>
       <input id="color" type="text" className="border-2" placeholder="COLOR" />
       <SizingQuantityTableUpload />
-      <input type="submit" className="border-2 bg-black text-white mt-5 p-2" />
+      <input type="submit" className="mt-5 border-2 bg-black p-2 text-white" />
     </form>
   );
 }

@@ -58,18 +58,18 @@ function Login() {
 
   return (
     <>
-      <section className="font-bold mb-8">
-        <h1 className="text-5xl m-4">
-          <FaSignInAlt className="inline m-auto" /> Login
+      <section className="mb-8 font-bold">
+        <h1 className="m-4 text-5xl">
+          <FaSignInAlt className="m-auto inline" /> Login
         </h1>
         <p className="text-3xl text-slate-400"> Please Login</p>
       </section>
-      <section className="form w-[384px] mx-auto">
+      <section className="form mx-auto w-[384px]">
         <form onSubmit={onSubmit}>
           <div className="mb-3">
             <input
               type="email"
-              className="w-96 p-2 border-slate-200 border-2"
+              className="w-96 border-2 border-slate-200 p-2"
               id="email"
               name="email"
               value={email}
@@ -80,7 +80,7 @@ function Login() {
           <div className="mb-3 flex flex-col items-center">
             <input
               type="password"
-              className="w-96 p-2 border-slate-200 border-2 "
+              className="w-96 border-2 border-slate-200 p-2 "
               id="password"
               name="password"
               value={password}
@@ -88,19 +88,19 @@ function Login() {
               onChange={onChange}
             />
             <Link
-              className="ml-auto text-xs text-gray-400 hover:text-gray-500 text-right pt-1"
+              className="ml-auto pt-1 text-right text-xs text-gray-400 hover:text-gray-500"
               to="/forgotpassword"
             >
               Forgot Password?
             </Link>
           </div>
           <div className="mb-3 flex justify-center">
-            <button type="submit" className="w-96 standard-button">
+            <button type="submit" className="standard-button w-96">
               Submit
             </button>
           </div>
         </form>
-        <Link to="/register" className="text-sm hover:text-gray-400 underline">
+        <Link to="/register" className="text-sm underline hover:text-gray-400">
           Register
         </Link>
       </section>

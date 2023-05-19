@@ -12,7 +12,7 @@ function Users() {
         <Link
           className={`${
             curr === "OrderHistory" ? "bg-black text-white" : "bg-gray-100"
-          } w-full border border-gray-900 border-collapse hover:text-gray-500`}
+          } w-full border-collapse border border-gray-900 hover:text-gray-500`}
           onClick={() => {
             setCurr("OrderHistory");
           }}
@@ -22,7 +22,7 @@ function Users() {
         <Link
           className={`${
             curr === "Addresses" ? "bg-black text-white" : "bg-gray-100"
-          } w-full border border-gray-900 border-collapse hover:text-gray-500`}
+          } w-full border-collapse border border-gray-900 hover:text-gray-500`}
           onClick={() => {
             setCurr("Addresses");
           }}
@@ -32,7 +32,7 @@ function Users() {
         <Link
           className={`${
             curr === "AccountDetails" ? "bg-black text-white" : "bg-gray-100"
-          } w-full border border-gray-900 border-collapse hover:text-gray-500`}
+          } w-full border-collapse border border-gray-900 hover:text-gray-500`}
           onClick={() => {
             setCurr("AccountDetails");
           }}

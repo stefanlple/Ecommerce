@@ -5,31 +5,31 @@ function Cart() {
   return (
     <>
       <h1 className="text-left">Cart (2)</h1>
-      <table className="w-full mb-3 border-collapse ">
+      <table className="mb-3 w-full border-collapse ">
         <thead>
           <tr>
             <th
               colspan="2"
               scope="col"
-              className="uppercase text-left py-5 border-b-2 border-b-gray-300"
+              className="border-b-2 border-b-gray-300 py-5 text-left uppercase"
             >
               product
             </th>
             <th
               scope="col"
-              className="uppercase text-right py-5 border-b-2 border-b-gray-300"
+              className="border-b-2 border-b-gray-300 py-5 text-right uppercase"
             >
               quantity
             </th>
             <th
               scope="col"
-              className="uppercase text-right py-5 border-b-2 border-b-gray-300"
+              className="border-b-2 border-b-gray-300 py-5 text-right uppercase"
             >
               price
             </th>
             <th
               scope="col"
-              className="uppercase text-right py-5 border-b-2 border-b-gray-300"
+              className="border-b-2 border-b-gray-300 py-5 text-right uppercase"
             >
               total
             </th>
@@ -39,14 +39,14 @@ function Cart() {
           <tr>
             <td
               colspan="2"
-              className="uppercase text-left py-5 border-b-2 border-b-gray-300"
+              className="border-b-2 border-b-gray-300 py-5 text-left uppercase"
             >
               <div className="flex">
                 <a>
                   <img
                     src="./red.jpeg"
                     alt=""
-                    className="w-full max-w-full aspect-square object-cover overflow-hidden"
+                    className="aspect-square w-full max-w-full overflow-hidden object-cover"
                   />
                 </a>
                 <div className="relative flex flex-col">
@@ -58,27 +58,27 @@ function Cart() {
                 </div>
               </div>
             </td>
-            <td className="uppercase text-right py-5 border-b-2 border-b-gray-300">
+            <td className="border-b-2 border-b-gray-300 py-5 text-right uppercase">
               <Counter justifyEnd="true" className="flex justify-end" />
             </td>
-            <td className="uppercase text-right py-5 border-b-2 border-b-gray-300">
+            <td className="border-b-2 border-b-gray-300 py-5 text-right uppercase">
               200 €
             </td>
-            <td className="uppercase text-right py-5 border-b-2 border-b-gray-300">
+            <td className="border-b-2 border-b-gray-300 py-5 text-right uppercase">
               400 €
             </td>
           </tr>
           <tr>
             <td
               colspan="2"
-              className="uppercase text-left py-5 border-b-2 border-b-gray-300"
+              className="border-b-2 border-b-gray-300 py-5 text-left uppercase"
             >
               <div className="flex">
                 <a>
                   <img
                     src="./red.jpeg"
                     alt=""
-                    className="w-full max-w-full aspect-square object-cover overflow-hidden"
+                    className="aspect-square w-full max-w-full overflow-hidden object-cover"
                   />
                 </a>
                 <div className="relative flex flex-col">
@@ -90,13 +90,13 @@ function Cart() {
                 </div>
               </div>
             </td>
-            <td className="uppercase text-right py-5 border-b-2 border-b-gray-300">
+            <td className="border-b-2 border-b-gray-300 py-5 text-right uppercase">
               <Counter justifyEnd="true" className="flex justify-end" />
             </td>
-            <td className="uppercase text-right py-5 border-b-2 border-b-gray-300">
+            <td className="border-b-2 border-b-gray-300 py-5 text-right uppercase">
               200 €
             </td>
-            <td className="uppercase text-right py-5 border-b-2 border-b-gray-300">
+            <td className="border-b-2 border-b-gray-300 py-5 text-right uppercase">
               400 €
             </td>
           </tr>
@@ -107,7 +107,7 @@ function Cart() {
           <span>SUBTOTAL (VAT INCLUDED): </span>
           <span>600 €</span>
         </div>
-        <button className="bg-black text-white py-2 px-6 border-[1px] border-black hover:bg-white hover:text-black float-right">
+        <button className="float-right border-[1px] border-black bg-black py-2 px-6 text-white hover:bg-white hover:text-black">
           CHECKOUT
         </button>
       </div>

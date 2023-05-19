@@ -32,7 +32,7 @@ const EditProduct = () => {
     setQuantityRows(newRows);
   };
   return (
-    <form action="#" className="flex flex-col w-6/12" autocomplete="off">
+    <form action="#" className="flex w-6/12 flex-col" autocomplete="off">
       <h1>UPLOAD PRODUCT</h1>
       <ImageUpload />
       <label for="name">Enter name:</label>
@@ -73,10 +73,10 @@ const EditProduct = () => {
       </select>
 
       <p>Edit quantity:</p>
-      <table className="border border-black border-collapse">
-        <thead className="border border-black border-collapse">
+      <table className="border-collapse border border-black">
+        <thead className="border-collapse border border-black">
           <tr>
-            <th className="p-2 border border-black border-collapse">
+            <th className="border-collapse border border-black p-2">
               <label className="mr-3" htmlFor="quantity">
                 Enter color:
               </label>
@@ -87,7 +87,7 @@ const EditProduct = () => {
                 type="text"
               />
             </th>
-            <th className="p-2 border border-black border-collapse">
+            <th className="border-collapse border border-black p-2">
               <label className="mr-3" htmlFor="size">
                 Enter size:
               </label>
@@ -104,7 +104,7 @@ const EditProduct = () => {
                 </optgroup>
               </select>
             </th>
-            <th className=" p-2 border border-black border-collapse">
+            <th className=" border-collapse border border-black p-2">
               <label className="mr-3" htmlFor="quantity">
                 Enter quantity:
               </label>
@@ -116,7 +116,7 @@ const EditProduct = () => {
                 ref={quantityRef}
               />
               <button
-                className="ml-auto order-2 border bg-black text-white px-2"
+                className="order-2 ml-auto border bg-black px-2 text-white"
                 onClick={handleAddRow}
               >
                 Add
@@ -128,11 +128,11 @@ const EditProduct = () => {
           {Object.entries(Object.entries(quantityRows)).map(
             ([index, [key, value]]) => (
               <tr key={index}>
-                <td className="border border-black border-collapse"> {key}</td>
-                <td className="border border-black border-collapse">
+                <td className="border-collapse border border-black"> {key}</td>
+                <td className="border-collapse border border-black">
                   {value[0]}
                 </td>
-                <td className="pl-3 border border-black border-collapse">
+                <td className="border-collapse border border-black pl-3">
                   <span>{value[1]}</span>{" "}
                   <button
                     className="float-right"
@@ -146,7 +146,7 @@ const EditProduct = () => {
           )}
         </tbody>
       </table>
-      <input type="submit" className="border-2 bg-black text-white mt-5 p-2" />
+      <input type="submit" className="mt-5 border-2 bg-black p-2 text-white" />
     </form>
   );
 };

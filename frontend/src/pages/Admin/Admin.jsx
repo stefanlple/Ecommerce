@@ -15,7 +15,7 @@ function Admin() {
         <Link
           className={`${
             curr === "Dashboard" ? "bg-black text-white" : "bg-gray-100"
-          } w-full border border-gray-900 border-collapse hover:text-gray-500`}
+          } w-full border-collapse border border-gray-900 hover:text-gray-500`}
           onClick={() => {
             setCurr("Dashboard");
           }}
@@ -25,7 +25,7 @@ function Admin() {
         <Link
           className={`${
             curr === "Orders" ? "bg-black text-white" : "bg-gray-100"
-          } w-full border border-gray-900 border-collapse hover:text-gray-500`}
+          } w-full border-collapse border border-gray-900 hover:text-gray-500`}
           onClick={() => {
             setCurr("Orders");
           }}
@@ -35,7 +35,7 @@ function Admin() {
         <Link
           className={`${
             curr === "Products" ? "bg-black text-white" : "bg-gray-100"
-          } w-full border border-gray-900 border-collapse hover:text-gray-500`}
+          } w-full border-collapse border border-gray-900 hover:text-gray-500`}
           onClick={() => {
             setCurr("Products");
           }}
@@ -45,7 +45,7 @@ function Admin() {
         <Link
           className={`${
             curr === "Users" ? "bg-black text-white" : "bg-gray-100"
-          } w-full border border-gray-900 border-collapse hover:text-gray-500`}
+          } w-full border-collapse border border-gray-900 hover:text-gray-500`}
           onClick={() => {
             setCurr("Users");
           }}

@@ -8,38 +8,38 @@ const AllProducts = () => {
       <h1>Products</h1>
 
       <Link
-        className="ml-auto px-2 rounded-xl text-lg text-white bg-black hover:bg-white hover:text-black border border-black "
+        className="ml-auto rounded-xl border border-black bg-black px-2 text-lg text-white hover:bg-white hover:text-black "
         to="/productupload"
       >
         Upload Product
       </Link>
-      <table className="w-full border border-black border-collapse mt-2">
+      <table className="mt-2 w-full border-collapse border border-black">
         <tr>
-          <th className="border border-black border-collapse">Name</th>
-          <th className="border border-black border-collapse">Price</th>
-          <th className="border border-black border-collapse">Quantity</th>
-          <th className="border border-black border-collapse">Status</th>
-          <th className="border border-black border-collapse">Edit</th>
-          <th className="border border-black border-collapse">Delete</th>
+          <th className="border-collapse border border-black">Name</th>
+          <th className="border-collapse border border-black">Price</th>
+          <th className="border-collapse border border-black">Quantity</th>
+          <th className="border-collapse border border-black">Status</th>
+          <th className="border-collapse border border-black">Edit</th>
+          <th className="border-collapse border border-black">Delete</th>
         </tr>
         <tr>
-          <td className="border border-black border-collapse">Bob</td>
-          <td className="border border-black border-collapse">345€</td>
-          <td className="border border-black border-collapse">
+          <td className="border-collapse border border-black">Bob</td>
+          <td className="border-collapse border border-black">345€</td>
+          <td className="border-collapse border border-black">
             <ul>
               <li>red: 230</li>
               <li>blue: 200</li>
               <li>green: 120</li>
             </ul>
           </td>
-          <td className="border border-black border-collapse">Archived</td>
+          <td className="border-collapse border border-black">Archived</td>
 
-          <td className="border border-black border-collapse">
+          <td className="border-collapse border border-black">
             <button type="submit">
               <FaEdit />
             </button>
           </td>
-          <td className="border border-black border-collapse">
+          <td className="border-collapse border border-black">
             <button type="submit">
               <FaTrashAlt />
             </button>

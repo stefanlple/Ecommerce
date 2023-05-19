@@ -39,14 +39,14 @@ function ImageUpload() {
 
   return (
     <div className="border border-stone-400 p-2">
-      <div className="flex flex-col gap-2 mb-2">
+      <div className="mb-2 flex flex-col gap-2">
         <label for="files" class="m-auto border border-black p-3 font-semibold">
-          Select Images and Model <FaRegPlusSquare className="inline m-auto " />
+          Select Images and Model <FaRegPlusSquare className="m-auto inline " />
         </label>
         <input
           id="files"
           type="file"
-          className="invisible absolute p-2 border-2"
+          className="invisible absolute border-2 p-2"
           onChange={handleImageChange}
           multiple
         />
@@ -56,7 +56,7 @@ function ImageUpload() {
         {images.length ? (
           images.map((image, index) => (
             <div
-              className="flex flex-col items-center p-2 border border-black gap-3"
+              className="flex flex-col items-center gap-3 border border-black p-2"
               key={index}
               draggable
               onDragStart={(e) => handleDragStart(e, index)}
@@ -78,14 +78,14 @@ function ImageUpload() {
             <label
               for="files"
               class=" font-semibold"
-              className="flex items-center justify-center w-[100px] h-[100px] border border-black"
+              className="flex h-[100px] w-[100px] items-center justify-center border border-black"
             >
-              <FaRegPlusSquare className="inline m-auto " />
+              <FaRegPlusSquare className="m-auto inline " />
             </label>
             <input
               id="files"
               type="file"
-              className="invisible absolute p-2 border-2"
+              className="invisible absolute border-2 p-2"
               onChange={handleImageChange}
               multiple
             />

@@ -24,10 +24,10 @@ function Header() {
     setSearchBarIsOpen((curr) => !curr);
   };
   return (
-    <header className="flex justify-between items-center w-full fixed top-0 bg-white z-50 py-5 px-5 border-slate-200 border-b-2">
+    <header className="fixed top-0 z-50 flex w-full items-center justify-between border-b-2 border-slate-200 bg-white py-5 px-5">
       <HamburgerMenu />
       <Link
-        className="absolute block left-1/2 my-auto mb-auto text-center z-10 transform -translate-x-1/2"
+        className="absolute left-1/2 z-10 my-auto mb-auto block -translate-x-1/2 transform text-center"
         to="/"
       >
         Ecommerce
@@ -56,8 +56,8 @@ function Header() {
                   id=""
                   className={`${
                     !searchBarIsOpen ? "scale-x-0" : "scale-x-90"
-                  } origin-right bg-transparent text-black font-thin outline-none text-sm tracking-wider border-b-[1px] focus:border-b-black focus:border-b-2
-                  transition-all ease-in-out duration-200`}
+                  } origin-right border-b-[1px] bg-transparent text-sm font-thin tracking-wider text-black outline-none transition-all duration-200
+                  ease-in-out focus:border-b-2 focus:border-b-black`}
                   placeholder="SEARCH"
                 />
                 <button
@@ -79,10 +79,10 @@ function Header() {
             </li>
             <li className="ml-5">
               <Link
-                className="flex items-center hover:text-gray-400 relative"
+                className="relative flex items-center hover:text-gray-400"
                 to="/cart"
               >
-                <CiHeart className="mr-2 absolute text-4xl left-1/2 -translate-x-1/2 font-extralight" />
+                <CiHeart className="absolute left-1/2 mr-2 -translate-x-1/2 text-4xl font-extralight" />
                 <span className="text-xs font-medium">10</span>
               </Link>
             </li>

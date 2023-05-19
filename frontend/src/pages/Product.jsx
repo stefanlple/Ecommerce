@@ -39,12 +39,12 @@ function Product() {
 
   return (
     <>
-      <div className="flex justify-between box-border">
-        <div className="w-full sticky max-w-sm py-44 px-10 top-16 min-h-[1px] h-[calc(100%_-_64px)]">
+      <div className="box-border flex justify-between">
+        <div className="sticky top-16 h-[calc(100%_-_64px)] min-h-[1px] w-full max-w-sm py-44 px-10">
           <ProductDescriptionBox />
         </div>
         <Gallery />
-        <div className="w-full sticky max-w-sm py-44 px-10 top-16 min-h-[1px] h-[calc(100%_-_64px)]">
+        <div className="sticky top-16 h-[calc(100%_-_64px)] min-h-[1px] w-full max-w-sm py-44 px-10">
           <ProductSelectBox />
         </div>
       </div>

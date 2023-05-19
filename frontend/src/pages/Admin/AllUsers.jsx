@@ -4,18 +4,18 @@ const AllUsers = () => {
   return (
     <>
       <h1>Users</h1>
-      <table className="w-full border border-black border-collapse">
+      <table className="w-full border-collapse border border-black">
         <tr>
-          <th className="border border-black border-collapse">Name</th>
-          <th className="border border-black border-collapse">Email</th>
-          <th className="border border-black border-collapse">Role</th>
-          <th className="border border-black border-collapse">Info</th>
+          <th className="border-collapse border border-black">Name</th>
+          <th className="border-collapse border border-black">Email</th>
+          <th className="border-collapse border border-black">Role</th>
+          <th className="border-collapse border border-black">Info</th>
         </tr>
         <tr>
-          <td className="border border-black border-collapse">Bob</td>
-          <td className="border border-black border-collapse">bob@bob.de</td>
-          <td className="border border-black border-collapse">Admin</td>
-          <td className="border border-black border-collapse">
+          <td className="border-collapse border border-black">Bob</td>
+          <td className="border-collapse border border-black">bob@bob.de</td>
+          <td className="border-collapse border border-black">Admin</td>
+          <td className="border-collapse border border-black">
             <button className="small-standard-button ml-auto mr-auto">
               View Details
             </button>

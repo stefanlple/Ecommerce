@@ -66,18 +66,18 @@ function Register() {
 
   return (
     <>
-      <section className="font-bold mb-8">
-        <h1 className="text-5xl m-4">
-          <FaUser className="inline m-auto" /> Register
+      <section className="mb-8 font-bold">
+        <h1 className="m-4 text-5xl">
+          <FaUser className="m-auto inline" /> Register
         </h1>
         <p className="text-3xl text-slate-400"> Please create an account</p>
       </section>
-      <section className="form w-full mx-auto">
+      <section className="form mx-auto w-full">
         <form onSubmit={onSubmit}>
           <div className="mb-3">
             <input
               type="text"
-              className="w-96 p-2 border-slate-200 border-2"
+              className="w-96 border-2 border-slate-200 p-2"
               id="name"
               name="name"
               value={name}
@@ -88,7 +88,7 @@ function Register() {
           <div className="mb-3">
             <input
               type="email"
-              className="w-96 p-2 border-slate-200 border-2"
+              className="w-96 border-2 border-slate-200 p-2"
               id="email"
               name="email"
               value={email}
@@ -99,7 +99,7 @@ function Register() {
           <div className="mb-3">
             <input
               type="password"
-              className="w-96 p-2 border-slate-200 border-2"
+              className="w-96 border-2 border-slate-200 p-2"
               id="password"
               name="password"
               value={password}
@@ -110,7 +110,7 @@ function Register() {
           <div className="mb-3">
             <input
               type="password"
-              className="w-96 p-2 border-slate-200 border-2"
+              className="w-96 border-2 border-slate-200 p-2"
               id="password2"
               name="password2"
               value={password2}
@@ -119,12 +119,12 @@ function Register() {
             />
           </div>
           <div className="mb-3 flex justify-center">
-            <button type="submit" className="w-96 standard-button">
+            <button type="submit" className="standard-button w-96">
               Submit
             </button>
           </div>
         </form>
-        <Link to="/login" className="text-xs hover:text-gray-400 underline">
+        <Link to="/login" className="text-xs underline hover:text-gray-400">
           Login
         </Link>
       </section>

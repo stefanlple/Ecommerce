@@ -45,7 +45,7 @@ function Counter(props) {
         <input
           value={count}
           type="text"
-          className="w-10 h-10 text-center text-lg"
+          className="h-10 w-10 text-center text-lg"
           min="1"
           max="9"
           maxLength={1}

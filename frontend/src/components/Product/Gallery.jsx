@@ -12,7 +12,7 @@ function Gallery() {
       <div className="w-full grow">
         <ul>
           <li>
-            <div className="outline h-screen">
+            <div className="h-screen outline">
               <Canvas
                 frameloop="demand"
                 shadows
@@ -34,10 +34,10 @@ function Gallery() {
             </div>
           </li>
           <li>
-            <img src="./red.jpeg" alt="None" className="w-full my-5 outline" />
+            <img src="./red.jpeg" alt="None" className="my-5 w-full outline" />
           </li>
           <li>
-            <img src="./red.jpeg" alt="None" className="w-full my-5 outline" />
+            <img src="./red.jpeg" alt="None" className="my-5 w-full outline" />
           </li>
         </ul>
       </div>
