@@ -21,6 +21,8 @@
   },
   "devDependencies": {
     "concurrently": "^7.4.0",
-    "nodemon": "^2.0.19"
+    "nodemon": "^2.0.19",
+    "prettier": "^2.8.8",
+    "prettier-plugin-tailwindcss": "^0.3.0"
   }
 }
