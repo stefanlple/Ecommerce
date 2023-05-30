@@ -44,13 +44,56 @@ const addToCart = asyncHandler(async (req, res) => {
   const { productId, color, sizes } = body;
   const cartExist = await Cart.findOne({ user });
 
+  // Validate if the product exists in the Product collection
+  const product = await Product.findOne({
+    _id: productId,
+    "options.color.colorname": color,
+    "options.sizes.size": sizes.size,
+  });
+
+  // Calculate the updated quantity after adding to the cart
+  let updatedQuantity = sizes.quantity;
+
+  // Find the matching option within the product's options array
+  const matchingOption = product.options.find(
+    (option) =>
+      option.color.colorname === color &&
+      option.sizes.some((size) => size.size === sizes.size)
+  );
+
+  const matchingOptionQuantity = matchingOption.sizes.find(
+    (size) => size.size === sizes.size
+  ).quantity;
+
+  // Check if the matching option is found and if the requested quantity exceeds the available stock
+  if (!matchingOption || updatedQuantity > matchingOptionQuantity) {
+    res.status(400);
+    throw new Error("Requested quantity exceeds available stock");
+  }
+
   if (cartExist) {
+    if (!product) {
+      res.status(400);
+      throw new Error("Product does not exist or is not available");
+    }
+
+    // Check if the product already exist in the cart
     const existingProduct = cartExist.products.find(
       (product) =>
         product.productId.toString() === productId &&
         product.color === color &&
         product.sizes.size === sizes.size
     );
+
+    updatedQuantity = existingProduct
+      ? existingProduct.sizes.quantity + sizes.quantity
+      : sizes.quantity;
+
+    // Check if the matching option is found and if the requested quantity exceeds the available stock
+    if (!matchingOption || updatedQuantity > matchingOptionQuantity) {
+      res.status(400);
+      throw new Error("Requested quantity exceeds available stock");
+    }
 
     if (existingProduct) {
       // If the product exists, increment the quantity
