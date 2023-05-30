@@ -41,24 +41,29 @@ const registerCart = asyncHandler(async (req, res) => {
 const addToCart = asyncHandler(async (req, res) => {
   const user = req.user._id;
   const body = req.body;
-  const productId = body.productId;
-  const color = body.color;
-  const sizes = body.sizes;
+  const { productId, color, sizes } = body;
   const cartExist = await Cart.findOne({ user });
 
   if (cartExist) {
-    const cart = await Cart.updateOne(
-      {
-        user,
-        "products.productId": productId,
-        "products.color": color,
-        "products.sizes.size": sizes.size,
-      },
-      { $inc: { "products.$.sizes.quantity": sizes.quantity } }
+    const existingProduct = cartExist.products.find(
+      (product) =>
+        product.productId.toString() === productId &&
+        product.color === color &&
+        product.sizes.size === sizes.size
     );
-    res.status(200).json(cart);
+
+    if (existingProduct) {
+      // If the product exists, increment the quantity
+      existingProduct.sizes.quantity += sizes.quantity;
+    } else {
+      // If the product doesn't exist, add it to the cart
+      cartExist.products.push({ productId, color, sizes });
+    }
+
+    await cartExist.save();
+    res.status(200).json(cartExist);
   } else if (!cartExist) {
-    const product = [body];
+    const product = [{ productId, color, sizes }];
     const cart = await Cart.create({
       user,
       products: product,
