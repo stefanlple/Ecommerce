@@ -53,13 +53,17 @@ const addToCart = asyncHandler(async (req, res) => {
 
   // Calculate the updated quantity after adding to the cart
   let updatedQuantity = sizes.quantity;
-
   // Find the matching option within the product's options array
   const matchingOption = product.options.find(
     (option) =>
       option.color.colorname === color &&
       option.sizes.some((size) => size.size === sizes.size)
   );
+
+  if (!matchingOption) {
+    res.status(400);
+    throw new Error("No product with this options");
+  }
 
   const matchingOptionQuantity = matchingOption.sizes.find(
     (size) => size.size === sizes.size
@@ -100,17 +104,29 @@ const addToCart = asyncHandler(async (req, res) => {
       existingProduct.sizes.quantity += sizes.quantity;
     } else {
       // If the product doesn't exist, add it to the cart
-      cartExist.products.push({ productId, color, sizes });
+      cartExist.products.push({
+        productId,
+        color,
+        sizes,
+      });
     }
 
     await cartExist.save();
     res.status(200).json(cartExist);
   } else if (!cartExist) {
-    const product = [{ productId, color, sizes }];
+    const product = [
+      {
+        productId,
+        color,
+        sizes,
+      },
+    ];
+
     const cart = await Cart.create({
       user,
       products: product,
     });
+
     res.status(200).json(cart);
   } else {
     res.status(401);
@@ -180,7 +196,6 @@ const decreaseQuantity = async (products) => {
       bulkOptions.push({ updateOne: { filter, update, arrayFilters } });
     }
   }
-  console.log("incoming");
   await Product.bulkWrite(bulkOptions);
 };
 
