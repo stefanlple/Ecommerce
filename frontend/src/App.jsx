@@ -27,30 +27,31 @@ function App() {
   return (
     <>
       <Router>
-        <div className="w-screen h-screen m-0  text-center pt-28">
+        <div className="m-0 h-screen w-screen  pt-28 text-center">
           <Header />
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/collection" element={<Collection />} />
+            <Route path="/product" element={<Product />} />
+
+            {/* Login & Register */}
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
-            <Route path="/collection" element={<Collection />} />
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/:productId" element={<Product />} />
-            <Route path="/product" element={<Product />} />
-            <Route path="/productbox" element={<ProductSelectBox />} />
-            <Route path="/descriptionbox" element={<ProductDescriptionBox />} />
-            <Route path="/gallery" element={<Gallery />} />
-            <Route path="/dropdown" element={<DropdownText />} />
-            <Route path="/counter" element={<Counter />} />
-            <Route path="/cart" element={<Cart />} />
-            <Route path="/productupload" element={<ProductUpload />} />
-            <Route path="/imageupload" element={<ImageUpload />} />
-            <Route path="/hamburgermenu" element={<HamburgerMenu />} />
             <Route path="/forgotpassword" element={<ForgotPassword />} />
             <Route path="/resetpassword" element={<ResetPassword />} />
+            <Route path="/forgotpassword" element={<ForgotPassword />} />
+            <Route path="/resetpassword" element={<ResetPassword />} />
+
+            {/* Admin */}
             <Route path="/admin" element={<Admin />} />
-            <Route path="/users" element={<Users />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/productupload" element={<ProductUpload />} />
+            <Route path="/:productId" element={<Product />} />
             <Route path="/editproduct" element={<EditProduct />} />
+
+            {/* Users */}
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/users" element={<Users />} />
           </Routes>
         </div>
       </Router>

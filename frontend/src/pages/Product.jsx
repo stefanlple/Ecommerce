@@ -37,38 +37,66 @@ function Product() {
     return <Spinner />;
   } */
 
+  const test = {
+    name: "fujifilm camera",
+    category: "special",
+    description: ["camera with lense"],
+    modelUrl: "fujifilmcamera.gltf",
+    imageUrls: ["fujifilm1.jpeg", "fujifilm2.jpeg"],
+    options: [
+      {
+        color: {
+          colorname: "Green",
+          colorhex: "#00FF00",
+        },
+        sizes: [
+          {
+            size: "XXS",
+            quantity: 12,
+            _id: "647d090e6ee730a3197e0dc1",
+          },
+        ],
+        _id: "647d090e6ee730a3197e0dc0",
+      },
+      {
+        color: {
+          colorname: "Red",
+          colorhex: "#FF0000",
+        },
+        sizes: [
+          {
+            size: "S",
+            quantity: 22,
+            _id: "647d090e6ee730a3197e0dc3",
+          },
+        ],
+        _id: "647d090e6ee730a3197e0dc2",
+      },
+    ],
+    price: 122.23,
+    isActive: true,
+    _id: "647d090e6ee730a3197e0dbf",
+    createdAt: "2023-06-04T21:58:38.752Z",
+    updatedAt: "2023-06-04T21:58:38.752Z",
+    __v: 0,
+  };
   return (
     <>
       <div className="box-border flex justify-between">
         <div className="sticky top-16 h-[calc(100%_-_64px)] min-h-[1px] w-full max-w-sm py-44 px-10">
-          <ProductDescriptionBox />
+          <ProductDescriptionBox
+            name={test.name}
+            price={test.price}
+            description={test.description}
+          />
         </div>
-        <Gallery />
+        <Gallery imageUrls={test.imageUrls} modelUrl={test.modelUrl} />
         <div className="sticky top-16 h-[calc(100%_-_64px)] min-h-[1px] w-full max-w-sm py-44 px-10">
-          <ProductSelectBox />
+          <ProductSelectBox options={test.options} />
         </div>
       </div>
     </>
   );
-  /* <>
-      <div className="teaser-image">
-        <img
-          src="https://pbs.twimg.com/profile_images/1564162499888517121/2Pn8AyNV_400x400.png"
-          alt="Fleece"
-        ></img>
-      </div>
-      <div className="short-desc plp-product__details">
-        <h3 className="product_title">
-          <h1>{product.name}</h1>
-        </h3>
-        <div className="price">
-          <span>{product.price}</span>
-        </div>
-        <div className="">{product.color}</div>
-
-        <button className="standard-button">Add To Cart</button>
-      </div>
-    </> */
 }
 
 export default Product;

@@ -15,8 +15,16 @@ const getAllProducts = asyncHandler(async (req, res) => {
 });
 
 const registerProduct = asyncHandler(async (req, res) => {
-  const { name, category, description, images, options, price, isActive } =
-    req.body;
+  const {
+    name,
+    category,
+    description,
+    modelUrl,
+    imageUrls,
+    options,
+    price,
+    isActive,
+  } = req.body;
 
   const productExist = await Product.findOne({ name });
   if (productExist) {
@@ -25,13 +33,14 @@ const registerProduct = asyncHandler(async (req, res) => {
   }
 
   const product = await Product.create({
-    name: name,
-    category: category,
-    description: description,
-    images: images,
-    options: options,
-    price: price,
-    isActive: isActive,
+    name,
+    category,
+    description,
+    modelUrl,
+    imageUrls,
+    options,
+    price,
+    isActive,
   });
 
   if (product) {

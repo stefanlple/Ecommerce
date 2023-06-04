@@ -1,22 +1,40 @@
 import React from "react";
 import { useState } from "react";
 import Counter from "../Counter";
-import DropdownText from "./DropdownText";
 
-const test = {
-  header: "Camera",
-  price: 18.3,
-  colors: [
-    ["Red", "#FF0000"],
-    ["Green", "#00FF00"],
-    ["Blue", "#0000FF"],
-  ],
-  sizes: ["S", "M", "XL"],
-};
+function transformOptions(options) {
+  const res = {
+    colors: [],
+    sizes: [],
+  };
 
-function ProductSelectBox() {
-  const [color, setColor] = useState(test.colors[0][0]);
-  const [size, setSize] = useState(test.sizes[0]);
+  for (const option of options) {
+    const { color, sizes } = option;
+    const { colorname, colorhex } = color;
+
+    if (
+      !res.colors.some(([name, hex]) => name === colorname && hex === colorhex)
+    ) {
+      res.colors.push([colorname, colorhex]);
+    }
+
+    for (const sizeObj of sizes) {
+      const { size } = sizeObj;
+      if (!res.sizes.includes(size)) {
+        res.sizes.push(size);
+      }
+    }
+  }
+
+  return res;
+}
+
+function ProductSelectBox({ options }) {
+  const renderOptions = transformOptions(options);
+
+  console.log(renderOptions);
+  const [color, setColor] = useState(renderOptions.colors[0][0]);
+  const [size, setSize] = useState(renderOptions.sizes[0]);
 
   const changeColor = (event) => {
     setColor(event.target.dataset.color);
@@ -30,7 +48,7 @@ function ProductSelectBox() {
     <>
       <h3>{color}</h3>
       <ul className="flex flex-row items-center justify-center space-x-4">
-        {test.colors.map((item, index) => {
+        {renderOptions.colors.map((item, index) => {
           return (
             <li key={index}>
               <span
@@ -50,7 +68,7 @@ function ProductSelectBox() {
       </ul>
 
       <ul className="flex flex-row items-center justify-center space-x-4">
-        {test.sizes.map((sizeElement, index) => {
+        {renderOptions.sizes.map((sizeElement, index) => {
           return (
             <li
               key={index}

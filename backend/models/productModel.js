@@ -29,7 +29,10 @@ const productSchema = mongoose.Schema(
         trim: true,
       },
     ],
-    images: [
+    modelUrl: {
+      type: String,
+    },
+    imageUrls: [
       {
         type: String,
       },
