@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FaUser, FaSearch } from "react-icons/fa";
+import { FaUser, FaSearch, FaSignOutAlt } from "react-icons/fa";
 import { CiHeart } from "react-icons/ci";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
@@ -33,42 +33,51 @@ function Header() {
         Ecommerce
       </Link>
       <ul className="flex items-center justify-between">
+        <li>
+          <form action="" className="flex">
+            <input
+              type="text"
+              name=""
+              id=""
+              className={`${
+                !searchBarIsOpen ? "scale-x-0" : "scale-x-90"
+              } origin-right border-b-[1px] bg-transparent text-sm font-thin tracking-wider text-black outline-none transition-all duration-200
+                  ease-in-out focus:border-b-2 focus:border-b-black`}
+              placeholder="SEARCH"
+            />
+            <button
+              type={`${!searchBarIsOpen ? "submit" : "button"}`}
+              className="text-black"
+              onClick={handleSearchBar}
+            >
+              <FaSearch className="hover:text-gray-400" />
+            </button>
+          </form>
+        </li>
         {user ? (
           <>
             <li className="ml-5">
-              <button className="btn" onClick={onLogout}>
-                <FaUser className="mr-2" /> Logout
-              </button>
+              <Link
+                className="flex items-center hover:text-gray-400"
+                to="/login"
+                onClick={onLogout}
+              >
+                <FaSignOutAlt className="mr-2" />
+              </Link>
             </li>
+
             <li className="ml-5">
-              <button className="btn" onClick={"/"}>
-                <CiHeart className="mr-2" /> Cart
-              </button>
+              <Link
+                className="relative flex items-center hover:text-gray-400"
+                to="/cart"
+              >
+                <CiHeart className="absolute left-1/2 mr-2 -translate-x-1/2 text-4xl font-extralight" />
+                <span className="text-xs font-medium">10</span>
+              </Link>
             </li>
           </>
         ) : (
           <>
-            <li>
-              <form action="" className="flex">
-                <input
-                  type="text"
-                  name=""
-                  id=""
-                  className={`${
-                    !searchBarIsOpen ? "scale-x-0" : "scale-x-90"
-                  } origin-right border-b-[1px] bg-transparent text-sm font-thin tracking-wider text-black outline-none transition-all duration-200
-                  ease-in-out focus:border-b-2 focus:border-b-black`}
-                  placeholder="SEARCH"
-                />
-                <button
-                  type={`${!searchBarIsOpen ? "submit" : "button"}`}
-                  className="text-black"
-                  onClick={handleSearchBar}
-                >
-                  <FaSearch className="hover:text-gray-400" />
-                </button>
-              </form>
-            </li>
             <li className="ml-5">
               <Link
                 className="flex items-center hover:text-gray-400"
