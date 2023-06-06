@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useRef } from "react";
-import ImageUpload from "../../components/Admin/UploadProduct/ImageUpload";
-import SizingQuantityTableUpload from "../../components/Admin/UploadProduct/SizingQuantityTableUpload";
+import ImageUpload from "../components/Admin/UploadProduct/ImageUpload";
+import SizingQuantityTableUpload from "../components/Admin/UploadProduct/SizingQuantityTableUpload";
 
 const EditProduct = () => {
   const [name, setName] = useState("Name");

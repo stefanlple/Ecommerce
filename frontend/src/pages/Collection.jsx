@@ -5,6 +5,7 @@ import { getAllProducts } from "../features/products/productService";
 import { useSelector, useDispatch } from "react-redux";
 import Spinner from "../components/Spinner";
 import { toast } from "react-toastify";
+import { Link } from "react-router-dom";
 
 function Collection() {
   const [products, setProducts] = useState([]);
@@ -31,33 +32,34 @@ function Collection() {
   }
   return (
     <>
-      <div>
+      <div className="flex flex-wrap justify-center">
         {products.length > 0 && (
-          <ul>
-            {products.map((products) => (
+          <ul className="flex gap-2">
+            {products.map((product) => (
               <>
-                <li>
-                  <a
-                    href={`/${products.name}.${products._id}`}
+                <li className="border border-b-[0.2px] border-black p-6">
+                  <Link
+                    to={`/product/${product._id}`}
                     className="plp-product"
-                    data-product-id={`${products._id}`}
+                    data-product-id={`${product._id}`}
                   >
-                    <div className="teaser-image">
+                    <div className="teaser-image h-80 w-80 border border-b-2 border-black">
                       <img
-                        src="https://pbs.twimg.com/profile_images/1564162499888517121/2Pn8AyNV_400x400.png"
-                        alt="Fleece"
+                        src={"../images/" + product.imageUrls[0]}
+                        className="h-full w-full object-cover"
+                        alt="None"
                       ></img>
                     </div>
                     <div className="short-desc plp-product__details">
                       <h3 className="product_title">
-                        <h1>{products.name}</h1>
+                        <h1>{product.name}</h1>
                       </h3>
                       <div className="price">
-                        <span>{products.price}</span>
+                        <span>{product.price} €</span>
                       </div>
-                      <div className="">{products.color}</div>
+                      <div className="">{product.color}</div>
                     </div>
-                  </a>
+                  </Link>
                 </li>
               </>
             ))}

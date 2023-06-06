@@ -16,12 +16,11 @@ import Counter from "./components/Counter";
 import Cart from "./pages/Cart";
 import ProductUpload from "./components/Admin/UploadProduct/ProductUpload";
 import ImageUpload from "./components/Admin/UploadProduct/ImageUpload";
-import HamburgerMenu from "./components/Header/HamburgerMenu";
 import ForgotPassword from "./pages/ForgotPassword";
 import ResetPassword from "./pages/ResetPassword";
-import Users from "./pages/Users/Users";
-import Admin from "./pages/Admin/Admin";
-import EditProduct from "./pages/Admin/EditProduct";
+import Users from "./pages/Users";
+import Admin from "./pages/Admin";
+import EditProduct from "./pages/EditProduct";
 
 function App() {
   return (
@@ -30,9 +29,8 @@ function App() {
         <div className="m-0 h-screen w-screen  pt-28 text-center">
           <Header />
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/collection" element={<Collection />} />
-            <Route path="/product" element={<Product />} />
+            <Route path="/" element={<Collection /> /* <Home /> */} />
+            <Route path="/product/:productId" element={<Product />} />
 
             {/* Login & Register */}
             <Route path="/login" element={<Login />} />

@@ -5,7 +5,7 @@ import { OrbitControls, Preload, useGLTF } from "@react-three/drei";
 import CanvasLoader from "../Loader";
 
 function Model({ modelUrl }) {
-  const pathModels = "./models/";
+  const pathModels = "../models/";
   const camera = useGLTF(pathModels + modelUrl);
 
   return (
@@ -33,7 +33,7 @@ function Model({ modelUrl }) {
 }
 
 function Gallery({ imageUrls, modelUrl }) {
-  const pathImages = "./images/";
+  const pathImages = "../images/";
 
   return (
     <>

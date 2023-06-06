@@ -32,7 +32,6 @@ function transformOptions(options) {
 function ProductSelectBox({ options }) {
   const renderOptions = transformOptions(options);
 
-  console.log(renderOptions);
   const [color, setColor] = useState(renderOptions.colors[0][0]);
   const [size, setSize] = useState(renderOptions.sizes[0]);
 
