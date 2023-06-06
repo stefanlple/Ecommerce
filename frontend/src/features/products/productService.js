@@ -12,6 +12,11 @@ export const getProduct = async (id) => {
   return response.data;
 };
 
+export const searchProductbyName = async (name) => {
+  const response = await axios.post(API_URL + "search", { name });
+  return response.data;
+};
+
 const productService = {
   getAllProducts,
   getProduct,

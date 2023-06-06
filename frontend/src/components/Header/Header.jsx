@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import { FaUser, FaSearch, FaSignOutAlt } from "react-icons/fa";
 import { CiHeart } from "react-icons/ci";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logout, reset } from "../../features/auth/authSlice";
-import { useNavigate } from "react-router-dom";
 
 function Header() {
   const navigate = useNavigate();
@@ -22,6 +21,27 @@ function Header() {
   const handleSearchBar = (event) => {
     setSearchBarIsOpen((curr) => !curr);
   };
+
+  const [searchValue, setSearchValue] = useState("");
+
+  const handleChange = (e) => {
+    setSearchValue(e.target.value);
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    navigate("/search?name=" + searchValue);
+
+    setSearchValue("");
+  };
+
+  const handleKeyPress = (event) => {
+    if (event.key === "Enter") {
+      handleSubmit(event);
+    }
+  };
+
   return (
     <header className="fixed top-0 z-50 flex w-full items-center justify-between border-b-2 border-slate-200 bg-white py-5 px-5">
       <HamburgerMenu />
@@ -37,7 +57,9 @@ function Header() {
             <input
               type="text"
               name=""
-              id=""
+              onChange={handleChange}
+              onKeyDown={handleKeyPress}
+              value={searchValue}
               className={`${
                 !searchBarIsOpen ? "scale-x-0" : "scale-x-90"
               } origin-right border-b-[1px] bg-transparent text-sm font-thin tracking-wider text-black outline-none transition-all duration-200

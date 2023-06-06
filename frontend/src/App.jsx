@@ -21,6 +21,7 @@ import ResetPassword from "./pages/ResetPassword";
 import Users from "./pages/Users";
 import Admin from "./pages/Admin";
 import EditProduct from "./pages/EditProduct";
+import Search from "./pages/Search";
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Collection /> /* <Home /> */} />
             <Route path="/product/:productId" element={<Product />} />
+            <Route path="/search" element={<Search />} />
 
             {/* Login & Register */}
             <Route path="/login" element={<Login />} />

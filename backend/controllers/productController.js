@@ -14,6 +14,22 @@ const getAllProducts = asyncHandler(async (req, res) => {
   res.json(allProducts);
 });
 
+const getProductsByName = asyncHandler(async (req, res) => {
+  const { name } = req.body;
+
+  console.log(name);
+  const regex = new RegExp(name, "i");
+
+  const products = await Product.find({ name: regex });
+
+  if (!products) {
+    res.status(400).json("no product with that name");
+  }
+
+  res.status(200);
+  res.json(products);
+});
+
 const registerProduct = asyncHandler(async (req, res) => {
   const {
     name,
@@ -84,4 +100,5 @@ module.exports = {
   deleteProduct,
   updateProduct,
   getAllProducts,
+  getProductsByName,
 };
