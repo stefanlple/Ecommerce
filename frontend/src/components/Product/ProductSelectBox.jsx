@@ -52,9 +52,9 @@ function ProductSelectBox({ options }) {
             <li key={index}>
               <span
                 key={index}
+                style={{ backgroundColor: item[1] }}
                 data-color={item[0]}
                 className={`inline-block 
-                bg-[${item[1]}] 
                 h-6 
                 w-6 rounded-xl 
                 border-2 border-white 

@@ -31,6 +31,11 @@ function App() {
           <Header />
           <Routes>
             <Route path="/" element={<Collection /> /* <Home /> */} />
+            <Route path="/collection" element={<Collection /> /* <Home /> */} />
+            <Route
+              path="/collection/:category"
+              element={<Collection /> /* <Home /> */}
+            />
             <Route path="/product/:productId" element={<Product />} />
             <Route path="/search" element={<Search />} />
 

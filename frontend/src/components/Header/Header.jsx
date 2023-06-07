@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { FaUser, FaSearch, FaSignOutAlt } from "react-icons/fa";
 import { CiHeart } from "react-icons/ci";
 import { Link, useNavigate } from "react-router-dom";
@@ -10,6 +10,8 @@ function Header() {
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.auth);
 
+  const formRef = useRef(null);
+
   const onLogout = () => {
     dispatch(logout());
     dispatch(reset());
@@ -20,6 +22,7 @@ function Header() {
 
   const handleSearchBar = (event) => {
     setSearchBarIsOpen((curr) => !curr);
+    formRef.current.focus();
   };
 
   const [searchValue, setSearchValue] = useState("");
@@ -31,8 +34,7 @@ function Header() {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    navigate("/search?name=" + searchValue);
-
+    window.location.href = "/search?name=" + searchValue;
     setSearchValue("");
   };
 
@@ -65,6 +67,7 @@ function Header() {
               } origin-right border-b-[1px] bg-transparent text-sm font-thin tracking-wider text-black outline-none transition-all duration-200
                   ease-in-out focus:border-b-2 focus:border-b-black`}
               placeholder="SEARCH"
+              ref={formRef}
             />
             <button
               type={`${!searchBarIsOpen ? "submit" : "button"}`}
@@ -157,36 +160,63 @@ function HamburgerMenu() {
       >
         <div className="h-5/6 overflow-x-hidden overflow-y-scroll px-5">
           <div className="flex flex-col gap-3 pb-3">
-            <a href="#" className="font-thin uppercase text-white">
+            <Link to="/" className="font-thin uppercase text-white">
               news
-            </a>
-            <a href="#" className="font-thin uppercase text-white">
+            </Link>
+            <Link
+              to="/collection/tees"
+              className="font-thin uppercase text-white"
+            >
               tees
-            </a>
-            <a href="#" className="font-thin uppercase text-white">
+            </Link>
+            <Link
+              to="/collection/knitwear"
+              className="font-thin uppercase text-white"
+            >
               knitwear
-            </a>
-            <a href="#" className="font-thin uppercase text-white">
+            </Link>
+            <Link
+              to="/collection/top"
+              className="font-thin uppercase text-white"
+            >
               top
-            </a>
-            <a href="#" className="font-thin uppercase text-white">
+            </Link>
+            <Link
+              to="/collection/outerwear"
+              className="font-thin uppercase text-white"
+            >
               outerwear
-            </a>
-            <a href="#" className="font-thin uppercase text-white">
+            </Link>
+            <Link
+              to="/collection/pants"
+              className="font-thin uppercase text-white"
+            >
               pants
-            </a>
-            <a href="#" className="font-thin uppercase text-white">
+            </Link>
+            <Link
+              to="/collection/shorts"
+              className="font-thin uppercase text-white"
+            >
               shorts
-            </a>
-            <a href="#" className="font-thin uppercase text-white">
+            </Link>
+            <Link
+              to="/collection/accessoires"
+              className="font-thin uppercase text-white"
+            >
               accessoires
-            </a>
-            <a href="#" className="font-thin uppercase text-white">
+            </Link>
+            <Link
+              to="/collection/footwear"
+              className="font-thin uppercase text-white"
+            >
               footwear
-            </a>
-            <a href="#" className="font-thin uppercase text-white">
+            </Link>
+            <Link
+              to="/collection/special"
+              className="font-thin uppercase text-white"
+            >
               special
-            </a>
+            </Link>
           </div>
           <form
             action=""
@@ -207,16 +237,16 @@ function HamburgerMenu() {
             </button>
           </form>
           <div className="mt-3 flex flex-col gap-2 pb-3">
-            <a href="" className="text-xs font-extralight text-white">
+            <a href="/" className="text-xs font-extralight text-white">
               Support
             </a>
-            <a href="" className="text-xs font-extralight text-white">
+            <a href="/" className="text-xs font-extralight text-white">
               Terms & Conditions
             </a>
-            <a href="" className="text-xs font-extralight text-white">
+            <a href="/" className="text-xs font-extralight text-white">
               Privacy Policy
             </a>
-            <a href="" className="text-xs font-extralight text-white">
+            <a href="/" className="text-xs font-extralight text-white">
               Instagram
             </a>
           </div>

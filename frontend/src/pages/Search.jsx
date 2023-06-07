@@ -6,6 +6,7 @@ import { useSelector, useDispatch } from "react-redux";
 import Spinner from "../components/Spinner";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
+import ProductList from "../components/ProductList";
 
 function Search() {
   const [products, setProducts] = useState([]);
@@ -34,45 +35,7 @@ function Search() {
   if (isLoading) {
     return <Spinner />;
   }
-  return (
-    <>
-      <div className="flex flex-wrap justify-center">
-        {products.length > 0 && (
-          <ul className="flex gap-2">
-            {products.map((product) => (
-              <li
-                className="border border-b-[0.2px] border-black p-6"
-                key={product._id}
-              >
-                <Link
-                  to={`/product/${product._id}`}
-                  className="plp-product"
-                  data-product-id={`${product._id}`}
-                >
-                  <div className="teaser-image h-80 w-80 border border-b-2 border-black">
-                    <img
-                      src={"../images/" + product.imageUrls[0]}
-                      className="h-full w-full object-cover"
-                      alt="None"
-                    ></img>
-                  </div>
-                  <div className="short-desc plp-product__details">
-                    <h3 className="product_title">
-                      <h1>{product.name}</h1>
-                    </h3>
-                    <div className="price">
-                      <span>{product.price} €</span>
-                    </div>
-                    <div className="">{product.color}</div>
-                  </div>
-                </Link>
-              </li>
-            ))}
-          </ul>
-        )}
-      </div>
-    </>
-  );
+  return <ProductList products={products} />;
 }
 
 export default Search;

@@ -12,6 +12,11 @@ export const getProduct = async (id) => {
   return response.data;
 };
 
+export const getProductsByCategory = async (category) => {
+  const response = await axios.get(API_URL + "collection/" + category);
+  return response.data;
+};
+
 export const searchProductbyName = async (name) => {
   const response = await axios.post(API_URL + "search", { name });
   return response.data;
@@ -20,6 +25,8 @@ export const searchProductbyName = async (name) => {
 const productService = {
   getAllProducts,
   getProduct,
+  getProductsByCategory,
+  searchProductbyName,
 };
 
 export default productService;
