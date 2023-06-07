@@ -1,33 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import Counter from "../Counter";
-
-function transformOptions(options) {
-  const res = {
-    colors: [],
-    sizes: [],
-  };
-
-  for (const option of options) {
-    const { color, sizes } = option;
-    const { colorname, colorhex } = color;
-
-    if (
-      !res.colors.some(([name, hex]) => name === colorname && hex === colorhex)
-    ) {
-      res.colors.push([colorname, colorhex]);
-    }
-
-    for (const sizeObj of sizes) {
-      const { size } = sizeObj;
-      if (!res.sizes.includes(size)) {
-        res.sizes.push(size);
-      }
-    }
-  }
-
-  return res;
-}
+import axios from "axios";
 
 function ProductSelectBox({ options }) {
   const renderOptions = transformOptions(options);
@@ -41,6 +15,27 @@ function ProductSelectBox({ options }) {
 
   const changeSize = (event) => {
     setSize(event.target.dataset.size);
+  };
+
+  const handleAddToCart = () => {
+    // Construct the request payload
+    const payload = {
+      color,
+      size,
+      // Add other relevant data from the component
+    };
+
+    // Make the Axios request
+    axios
+      .post("http://example.com/api/add-to-cart", payload)
+      .then((response) => {
+        // Handle the response
+        console.log(response.data);
+      })
+      .catch((error) => {
+        // Handle any errors
+        console.error(error);
+      });
   };
 
   return (
@@ -85,11 +80,41 @@ function ProductSelectBox({ options }) {
 
       <Counter />
 
-      <button className="border-[1px] border-black bg-black py-2 px-6 text-white hover:bg-white hover:text-black">
+      <button
+        className="border-[1px] border-black bg-black py-2 px-6 text-white hover:bg-white hover:text-black"
+        onClick={handleAddToCart}
+      >
         ADD TO CARD
       </button>
     </>
   );
+}
+
+function transformOptions(options) {
+  const res = {
+    colors: [],
+    sizes: [],
+  };
+
+  for (const option of options) {
+    const { color, sizes } = option;
+    const { colorname, colorhex } = color;
+
+    if (
+      !res.colors.some(([name, hex]) => name === colorname && hex === colorhex)
+    ) {
+      res.colors.push([colorname, colorhex]);
+    }
+
+    for (const sizeObj of sizes) {
+      const { size } = sizeObj;
+      if (!res.sizes.includes(size)) {
+        res.sizes.push(size);
+      }
+    }
+  }
+
+  return res;
 }
 
 export default ProductSelectBox;
