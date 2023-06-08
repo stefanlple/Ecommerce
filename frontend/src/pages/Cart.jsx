@@ -130,9 +130,6 @@ function CartItem({ cart, products, handleRemoveFromCart }) {
                   <button
                     className="mt-4 text-left text-xs"
                     type="submit"
-                    data-productid={products[index]._id}
-                    data-color={cartItem.color}
-                    data-size={cartItem.sizes.size}
                     onClick={() => {
                       handleRemoveFromCart(
                         products[index]._id,

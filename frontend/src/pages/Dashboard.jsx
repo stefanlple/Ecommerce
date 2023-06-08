@@ -12,7 +12,6 @@ function Dashboard() {
     if (!user) {
       navigate("/collection");
     }
-    console.log(user);
   });
 
   return <div>Dashboard</div>;

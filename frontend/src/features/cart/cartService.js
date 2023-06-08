@@ -30,7 +30,6 @@ export const deleteProductFromCart = async (token, data) => {
       Authorization: `Bearer ${token}`,
     },
   };
-  console.log(token);
   const response = await axios.post(API_URL + "delete", data, config);
 
   return response.data;
@@ -39,6 +38,7 @@ export const deleteProductFromCart = async (token, data) => {
 const cartService = {
   getCart,
   addToCart,
+  deleteProductFromCart,
 };
 
 export default cartService;

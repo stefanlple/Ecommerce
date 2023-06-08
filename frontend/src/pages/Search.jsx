@@ -21,7 +21,6 @@ function Search() {
     const urlParams = new URLSearchParams(window.location.search);
     const name = urlParams.get("name");
 
-    console.log(name);
     const fetchProducts = async () => {
       setProducts(await searchProductbyName(name));
     };

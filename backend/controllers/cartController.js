@@ -170,8 +170,8 @@ const deleteProductfromCart = asyncHandler(async (req, res) => {
         },
       }
     );
-    res.status(200).json(updatedCart);
-    console.log(updatedCart);
+    const cartResult = await Cart.findOne({ user });
+    res.status(200).json(cartResult.products);
   } else {
     res.status(400);
     throw new Error("The cart does not exists");
