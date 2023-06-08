@@ -2,7 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import Counter from "../components/Counter";
-import { getCart } from "../features/cart/cartService";
+import { deleteProductFromCart, getCart } from "../features/cart/cartService";
 import { getProduct } from "../features/products/productService";
 import { Link } from "react-router-dom";
 
@@ -13,7 +13,8 @@ function Cart() {
 
   useEffect(() => {
     const fetchCart = async () => {
-      setCart(await getCart(user.token));
+      const cart = await getCart(user.token);
+      setCart(cart);
     };
 
     fetchCart();
@@ -35,6 +36,19 @@ function Cart() {
       fetchProducts();
     }
   }, [cart, products]);
+
+  const handleRemoveFromCart = async (productId, size, color) => {
+    console.log("entered");
+
+    const data = {
+      productId,
+      color,
+      size,
+    };
+    await deleteProductFromCart(user.token, data);
+    const updatedCart = await getCart(user.token);
+    setCart(updatedCart);
+  };
 
   const TableHead = ({ name, colSpanProp }) => {
     return (
@@ -68,7 +82,11 @@ function Cart() {
         </thead>
         <tbody>
           {cart.length !== 0 && products.length !== 0 && (
-            <CartItem cart={cart} products={products} />
+            <CartItem
+              cart={cart}
+              products={products}
+              handleRemoveFromCart={handleRemoveFromCart}
+            />
           )}
         </tbody>
       </table>
@@ -85,7 +103,7 @@ function Cart() {
   );
 }
 
-function CartItem({ cart, products }) {
+function CartItem({ cart, products, handleRemoveFromCart }) {
   return (
     cart &&
     products && (
@@ -109,7 +127,20 @@ function CartItem({ cart, products }) {
                   <p className="text-sm">
                     {cartItem.color} - {cartItem.sizes.size}
                   </p>
-                  <button className="mt-4 text-left text-xs" type="submit">
+                  <button
+                    className="mt-4 text-left text-xs"
+                    type="submit"
+                    data-productid={products[index]._id}
+                    data-color={cartItem.color}
+                    data-size={cartItem.sizes.size}
+                    onClick={() => {
+                      handleRemoveFromCart(
+                        products[index]._id,
+                        cartItem.sizes.size,
+                        cartItem.color
+                      );
+                    }}
+                  >
                     REMOVE
                   </button>
                 </div>

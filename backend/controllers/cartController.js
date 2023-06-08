@@ -151,16 +151,27 @@ const deleteCart = asyncHandler(async (req, res) => {
 });
 
 const deleteProductfromCart = asyncHandler(async (req, res) => {
-  const productId = { productId: req.params.productId };
-  const cartId = { _id: req.params.cartId };
+  const user = req.user._id;
+  const { size, color, productId } = req.body;
+  const filter = {
+    productId: productId,
+    "sizes.size": size,
+    color: color,
+  };
 
-  const cartExist = await Cart.findOne(cartId);
+  const cart = await Cart.findOne({ user });
 
-  if (cartExist) {
-    const cart = await Cart.updateOne(cartId, {
-      $pull: { products: productId },
-    });
-    res.status(200).json(cart);
+  if (cart) {
+    const updatedCart = await Cart.updateOne(
+      { _id: cart._id },
+      {
+        $pull: {
+          products: filter,
+        },
+      }
+    );
+    res.status(200).json(updatedCart);
+    console.log(updatedCart);
   } else {
     res.status(400);
     throw new Error("The cart does not exists");
