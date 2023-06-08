@@ -12,8 +12,21 @@ export const getCart = async (token) => {
   return response.data.products;
 };
 
+export const addToCart = async (token, data) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+
+  const response = await axios.post(API_URL + "add-to-cart", data, config);
+
+  return response.data;
+};
+
 const cartService = {
   getCart,
+  addToCart,
 };
 
 export default cartService;

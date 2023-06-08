@@ -68,7 +68,7 @@ function Product() {
           </div>
           <Gallery imageUrls={product.imageUrls} modelUrl={product.modelUrl} />
           <div className="sticky top-16 h-[calc(100%_-_64px)] min-h-[1px] w-full max-w-sm py-44 px-10">
-            <ProductSelectBox options={product.options} />
+            <ProductSelectBox options={product.options} productId={productId} />
           </div>
         </div>
       </>

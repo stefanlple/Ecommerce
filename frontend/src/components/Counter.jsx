@@ -1,4 +1,3 @@
-import { Center } from "@react-three/drei";
 import React from "react";
 import { useState, useEffect } from "react";
 
@@ -35,6 +34,12 @@ function Counter(props) {
   useEffect(() => {
     setCount(props.value);
   }, [props.value]);
+
+  useEffect(() => {
+    if (props.onCountChange) {
+      props.onCountChange(count);
+    }
+  }, [count, props, props.onCountChange]);
 
   return (
     <>

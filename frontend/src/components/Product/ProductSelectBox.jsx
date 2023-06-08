@@ -1,13 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
-import Counter from "../Counter";
-import axios from "axios";
+import { useSelector } from "react-redux";
 
-function ProductSelectBox({ options }) {
+import Counter from "../Counter";
+
+import { addToCart } from "../../features/cart/cartService";
+
+function ProductSelectBox({ options, productId }) {
   const renderOptions = transformOptions(options);
+
+  const { user } = useSelector((state) => state.auth);
 
   const [color, setColor] = useState(renderOptions.colors[0][0]);
   const [size, setSize] = useState(renderOptions.sizes[0]);
+  const [quantity, setQuantity] = useState(1);
 
   const changeColor = (event) => {
     setColor(event.target.dataset.color);
@@ -17,25 +23,24 @@ function ProductSelectBox({ options }) {
     setSize(event.target.dataset.size);
   };
 
-  const handleAddToCart = () => {
-    // Construct the request payload
-    const payload = {
-      color,
-      size,
-      // Add other relevant data from the component
-    };
+  const handleCountChange = (newCount) => {
+    setQuantity(newCount);
+  };
 
-    // Make the Axios request
-    axios
-      .post("http://example.com/api/add-to-cart", payload)
-      .then((response) => {
-        // Handle the response
-        console.log(response.data);
-      })
-      .catch((error) => {
-        // Handle any errors
-        console.error(error);
-      });
+  const handleAddToCart = async () => {
+    const data = {
+      productId,
+      color,
+      sizes: {
+        size,
+        quantity,
+      },
+    };
+    try {
+      await addToCart(user.token, data);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -78,7 +83,7 @@ function ProductSelectBox({ options }) {
         })}
       </ul>
 
-      <Counter />
+      <Counter value={quantity} onCountChange={handleCountChange} />
 
       <button
         className="border-[1px] border-black bg-black py-2 px-6 text-white hover:bg-white hover:text-black"
