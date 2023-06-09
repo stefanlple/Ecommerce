@@ -1,25 +1,20 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import {
   getAllProducts,
   getProductsByCategory,
 } from "../features/products/productService";
-import { useSelector, useDispatch } from "react-redux";
-import Spinner from "../components/Spinner";
+
 import { toast } from "react-toastify";
+
 import ProductList from "../components/ProductList";
+import Spinner from "../components/Spinner";
 
 function Collection() {
   const { category } = useParams();
 
   const [products, setProducts] = useState([]);
-
-  const { isLoading, isError, isSuccess, message } = useSelector(
-    (state) => state.auth
-  );
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -30,16 +25,9 @@ function Collection() {
       setProducts(products);
     };
 
-    if (isError) {
-      toast.error(message);
-    }
-
     fetchProducts();
-  }, [isError, isSuccess, message, dispatch, category]);
+  }, [category]);
 
-  if (isLoading) {
-    return <Spinner />;
-  }
   return <ProductList products={products} />;
 }
 

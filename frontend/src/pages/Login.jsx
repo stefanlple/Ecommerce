@@ -7,6 +7,7 @@ import { login, reset } from "../features/auth/authSlice";
 import { toast } from "react-toastify";
 import Spinner from "../components/Spinner";
 import { Link } from "react-router-dom";
+import { getCart } from "../features/cart/cartSlice";
 
 function Login() {
   const [formData, setFormData] = useState({
@@ -29,8 +30,10 @@ function Login() {
     }
 
     if (isSuccess || user) {
+      //dispatch(getCart(user.token));
       navigate("/");
     }
+    if (isSuccess) dispatch(getCart(user.token));
 
     dispatch(reset());
   }, [user, isError, isSuccess, message, navigate, dispatch]);

@@ -9,7 +9,7 @@ const initialState = {
   message: "",
 };
 
-export const getCart = createAsyncThunk("cart/getCart", async (thunkAPI) => {
+export const getCart = createAsyncThunk("cart/getCart", async (_, thunkAPI) => {
   try {
     const token = thunkAPI.getState().auth.user.token;
     return await cartService.getCart(token);
@@ -59,7 +59,7 @@ export const deleteProductFromCart = createAsyncThunk(
 );
 
 export const cartSlice = createSlice({
-  name: "goal",
+  name: "cart",
   initialState,
   reducers: {
     reset: (state) => initialState,
@@ -85,7 +85,7 @@ export const cartSlice = createSlice({
       .addCase(addToCart.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
-        state.cart.push(action.payload);
+        state.cart = action.payload;
       })
       .addCase(addToCart.rejected, (state, action) => {
         state.isLoading = false;

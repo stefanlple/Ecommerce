@@ -8,6 +8,7 @@ export const getCart = async (token) => {
       Authorization: `Bearer ${token}`,
     },
   };
+
   const response = await axios.get(API_URL + "getCart", config);
   return response.data.products;
 };
@@ -18,10 +19,8 @@ export const addToCart = async (token, data) => {
       Authorization: `Bearer ${token}`,
     },
   };
-
   const response = await axios.post(API_URL + "add-to-cart", data, config);
-
-  return response.data;
+  return response.data.products;
 };
 
 export const deleteProductFromCart = async (token, data) => {

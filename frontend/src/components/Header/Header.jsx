@@ -1,18 +1,23 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { FaUser, FaSearch, FaSignOutAlt } from "react-icons/fa";
 import { CiHeart } from "react-icons/ci";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logout, reset } from "../../features/auth/authSlice";
+import { reset as cartReset } from "../../features/cart/cartSlice";
 
 function Header() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
   const { user } = useSelector((state) => state.auth);
+
+  const { cart } = useSelector((state) => state.cart);
 
   const formRef = useRef(null);
 
   const onLogout = () => {
+    dispatch(cartReset());
     dispatch(logout());
     dispatch(reset());
     navigate("/");
@@ -89,16 +94,6 @@ function Header() {
                 <FaSignOutAlt className="mr-2" />
               </Link>
             </li>
-
-            <li className="ml-5">
-              <Link
-                className="relative flex items-center hover:text-gray-400"
-                to="/cart"
-              >
-                <CiHeart className="absolute left-1/2 mr-2 -translate-x-1/2 text-4xl font-extralight" />
-                <span className="text-xs font-medium">10</span>
-              </Link>
-            </li>
           </>
         ) : (
           <>
@@ -110,17 +105,19 @@ function Header() {
                 <FaUser className="mr-2" />
               </Link>
             </li>
-            <li className="ml-5">
-              <Link
-                className="relative flex items-center hover:text-gray-400"
-                to="/cart"
-              >
-                <CiHeart className="absolute left-1/2 mr-2 -translate-x-1/2 text-4xl font-extralight" />
-                <span className="text-xs font-medium">10</span>
-              </Link>
-            </li>
           </>
         )}
+        <li className="ml-5">
+          <Link
+            className="relative flex items-center hover:text-gray-400"
+            to="/cart"
+          >
+            <CiHeart className="absolute left-1/2 mr-2 -translate-x-1/2 text-4xl font-extralight" />
+            <span className="text-xs font-medium">
+              {cart.length === 0 ? "" : cart.length}
+            </span>
+          </Link>
+        </li>
       </ul>
     </header>
   );

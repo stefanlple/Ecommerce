@@ -1,24 +1,34 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import Counter from "../components/Counter";
-import { deleteProductFromCart, getCart } from "../features/cart/cartService";
 import { getProduct } from "../features/products/productService";
 import { Link } from "react-router-dom";
+import Spinner from "../components/Spinner";
+import { deleteProductFromCart } from "../features/cart/cartService";
+import { toast } from "react-toastify";
+import { getCart } from "../features/cart/cartSlice";
 
 function Cart() {
-  const [cart, setCart] = useState([]);
   const [products, setProducts] = useState([]);
+  const dispatch = useDispatch();
+
   const { user } = useSelector((state) => state.auth);
+  const { cart, isLoading, isError, message } = useSelector(
+    (state) => state.cart
+  );
 
   useEffect(() => {
+    if (isError) {
+      toast.error(message);
+    }
+
     const fetchCart = async () => {
-      const cart = await getCart(user.token);
-      setCart(cart);
+      dispatch(getCart(user.token));
     };
 
     fetchCart();
-  }, [user.token]);
+  }, [dispatch, isError, message, user]);
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -35,19 +45,20 @@ function Cart() {
     if (cart.length !== 0) {
       fetchProducts();
     }
-  }, [cart, products]);
+  }, [cart]);
+
+  if (isLoading) {
+    return <Spinner />;
+  }
 
   const handleRemoveFromCart = async (productId, size, color) => {
-    console.log("entered");
-
     const data = {
       productId,
       color,
       size,
     };
     await deleteProductFromCart(user.token, data);
-    const updatedCart = await getCart(user.token);
-    setCart(updatedCart);
+    dispatch(getCart(user.token));
   };
 
   const TableHead = ({ name, colSpanProp }) => {
@@ -93,7 +104,14 @@ function Cart() {
       <div className="float-right">
         <div>
           <span>SUBTOTAL (VAT INCLUDED): </span>
-          <span>600 €</span>
+          <span>
+            {products.reduce(
+              (total, product, index) =>
+                total + product.price * cart[index]?.sizes.quantity,
+              0
+            )}{" "}
+            €
+          </span>
         </div>
         <button className="float-right border-[1px] border-black bg-black py-2 px-6 text-white hover:bg-white hover:text-black">
           CHECKOUT
@@ -105,10 +123,9 @@ function Cart() {
 
 function CartItem({ cart, products, handleRemoveFromCart }) {
   return (
-    cart &&
-    products && (
-      <>
-        {cart.map((cartItem, index) => (
+    <>
+      {cart.map((cartItem, index) => {
+        return (
           <tr key={index}>
             <td
               colSpan="2"
@@ -117,13 +134,13 @@ function CartItem({ cart, products, handleRemoveFromCart }) {
               <div className="flex">
                 <Link to="#">
                   <img
-                    src={"../images/" + products[index].imageUrls[0]}
+                    src={"../images/" + products[index]?.imageUrls[0]}
                     alt=""
                     className="aspect-square h-24 w-24 overflow-hidden object-cover"
                   />
                 </Link>
                 <div className="relative ml-5 flex flex-col">
-                  <Link to="#">{products[index].name}</Link>
+                  <Link to="#">{products[index]?.name}</Link>
                   <p className="text-sm">
                     {cartItem.color} - {cartItem.sizes.size}
                   </p>
@@ -132,7 +149,7 @@ function CartItem({ cart, products, handleRemoveFromCart }) {
                     type="submit"
                     onClick={() => {
                       handleRemoveFromCart(
-                        products[index]._id,
+                        products[index]?._id,
                         cartItem.sizes.size,
                         cartItem.color
                       );
@@ -151,15 +168,15 @@ function CartItem({ cart, products, handleRemoveFromCart }) {
               />
             </td>
             <td className="border-b-2 border-b-gray-300 py-5 text-right uppercase">
-              {products[index].price} €
+              {products[index]?.price} €
             </td>
             <td className="border-b-2 border-b-gray-300 py-5 text-right uppercase">
-              {products[index].price * cartItem.sizes.quantity} €
+              {products[index]?.price * cartItem.sizes.quantity} €
             </td>
           </tr>
-        ))}
-      </>
-    )
+        );
+      })}
+    </>
   );
 }
 

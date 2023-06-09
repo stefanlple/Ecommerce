@@ -1,17 +1,13 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { getProduct } from "../features/products/productService";
 import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
-import Spinner from "../components/Spinner";
 
 /*--------*/
 import ProductDescriptionBox from "../components/Product/ProductDescriptionBox";
 import ProductSelectBox from "../components/Product/ProductSelectBox";
 import Gallery from "../components/Product/Gallery";
-
-import axios from "axios";
 
 function Product() {
   /* const [product, setProduct] = useState({});

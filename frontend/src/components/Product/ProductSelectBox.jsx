@@ -1,19 +1,29 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { toast } from "react-toastify";
 
 import Counter from "../Counter";
 
-import { addToCart } from "../../features/cart/cartService";
+import { addToCart } from "../../features/cart/cartSlice";
+import Spinner from "../Spinner";
 
-function ProductSelectBox({ options, productId }) {
+function ProductSelectBoxWrapper({ options, productId }) {
   const renderOptions = transformOptions(options);
 
-  const { user } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
+
+  const { isLoading, isError, message } = useSelector((state) => state.cart);
 
   const [color, setColor] = useState(renderOptions.colors[0][0]);
   const [size, setSize] = useState(renderOptions.sizes[0]);
   const [quantity, setQuantity] = useState(1);
+
+  useEffect(() => {
+    if (isError) {
+      toast.error(message);
+    }
+  }, [message, isError]);
 
   const changeColor = (event) => {
     setColor(event.target.dataset.color);
@@ -36,13 +46,40 @@ function ProductSelectBox({ options, productId }) {
         quantity,
       },
     };
-    try {
-      await addToCart(user.token, data);
-    } catch (error) {
-      console.log(error);
-    }
+
+    dispatch(addToCart(data));
   };
 
+  return (
+    <>
+      {isLoading ? (
+        <Spinner />
+      ) : (
+        <ProductSelectBox
+          renderOptions={renderOptions}
+          color={color}
+          size={size}
+          quantity={quantity}
+          onColorChange={changeColor}
+          onSizeChange={changeSize}
+          onCountChange={handleCountChange}
+          onAddToCart={handleAddToCart}
+        />
+      )}
+    </>
+  );
+}
+
+function ProductSelectBox({
+  renderOptions,
+  color,
+  size,
+  quantity,
+  onColorChange,
+  onSizeChange,
+  onCountChange,
+  onAddToCart,
+}) {
   return (
     <>
       <h3>{color}</h3>
@@ -59,7 +96,7 @@ function ProductSelectBox({ options, productId }) {
                 w-6 rounded-xl 
                 border-2 border-white 
                 ${item[0] === color ? "shadow-[0_0_0_1px_rgba(0,1,0,1)]" : ""}`}
-                onClick={changeColor}
+                onClick={onColorChange}
               ></span>
             </li>
           );
@@ -75,7 +112,7 @@ function ProductSelectBox({ options, productId }) {
               className={`inline-block bg-[${sizeElement}] ${
                 sizeElement === size ? "border-b-2 border-black" : ""
               }  h-6 text-base`}
-              onClick={changeSize}
+              onClick={onSizeChange}
             >
               {sizeElement}
             </li>
@@ -83,13 +120,13 @@ function ProductSelectBox({ options, productId }) {
         })}
       </ul>
 
-      <Counter value={quantity} onCountChange={handleCountChange} />
+      <Counter value={quantity} onCountChange={onCountChange} />
 
       <button
         className="border-[1px] border-black bg-black py-2 px-6 text-white hover:bg-white hover:text-black"
-        onClick={handleAddToCart}
+        onClick={onAddToCart}
       >
-        ADD TO CARD
+        ADD TO CART
       </button>
     </>
   );
@@ -122,4 +159,4 @@ function transformOptions(options) {
   return res;
 }
 
-export default ProductSelectBox;
+export default ProductSelectBoxWrapper;

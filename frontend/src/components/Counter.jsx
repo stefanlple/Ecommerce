@@ -33,7 +33,7 @@ function Counter(props) {
 
   useEffect(() => {
     setCount(props.value);
-  }, [props.value]);
+  }, []);
 
   useEffect(() => {
     if (props.onCountChange) {
