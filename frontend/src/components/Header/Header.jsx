@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import { FaUser, FaSearch, FaSignOutAlt } from "react-icons/fa";
 import { CiHeart } from "react-icons/ci";
 import { Link, useNavigate } from "react-router-dom";
@@ -144,7 +144,7 @@ function HamburgerMenu() {
           after:duration-200 after:ease-in-out after:content-['']
           ${
             isOpen &&
-            `bg-transparent 
+            `bg-transparent
             before:translate-y-0 before:rotate-45 before:bg-slate-50 
             after:translate-y-0 after:-rotate-45 after:bg-slate-50`
           }`}
@@ -155,62 +155,75 @@ function HamburgerMenu() {
         ${isOpen ? "w-full" : "w-0"} 
         east-in-out top-0 left-0 -z-10 h-full bg-neutral-900 bg-opacity-70 backdrop-blur-md transition-all duration-500`}
       >
-        <div className="h-5/6 overflow-x-hidden overflow-y-scroll px-5">
+        <div className="no-scrollbar h-5/6 overflow-x-hidden overflow-y-scroll px-5">
           <div className="flex flex-col gap-3 pb-3">
-            <Link to="/" className="font-thin uppercase text-white">
+            <Link
+              to="/"
+              className="font-thin uppercase text-white"
+              onClick={handleOpen}
+            >
               news
             </Link>
             <Link
               to="/collection/tees"
               className="font-thin uppercase text-white"
+              onClick={handleOpen}
             >
               tees
             </Link>
             <Link
               to="/collection/knitwear"
               className="font-thin uppercase text-white"
+              onClick={handleOpen}
             >
               knitwear
             </Link>
             <Link
               to="/collection/top"
               className="font-thin uppercase text-white"
+              onClick={handleOpen}
             >
               top
             </Link>
             <Link
               to="/collection/outerwear"
               className="font-thin uppercase text-white"
+              onClick={handleOpen}
             >
               outerwear
             </Link>
             <Link
               to="/collection/pants"
               className="font-thin uppercase text-white"
+              onClick={handleOpen}
             >
               pants
             </Link>
             <Link
               to="/collection/shorts"
               className="font-thin uppercase text-white"
+              onClick={handleOpen}
             >
               shorts
             </Link>
             <Link
               to="/collection/accessoires"
               className="font-thin uppercase text-white"
+              onClick={handleOpen}
             >
               accessoires
             </Link>
             <Link
               to="/collection/footwear"
               className="font-thin uppercase text-white"
+              onClick={handleOpen}
             >
               footwear
             </Link>
             <Link
               to="/collection/special"
               className="font-thin uppercase text-white"
+              onClick={handleOpen}
             >
               special
             </Link>

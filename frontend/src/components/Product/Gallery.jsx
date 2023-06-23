@@ -17,12 +17,12 @@ function Model({ modelUrl }) {
         gl={{ preserveDrawingBuffer: true }}
         style={{ background: "#f3f3f3" }}
       >
-        <axesHelper args={[5]} />
+        {/*     <axesHelper args={[5]} /> */}
         <Suspense fallback={<CanvasLoader />}>
-          <OrbitControls enableZoom={false} />
+          <OrbitControls />
           <mesh>
-            <hemisphereLight intensity={0.15} groundColor="black" />
-            <pointLight intensity={1} />
+            <ambientLight intensity={1} />
+            <pointLight intensity={0.5} />
             <primitive object={camera.scene} scale={1} />
           </mesh>
         </Suspense>

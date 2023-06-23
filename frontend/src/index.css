@@ -6,10 +6,20 @@
 
 @layer components {
   .standard-button {
-    @apply py-[10px] px-5 bg-black border-black border-2 rounded-md text-base font-bold cursor-pointer text-center flex items-center justify-center text-white hover:scale-[99%];
+    @apply flex cursor-pointer items-center justify-center rounded-md border-2 border-black bg-black py-[10px] px-5 text-center text-base font-bold text-white hover:scale-[99%];
   }
   .small-standard-button {
-    @apply px-0.5 bg-black border-black border-2 rounded-md text-sm font-light text-white  cursor-pointer text-center flex items-center justify-center hover:scale-[99%];
+    @apply flex cursor-pointer items-center justify-center rounded-md border-2 border-black bg-black  px-0.5 text-center text-sm font-light text-white hover:scale-[99%];
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
   }
 }
 

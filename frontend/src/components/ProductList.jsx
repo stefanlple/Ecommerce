@@ -2,15 +2,15 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const ProductList = ({ products }) => {
-  return (!products || products.length) === 0 ? (
+  return !products || products.length === 0 ? (
     <h1>No products</h1>
   ) : (
     <div className="flex flex-wrap justify-center">
       {products.length > 0 && (
-        <ul className="flex gap-2">
+        <div className="grid grid-cols-4 gap-2">
           {products.map((product) => (
-            <li
-              className="border border-b-[0.2px] border-black p-6"
+            <div
+              className="col-span-1 border border-b-[0.2px] border-black p-6"
               key={product._id}
             >
               <Link
@@ -23,21 +23,21 @@ const ProductList = ({ products }) => {
                     src={"../images/" + product.imageUrls[0]}
                     className="h-full w-full object-cover"
                     alt="None"
-                  ></img>
+                  />
                 </div>
                 <div className="short-desc plp-product__details">
                   <h3 className="product_title">
                     <h1>{product.name}</h1>
                   </h3>
                   <div className="price">
-                    <span>{product.price} €</span>
+                    <span>{product.price.toFixed(2)} €</span>
                   </div>
                   <div className="">{product.color}</div>
                 </div>
               </Link>
-            </li>
+            </div>
           ))}
-        </ul>
+        </div>
       )}
     </div>
   );

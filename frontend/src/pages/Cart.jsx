@@ -75,7 +75,7 @@ function Cart() {
 
   return (
     <div className="mx-5">
-      <h1 className="text-left">Cart (2)</h1>
+      <h1 className="text-left">Cart ({cart.length})</h1>
       <table className="mb-3 w-full border-collapse">
         <thead>
           <tr>

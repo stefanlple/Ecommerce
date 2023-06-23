@@ -22,7 +22,7 @@ function DropdownText({ name, description }) {
       <div
         className={`duration-500 ease-out ${
           isOpen ? "max-h-screen" : "max-h-0 overflow-hidden"
-        }`}
+        } mt-2 text-sm`}
       >
         {description}
       </div>
