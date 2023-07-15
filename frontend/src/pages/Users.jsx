@@ -63,7 +63,6 @@ function OrderHistory() {
     <>
       <h1>Order History</h1>
       <section className="flex flex-col gap-1">
-        <h5 className="font-extrabold">24. Febuary 2023</h5>
         <div className="flex flex-col items-center border border-black p-1">
           <h5>YOUR ORDER: A234324234</h5>
           <div>24 Febuary 2023 | € 234.40 | 1 item</div>
@@ -198,8 +197,6 @@ const UserDetails = () => {
   const [editState, setEditState] = useState(false);
 
   const [email, setEmail] = useState("bob@bob.de");
-  const [fname, setFname] = useState("Bob");
-  const [lname, setLname] = useState("Meier");
   const [mobile, setMobile] = useState("040 12345678");
 
   return (
@@ -215,26 +212,6 @@ const UserDetails = () => {
             id="email"
             name="email"
             value={email}
-            className="border border-black"
-          />
-          <label className="font-semibold" htmlFor="fname">
-            First Name:
-          </label>
-          <input
-            type="text"
-            id="fname"
-            name="fname"
-            value={fname}
-            className="border border-black"
-          />
-          <label className="font-semibold" htmlFor="lname">
-            Last Name:
-          </label>
-          <input
-            type="text"
-            id="lname"
-            name="lname"
-            value={lname}
             className="border border-black"
           />
           <label className="font-semibold" htmlFor="mobile">
@@ -254,14 +231,6 @@ const UserDetails = () => {
           <div>
             <h4 className="font-semibold">Email Address:</h4>
             <span>{email}</span>
-          </div>
-          <div>
-            <h4 className="font-semibold">First Name:</h4>
-            <span>{fname}</span>
-          </div>
-          <div>
-            <h4 className="font-semibold">Last Name:</h4>
-            <span>{lname}</span>
           </div>
           <div>
             <h4 className="font-semibold">Phone Number:</h4>
