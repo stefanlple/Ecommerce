@@ -1,18 +1,29 @@
-import React, { useEffect } from "react";
-import { useState, useRef } from "react";
+import React, { useRef } from "react";
 
-function SizingQuantityTableUpload() {
-  const [rows, setRows] = useState({});
+function SizingQuantityTableUpload({ rows, setRows }) {
   const quantityRef = useRef();
+  const colorRef = useRef();
+  const colorhexRef = useRef();
+  const sizeRef = useRef();
 
   const handleAddRow = (event) => {
     event.preventDefault();
-    const size = document.getElementById("size").value;
-    const quantity = document.getElementById("quantity").value;
+    /* console.log(
+      sizeRef.current.value,
+      quantityRef.current.value,
+      colorRef.current.value,
+      colorhexRef.current.value
+    ); */
 
-    if (size && quantity) {
+    if (
+      sizeRef.current.value &&
+      quantityRef.current.value &&
+      colorRef.current.value &&
+      colorhexRef.current.value
+    ) {
       const newRows = { ...rows };
-      newRows[size] = quantity;
+      const key = `${sizeRef.current.value}-${colorRef.current.value}-${colorhexRef.current.value}`;
+      newRows[key] = quantityRef.current.value;
       setRows(newRows);
     }
     quantityRef.current.value = "";
@@ -35,7 +46,7 @@ function SizingQuantityTableUpload() {
               <label className="mr-3" htmlFor="size">
                 Enter size:
               </label>
-              <select name="size" id="size" className="border-2">
+              <select name="size" id="size" className="border-2" ref={sizeRef}>
                 <option value="ONESIZE">One Size</option>
                 <optgroup label="Sizes">
                   <option value="XXS">XXS</option>
@@ -48,6 +59,31 @@ function SizingQuantityTableUpload() {
                 </optgroup>
               </select>
             </th>
+
+            <th className=" flex border-collapse flex-col border border-black p-2">
+              <label className="mr-3" htmlFor="color">
+                Enter color:
+              </label>
+              <input
+                id="color"
+                className="border-2"
+                placeholder="COLOR"
+                type="text"
+                ref={colorRef}
+              />
+
+              <label className="mr-3" htmlFor="colorhex">
+                Enter colorhex:
+              </label>
+              <input
+                id="colorhex"
+                className="border-2"
+                placeholder="COLORHEX"
+                type="text"
+                ref={colorhexRef}
+              />
+            </th>
+
             <th className=" border-collapse border border-black p-2">
               <label className="mr-3" htmlFor="quantity">
                 Enter quantity:
@@ -71,7 +107,14 @@ function SizingQuantityTableUpload() {
         <tbody>
           {Object.entries(Object.entries(rows)).map(([index, [key, value]]) => (
             <tr key={index}>
-              <td className="border-collapse border border-black">{key}</td>
+              <td className="border-collapse border border-black">
+                {key.split("-")[0]}
+              </td>
+              <td className="border-collapse border border-black">
+                <span>{key.split("-")[1]}</span>
+                {" | "}
+                <span>{key.split("-")[2]}</span>
+              </td>
               <td className="border-collapse border border-black pl-3">
                 <span>{value}</span>{" "}
                 <button

@@ -1,49 +1,138 @@
 import React from "react";
-import { useState, useRef } from "react";
+import axios from "axios";
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+
 import ImageUpload from "../components/Admin/UploadProduct/ImageUpload";
 import SizingQuantityTableUpload from "../components/Admin/UploadProduct/SizingQuantityTableUpload";
 
+import { getProduct } from "../features/products/productService";
+
 const EditProduct = () => {
-  const [name, setName] = useState("Name");
-  const [price, setPrice] = useState("12.30");
+  const { productId } = useParams();
+  const [product, setProduct] = useState({});
+
+  const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
+  const [price, setPrice] = useState("");
   const [category, setCategory] = useState("tees");
+  const [quantity, setQuantity] = useState({});
 
-  const [quantityRows, setQuantityRows] = useState({ hallo: ["wdf", 23432] });
-  const quantityRef = useRef();
+  useEffect(() => {
+    const fetchCart = async () => {
+      try {
+        const product = await getProduct(productId);
 
-  const handleAddRow = (event) => {
-    event.preventDefault();
-    const color = document.getElementById("color").value;
-    const size = document.getElementById("size").value;
-    const quantity = document.getElementById("quantity").value;
+        setProduct(product);
+        setName(product.name);
+        setDescription(product.description);
+        setPrice(product.price);
+        setCategory(product.category);
+        setQuantity(convertToTable(product.options));
+      } catch (error) {
+        console.log(error);
+      }
+    };
 
-    if (size && quantity && color) {
-      const newRows = { ...quantityRows };
-      newRows[color] = [size, quantity];
-      setQuantityRows(newRows);
+    fetchCart();
+  }, []);
+
+  const convertToTable = (options) => {
+    const object = {};
+
+    options.forEach((instance) => {
+      instance.sizes.forEach((element) => {
+        let key = `-${instance.color.colorname}-${instance.color.colorhex}`;
+        key = element.size + key;
+        object[key] = element.quantity;
+      });
+    });
+
+    return object;
+  };
+
+  const convertQuantity = (quantity) => {
+    const options = [];
+
+    for (const [key, value] of Object.entries(quantity)) {
+      const [size, color, colorhex] = key.split("-");
+      options.push({
+        color: {
+          colorname: color,
+          colorhex: colorhex,
+        },
+        sizes: {
+          size: size,
+          quantity: value,
+        },
+      });
     }
-    quantityRef.current.value = "";
+    return options;
   };
 
-  const handleRemoveRow = (event, key) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    const newRows = { ...quantityRows };
-    delete newRows[key];
-    setQuantityRows(newRows);
+
+    const body = {
+      name,
+      description,
+      price: parseFloat(price).toFixed(2),
+      category,
+      options: convertQuantity(quantity),
+    };
+
+    try {
+      await axios.put("/api/products/" + productId, body);
+
+      console.log("Product updated successfully!");
+    } catch (error) {
+      console.log(error);
+    }
   };
+
+  const handleNameChange = (event) => {
+    setName(event.target.value);
+  };
+
+  const handleDescriptionChange = (event) => {
+    setDescription(event.target.value);
+  };
+
+  const handlePriceChange = (event) => {
+    setPrice(event.target.value);
+  };
+
+  const handleCategoryChange = (event) => {
+    setCategory(event.target.value);
+  };
+
   return (
-    <form action="#" className="flex w-6/12 flex-col" autocomplete="off">
-      <h1>UPLOAD PRODUCT</h1>
+    <form
+      onSubmit={handleSubmit}
+      className="flex w-6/12 flex-col"
+      autoComplete="off"
+    >
+      <h1>EDIT PRODUCT</h1>
       <ImageUpload />
-      <label for="name">Enter name:</label>
+      <label htmlFor="name">Enter name:</label>
       <input
         type="text"
         id="name"
         className="border-2"
         placeholder="NAME"
         value={name}
+        onChange={handleNameChange}
       />
-      <label for="price">Enter price (Euro €):</label>
+      <label htmlFor="description">Enter description:</label>
+      <input
+        type="text"
+        id="description"
+        className="border-2"
+        placeholder="DESCRIPTION"
+        value={description}
+        onChange={handleDescriptionChange}
+      />
+      <label htmlFor="price">Enter price (Euro €):</label>
       <input
         type="text"
         id="price"
@@ -52,14 +141,15 @@ const EditProduct = () => {
         placeholder="PRICE"
         className="border-2"
         value={price}
+        onChange={handlePriceChange}
       />
-
-      <label for="category">Enter category:</label>
+      <label htmlFor="category">Enter category:</label>
       <select
         name="category"
         id="category"
         className="border-2"
         value={category}
+        onChange={handleCategoryChange}
       >
         <option value="tees">Tees & Longsleeves</option>
         <option value="knitwear">Sweaters</option>
@@ -72,80 +162,7 @@ const EditProduct = () => {
         <option value="special">Special</option>
       </select>
 
-      <p>Edit quantity:</p>
-      <table className="border-collapse border border-black">
-        <thead className="border-collapse border border-black">
-          <tr>
-            <th className="border-collapse border border-black p-2">
-              <label className="mr-3" htmlFor="quantity">
-                Enter color:
-              </label>
-              <input
-                id="color"
-                className="border-2"
-                placeholder="COLOR"
-                type="text"
-              />
-            </th>
-            <th className="border-collapse border border-black p-2">
-              <label className="mr-3" htmlFor="size">
-                Enter size:
-              </label>
-              <select name="size" id="size" className="border-2">
-                <option value="ONESIZE">One Size</option>
-                <optgroup label="Sizes">
-                  <option value="XXS">XXS</option>
-                  <option value="XS">XS</option>
-                  <option value="S">S</option>
-                  <option value="M">M</option>
-                  <option value="L">L</option>
-                  <option value="XL">XL</option>
-                  <option value="XXL">XXL</option>
-                </optgroup>
-              </select>
-            </th>
-            <th className=" border-collapse border border-black p-2">
-              <label className="mr-3" htmlFor="quantity">
-                Enter quantity:
-              </label>
-              <input
-                id="quantity"
-                className="border-2"
-                placeholder="QUANTITY"
-                type="number"
-                ref={quantityRef}
-              />
-              <button
-                className="order-2 ml-auto border bg-black px-2 text-white"
-                onClick={handleAddRow}
-              >
-                Add
-              </button>
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          {Object.entries(Object.entries(quantityRows)).map(
-            ([index, [key, value]]) => (
-              <tr key={index}>
-                <td className="border-collapse border border-black"> {key}</td>
-                <td className="border-collapse border border-black">
-                  {value[0]}
-                </td>
-                <td className="border-collapse border border-black pl-3">
-                  <span>{value[1]}</span>{" "}
-                  <button
-                    className="float-right"
-                    onClick={(event) => handleRemoveRow(event, key)}
-                  >
-                    Remove
-                  </button>
-                </td>
-              </tr>
-            )
-          )}
-        </tbody>
-      </table>
+      <SizingQuantityTableUpload rows={quantity} setRows={setQuantity} />
       <input type="submit" className="mt-5 border-2 bg-black p-2 text-white" />
     </form>
   );

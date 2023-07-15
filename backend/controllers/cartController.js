@@ -2,6 +2,28 @@ const Cart = require("../models/cartModel");
 const Product = require("../models/productModel");
 const asyncHandler = require("express-async-handler");
 
+const getAllCarts = asyncHandler(async (req, res) => {
+  const cart = await Cart.find();
+  if (cart) {
+    res.status(200).json(cart);
+  } else {
+    res.status(401);
+    throw new Error("No carts");
+  }
+});
+
+const getCartById = asyncHandler(async (req, res) => {
+  const id = req.body.id;
+  console.log(id);
+  const cart = await Cart.findById(id);
+  if (cart) {
+    res.status(200).json(cart);
+  } else {
+    res.status(401);
+    throw new Error("No carts with this id");
+  }
+});
+
 const getCart = asyncHandler(async (req, res) => {
   const user = req.user._id;
   const cart = await Cart.findOne({ user });
@@ -216,4 +238,6 @@ module.exports = {
   addToCart,
   deleteCart,
   deleteProductfromCart,
+  getAllCarts,
+  getCartById,
 };

@@ -15,6 +15,7 @@ import Users from "./pages/Users";
 import Admin from "./pages/Admin";
 import EditProduct from "./pages/EditProduct";
 import Search from "./pages/Search";
+import CartForAdmin from "./pages/CartForAdmin";
 
 function App() {
   return (
@@ -45,7 +46,9 @@ function App() {
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/productupload" element={<ProductUpload />} />
             <Route path="/:productId" element={<Product />} />
-            <Route path="/editproduct" element={<EditProduct />} />
+            <Route path="/editproduct/:productId" element={<EditProduct />} />
+
+            <Route path="/cart/:cartId" element={<CartForAdmin />} />
 
             {/* Users */}
             <Route path="/cart" element={<Cart />} />

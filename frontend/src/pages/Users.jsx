@@ -94,7 +94,7 @@ function UserAddress() {
       <h1>Addresses</h1>
       {editState ? (
         <div className="flex flex-col items-center gap-1 border border-black">
-          <label className="font-semibold" for="name">
+          <label className="font-semibold" htmlFor="name">
             Name:
           </label>
           <input
@@ -104,7 +104,7 @@ function UserAddress() {
             value={name}
             className="border border-black"
           />
-          <label className="font-semibold" for="street">
+          <label className="font-semibold" htmlFor="street">
             Street:
           </label>
           <input
@@ -114,7 +114,7 @@ function UserAddress() {
             value={street}
             className="border border-black"
           />
-          <label className="font-semibold" for="city">
+          <label className="font-semibold" htmlFor="city">
             City:
           </label>
           <input
@@ -124,7 +124,7 @@ function UserAddress() {
             value={city}
             className="border border-black"
           />
-          <label className="font-semibold" for="state">
+          <label className="font-semibold" htmlFor="state">
             State:
           </label>
           <input
@@ -134,7 +134,7 @@ function UserAddress() {
             value={state}
             className="border border-black"
           />
-          <label className="font-semibold" for="country">
+          <label className="font-semibold" htmlFor="country">
             Country:
           </label>
           <input
@@ -144,7 +144,7 @@ function UserAddress() {
             value={country}
             className="border border-black"
           />
-          <label className="font-semibold" for="zipcode">
+          <label className="font-semibold" htmlFor="zipcode">
             Zip Code:
           </label>
           <input
@@ -207,7 +207,7 @@ const UserDetails = () => {
       <h1>Account Details</h1>
       {editState ? (
         <div className="flex flex-col items-center gap-1 border border-black">
-          <label className="font-semibold" for="email">
+          <label className="font-semibold" htmlFor="email">
             Email Address:
           </label>
           <input
@@ -217,7 +217,7 @@ const UserDetails = () => {
             value={email}
             className="border border-black"
           />
-          <label className="font-semibold" for="fname">
+          <label className="font-semibold" htmlFor="fname">
             First Name:
           </label>
           <input
@@ -227,7 +227,7 @@ const UserDetails = () => {
             value={fname}
             className="border border-black"
           />
-          <label className="font-semibold" for="lname">
+          <label className="font-semibold" htmlFor="lname">
             Last Name:
           </label>
           <input
@@ -237,7 +237,7 @@ const UserDetails = () => {
             value={lname}
             className="border border-black"
           />
-          <label className="font-semibold" for="mobile">
+          <label className="font-semibold" htmlFor="mobile">
             Phone Number:
           </label>
           <input

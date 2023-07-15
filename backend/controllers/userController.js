@@ -3,6 +3,27 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const asyncHandler = require("express-async-handler");
 
+const getAllUsers = asyncHandler(async (req, res) => {
+  const users = await User.find();
+  if (users) {
+    res.status(200).json(users);
+  } else {
+    res.status(401);
+    throw new Error("No users");
+  }
+});
+
+const getUserById = asyncHandler(async (req, res) => {
+  const id = req.body.id;
+  const user = await Cart.findById(id);
+  if (user) {
+    res.status(200).json(user);
+  } else {
+    res.status(401);
+    throw new Error("No user");
+  }
+});
+
 const registerUser = asyncHandler(async (req, res) => {
   const { name, email, password, role } = req.body;
 
@@ -65,4 +86,10 @@ const generateJWTToken = (id) => {
   return jwt.sign({ id }, process.env.JWT_SECRETKEY, { expiresIn: "60d" });
 };
 
-module.exports = { registerUser, loginUser, getUser };
+module.exports = {
+  registerUser,
+  loginUser,
+  getUser,
+  getAllUsers,
+  getUserById,
+};

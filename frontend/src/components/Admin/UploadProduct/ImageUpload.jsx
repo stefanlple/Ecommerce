@@ -40,7 +40,10 @@ function ImageUpload() {
   return (
     <div className="border border-stone-400 p-2">
       <div className="mb-2 flex flex-col gap-2">
-        <label for="files" class="m-auto border border-black p-3 font-semibold">
+        <label
+          htmlFor="files"
+          className="m-auto border border-black p-3 font-semibold"
+        >
           Select Images and Model <FaRegPlusSquare className="m-auto inline " />
         </label>
         <input
@@ -76,9 +79,8 @@ function ImageUpload() {
         ) : (
           <>
             <label
-              for="files"
-              class=" font-semibold"
-              className="flex h-[100px] w-[100px] items-center justify-center border border-black"
+              htmlFor="files"
+              className="flex h-[100px] w-[100px] items-center justify-center border border-black font-semibold"
             >
               <FaRegPlusSquare className="m-auto inline " />
             </label>
